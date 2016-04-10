@@ -52,4 +52,4 @@ public class SystemDemo {
    ![](./201604/2016-04-10_111216.png)
 
 ###总结：
-   -System.out和System.err使用不同的printstream对象，所以线程不同步。同时使用进行打印，会出现打印内容交叉的结果。
+   - System.out和System.err使用不同的printstream对象，所以线程不同步。同时使用进行打印，会出现打印内容交叉的结果。
