@@ -37,8 +37,9 @@ alert(a+"\r"+b+"\r"+c);
 
 #### 2. 运行结果：
 chrome（47）  
-![](./201604/window_me.01.png)
-ie (ie8)
+![](./201604/window_me.01.png)  
+
+ie (ie8)  
 ![](./201604/window_me.02.png)
 
 #### 3.示例代码2:
@@ -58,8 +59,9 @@ alert(a+"\r"+b+"\r"+c);
 
 #### 4. 此时结果为：
 chrome（47）  
-![](./201604/window_me.03.png)
-ie (ie8)
+![](./201604/window_me.03.png)  
+
+ie (ie8)  
 ![](./201604/window_me.04.png)
 
 ### 三、总结
