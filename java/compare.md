@@ -111,7 +111,7 @@ It is strongly recommended, but not strictly required that (x.compareTo(y)==0) =
   **`list.indexOf`** 和 **`Collections.binarySearch`**方法，然而前者判断使用`equals`方法，而后者使用`compareTo`方法。
 
 1. **口说无凭，看源码：**
-- **`list.indexOf`**方法：
+- **`list.indexOf`**方法  
   ![](./201604/compare_01.png)    
      .                                   
 - **`Collections.binarySearch`**方法
