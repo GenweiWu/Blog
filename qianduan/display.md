@@ -20,7 +20,7 @@ display总结
   `With 'display: inline', the width, height, margin-top, margin-bottom, and float properties have no effect.`
  
 #### 5. display:inline-block
-  - 既可以做到不占据一行，又能设置宽度和高度。
+ - 既可以做到不占据一行，又能设置宽度和高度。
  
  
   
