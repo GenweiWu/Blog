@@ -1,4 +1,4 @@
-margin:auto
+margin:auto让div居中
 --
 
 #### 1、设置块级元素的`width`,然后通过设置`margin:0 auto`可以让这个元素水平居中。
