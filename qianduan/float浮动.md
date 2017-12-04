@@ -15,4 +15,6 @@ float
 
 ---
 参考资料  
-https://developer.mozilla.org/zh-CN/docs/CSS/float
+https://developer.mozilla.org/zh-CN/docs/CSS/float  
+[解决子级用css float浮动 而父级div没高度不能自适应高度](http://www.divcss5.com/jiqiao/j612.shtml)  
+
