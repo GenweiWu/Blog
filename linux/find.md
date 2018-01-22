@@ -56,7 +56,7 @@ find用于查找文件或目录
 
 ---
 #### 常用记录
-`find . -type d -empty -maxdepth 1`    找到当前目录下所有空文件夹
+`find . -type d -empty -maxdepth 1`    找到当前目录下所有空文件夹(也可以不限制文件层级，则包括空的子目录)
 
 
 ---
