@@ -55,5 +55,10 @@ find用于查找文件或目录
  - min表示以分钟计算,time表示以24小时计算(天计算)
 
 ---
+#### 常用记录
+`find . -type d -empty -maxdepth 1`    找到当前目录下所有空文件夹
+
+
+---
 #### 参考 
 http://www.cnblogs.com/peida/archive/2012/11/13/2767374.html
