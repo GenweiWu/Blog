@@ -33,3 +33,12 @@ mysql> show grants for 'zhangsan'@'%';
 +-----------------------------------------------------------------+
 2 rows in set (0.00 sec)
 ```
+
+#### 3.查看表被操作的权限信息
+
+```
+SELECT user,host FROM db WHERE db='name';
+SELECT user,host FROM tables_priv WHERE db='name';
+SELECT user,host FROM columns_priv WHERE db='name';
+SELECT user,host FROM procs_priv WHERE db='name';
+```
