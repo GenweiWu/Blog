@@ -42,3 +42,13 @@ SELECT user,host FROM tables_priv WHERE db='name';
 SELECT user,host FROM columns_priv WHERE db='name';
 SELECT user,host FROM procs_priv WHERE db='name';
 ```
+
+#### 4. 添加用户对表的操作权限
+
+```
+mysql> GRANT ALL PRIVILEGES ON `db1`.* TO 'zhangsan'@'%';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges; 
+Query OK, 0 rows affected (0.01 sec)
+```
