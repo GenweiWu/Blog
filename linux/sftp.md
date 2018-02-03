@@ -61,3 +61,16 @@ version                            Show SFTP version
 ?                                  Synonym for help
 
 ```
+
+#### 3.一些ls命令
+```
+sftp> ls *02-01*runtime.gz
+sftp> cd /home/test
+sftp> find *.log
+Invalid command.
+```
+
+#### 4.下载文件，可以批量下载
+```
+sftp> get *02-01*runtime.gz
+```
