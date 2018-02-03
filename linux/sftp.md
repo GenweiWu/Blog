@@ -69,6 +69,7 @@ sftp> cd /home/test
 sftp> find *.log
 Invalid command.
 ```
+- 可以用ls、cd命令，但是find貌似不可以用
 
 #### 4.下载文件，可以批量下载
 ```
