@@ -12,3 +12,26 @@ curl --header "username:admin"  --header "password:admin123" www.baidu.com
 ```
 
 - 多个header要分开写
+
+### 2. 显示请求速度
+
+1. Create a new file, curl-format.txt, and paste in:
+```
+    time_namelookup:  %{time_namelookup}\n
+       time_connect:  %{time_connect}\n
+    time_appconnect:  %{time_appconnect}\n
+   time_pretransfer:  %{time_pretransfer}\n
+      time_redirect:  %{time_redirect}\n
+ time_starttransfer:  %{time_starttransfer}\n
+                    ----------\n
+         time_total:  %{time_total}\n
+```
+2.Make a request:
+```
+curl -w "@curl-format.txt" -o /dev/null -s "http://wordpress.com/"
+Or on Windows, it's...
+
+curl -w "@curl-format.txt" -o NUL -s "http://wordpress.com/"
+```
+
+[原始链接](https://stackoverflow.com/a/22625150)
