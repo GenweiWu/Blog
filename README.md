@@ -19,3 +19,7 @@ https://www.hongkiat.com/blog/svg-animations/
 http://bashooka.com/coding/20-cool-svg-text-effects/  
 
 
+---
+## 一些想法
+
+1. 最近使用curl，发现自己对于网络的底层还是不太了解。感觉可以通过使用`curl`+`抓包`的结合来进一步了解。
