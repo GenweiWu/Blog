@@ -140,4 +140,4 @@ f2();
 ### 参考
 - [学习Javascript闭包](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)  
 - [Javascript的链式作用域](http://www.oc35.com/2014/05/12/javascript-amazing1.html)
-- [msdn高级JavaScript](https://msdn.microsoft.com/zh-cn/library/bzt2dkta(v=vs.94%29.aspx)
+- [msdn高级JavaScript](https://msdn.microsoft.com/zh-cn/library/bzt2dkta(v=vs.94).aspx)
