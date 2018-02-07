@@ -49,6 +49,7 @@ function hello(a, b) {
 hello.apply(obj, ["first", "second"]); //first word second
 hello.call(obj, "first", "second"); //first word second
 ```
+> apply传递的是参数数组，call传递的是多个参数。
 
 
 
