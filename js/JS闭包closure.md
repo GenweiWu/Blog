@@ -134,8 +134,8 @@ f1();
 f1();
 f2();
 ```
-> f1和f2拥有各自的闭包
-
+> f1和f2拥有各自的闭包  
+> [对于f1和f2为啥不互相影响的理解](https://github.com/GenweiWu/Blog/issues/16)
 
 ### 参考
 - [学习Javascript闭包](http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)  
