@@ -119,6 +119,26 @@ function tweak(){
 ```
 > 变量提升: 在解释时变量的定义放到最前面去，而赋值在执行时
 
+```
+var person = function() {
+  //变量作用域为函数内部，外部无法访问    
+  var name = "default";
+
+  return {
+    getName: function() {
+      return name;
+    },
+    setName: function(newName) {
+      name = newName;
+    }
+  }
+}();
+console.log(person.name); //直接访问，结果为undefined    
+console.log(person.getName()); //default 
+person.setName("jozo");
+console.log(person.getName()); //jozo
+```
+> 直接访问无法读取
 
 ```
 function Foo() {
