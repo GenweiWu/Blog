@@ -58,6 +58,7 @@ find用于查找文件或目录
 #### 常用记录
 `find . -maxdepth 1 -type d -empty`    找到当前目录下所有空文件夹(也可以不限制文件层级，则包括空的子目录)  
 `find . -maxdepth 1 -type d -empty -exec rm -r {} \;`  找到当前目录下所有空文件夹并删除  
+`find /path/to/files -type f -exec sed -i 's/oldstring/new string/g' {} \;` 找到含有oldstring文件并替换成new string
 
 ---
 #### 参考 
