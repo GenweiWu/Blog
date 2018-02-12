@@ -124,6 +124,15 @@ $ echo ${test/%ab/AB}
 ab22AB  //只替换当前匹配
 ```
 
+### 3.练习
+- 修改文件后缀,名称不变;如从1.txt到1.log
+```shell
+for f in *.txt;do
+   target=${f/%.txt/.log}
+   mv $f $target
+done   
+```
+
 ---
 ### 参考
 https://www.cnblogs.com/chengmo/archive/2010/10/02/1841355.html
