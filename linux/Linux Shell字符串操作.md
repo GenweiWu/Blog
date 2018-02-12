@@ -19,6 +19,11 @@ TODO
 |${str##subString}|从字符串str的左边开始匹配,删除最长匹配||
 |${str%subString}|从字符串str的右边开始匹配,删除最短匹配||
 |${str%%subString}|从字符串str的右边开始匹配,删除最长匹配|<li>从右边开始匹配,但是还是从左向右看</li><li>subString不是正则,`a*b`中的`*`指任意字符</li>|
+| | | |
+|${str/substring/relacemeng}|替换字符串str中的substring为replacement,只替换第一个匹配||
+|${str//substring/relacemeng}|替换字符串str中的substring为replacement,替换所有匹配||
+|${str/#substring/relacemeng}|如果字符串str中前缀匹配substring,则替换subtring为replacement|只替换当前匹配|
+|${str/$substring/relacemeng}|如果字符串str中后缀匹配substring,则替换subtring为replacement|只替换当前匹配|
 
 
 #### 2.1 字符串长度
@@ -85,6 +90,39 @@ $ echo ${test%%a*c}
 
 #### 2.3 字符串替换
 
+- 匹配替换
+```
+$ test=1ab2ab3
+
+$ echo ${test/ab/AB}
+1AB2ab3
+
+$ echo ${test//ab/AB}
+1AB2AB3
+
+$ echo ${test/#ab/AB}
+1ab2ab3
+
+$ echo ${test/%ab/AB}
+1ab2ab3
+```
+
+- 匹配替换
+```
+$ test=ab22ab
+
+$ echo ${test/ab/AB}
+AB22ab
+
+$ echo ${test//ab/AB}
+AB22AB
+
+$ echo ${test/#ab/AB}
+AB22ab  //只替换当前匹配
+
+$ echo ${test/%ab/AB}
+ab22AB  //只替换当前匹配
+```
 
 ---
 ### 参考
