@@ -2,6 +2,8 @@ date
 ==
 
 ### 1. date格式化
+
+#### 1.1 说明
 ```
 FORMAT controls the output.  Interpreted sequences are:
 
@@ -52,3 +54,21 @@ FORMAT controls the output.  Interpreted sequences are:
   %:::z  numeric time zone with : to necessary precision (e.g., -04, +05:30)
   %Z   alphabetic time zone abbreviation (e.g., EDT)
 ```
+
+#### 1.2 样例
+```shell
+$ echo $(date +%Y%m%d %H%M%S)
+date: extra operand ‘%H%M%S’
+Try 'date --help' for more information.  //含有空格要用引号包起来
+
+
+$ echo $(date +'%Y%m%d %H%M%S')
+20180213 144320    //最常用的，要记一下
+
+$ echo $(date +'%Y%m%d %H:%M:%S')
+20180213 14:43:27  //换一个格式
+
+$ echo $(date +'%y%m%d %H:%M:%S')
+180213 14:43:49   //y表示年的后两位
+```
+
