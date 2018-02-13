@@ -20,10 +20,10 @@ TODO
 |${str%subString}|从字符串str的右边开始匹配,删除最短匹配||
 |${str%%subString}|从字符串str的右边开始匹配,删除最长匹配|<li>从右边开始匹配,但是还是从左向右看</li><li>subString不是正则,`a*b`中的`*`指任意字符</li>|
 | | | |
-|${str/substring/relacemeng}|替换字符串str中的substring为replacement,只替换第一个匹配||
-|${str//substring/relacemeng}|替换字符串str中的substring为replacement,替换所有匹配||
-|${str/#substring/relacemeng}|如果字符串str中前缀匹配substring,则替换subtring为replacement|只替换当前匹配|
-|${str/$substring/relacemeng}|如果字符串str中后缀匹配substring,则替换subtring为replacement|只替换当前匹配|
+|${str/substring/relacement}|替换字符串str中的substring为replacement,只替换第一个匹配||
+|${str//substring/relacement}|替换字符串str中的substring为replacement,替换所有匹配||
+|${str/#substring/relacement}|如果字符串str中前缀匹配substring,则替换subtring为replacement|只替换当前匹配|
+|${str/$substring/relacement}|如果字符串str中后缀匹配substring,则替换subtring为replacement|只替换当前匹配|
 
 
 #### 2.1 字符串长度
