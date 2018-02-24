@@ -20,6 +20,12 @@ select * from user_all_tables;
 select count(*) from user_all_tables;
 ```
 
+- 用户被锁定(一般是密码多次错误导致)
+```sql
+-- ORA-28000: the account is locked
+ALTER USER username ACCOUNT UNLOCK;
+```
+
 ### 2、如何创建database
 ```sql
 -- 创建新的数据库，对应mysql上的create database
