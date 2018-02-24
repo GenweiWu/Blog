@@ -19,3 +19,15 @@ SELECT * FROM V$VERSION;
 select * from user_all_tables;
 select count(*) from user_all_tables;
 ```
+
+```sql
+-- 创建新的数据库，对应mysql上的create database
+-- 对应oracle要先创建用户然后指定对应的文件
+-- 对中生成的表类似 dave.table1
+CREATE TABLESPACE dave LOGGING DATAFILE '/opt/oracle/oradb/oradata/wgw/dave.dbf' SIZE 100M AUTOEXTEND ON NEXT 32M MAXSIZE 500M EXTENT MANAGEMENT LOCAL;
+
+CREATE USER dave IDENTIFIED BY dave DEFAULT TABLESPACE dave;
+
+grant connect,resource,dba to dave;
+grant create session to dave;
+```
