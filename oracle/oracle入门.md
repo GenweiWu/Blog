@@ -1,6 +1,6 @@
 oracle入门.md
 ==
-
+### 1、查询oracle基本信息
 ```sql
 -- 查询所有表空间
 SELECT * FROM V$TABLESPACE;
@@ -20,6 +20,7 @@ select * from user_all_tables;
 select count(*) from user_all_tables;
 ```
 
+### 2、如何创建database
 ```sql
 -- 创建新的数据库，对应mysql上的create database
 -- 对应oracle要先创建用户然后指定对应的文件
@@ -31,3 +32,11 @@ CREATE USER dave IDENTIFIED BY dave DEFAULT TABLESPACE dave;
 grant connect,resource,dba to dave;
 grant create session to dave;
 ```
+
+### 3数据备份还原
+> 利用exp、imp即导入导出来实现备份恢复。
+ 
+ - 从windows本地使用`oracle client`+`sqlplus`连接远程linux环境的oracle服务器，进行导入导出
+ - 导出使用`oracle client`和服务器oracle版本的区别，导致导出经常出错。此时建议从linux服务器端直接用`exp`命令进行导出。
+
+
