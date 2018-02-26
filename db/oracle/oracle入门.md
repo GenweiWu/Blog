@@ -45,6 +45,7 @@ SQL> startup
 停止数据库的指令如下：
 SQL> shutdown immediate
 ```
+参考 https://www.cnblogs.com/mchina/archive/2012/11/27/2782993.html
 
 ### 2、如何创建database
 ```sql
