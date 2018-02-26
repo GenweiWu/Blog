@@ -26,6 +26,26 @@ select count(*) from user_all_tables;
 ALTER USER username ACCOUNT UNLOCK;
 ```
 
+- 启动、停止
+```
+登录到CentOS，切换到oracle用户权限
+
+# su – oracle
+
+接着输入：
+$ sqlplus "/as sysdba"
+
+原本的画面会变为
+SQL>
+
+接着请输入
+SQL> startup
+就可以正常的启动数据库了。
+
+停止数据库的指令如下：
+SQL> shutdown immediate
+```
+
 ### 2、如何创建database
 ```sql
 -- 创建新的数据库，对应mysql上的create database
