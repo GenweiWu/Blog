@@ -45,27 +45,4 @@ grant create session to dave;
  - 从windows本地使用`oracle client`+`sqlplus`连接远程linux环境的oracle服务器，进行导入导出
  - 导出使用`oracle client`和服务器oracle版本的区别，导致导出经常出错。此时建议从linux服务器端直接用`exp`命令进行导出。
 
-```
-1、EXP: 
-      有三种主要的方式（完全、用户、表） 
-      1、完全： 
-          EXP SYSTEM/MANAGER BUFFER=64000 FILE=C:\FULL.DMP FULL=Y 
-          如果要执行完全导出，必须具有特殊的权限 
-      2、用户模式： 
-          EXP SONIC/SONIC    BUFFER=64000 FILE=C:\SONIC.DMP OWNER=SONIC 
-          这样用户SONIC的所有对象被输出到文件中。 
-      3、表模式：
-          EXP SONIC/SONIC    BUFFER=64000 FILE=C:\SONIC.DMP OWNER=SONIC TABLES=(SONIC) 
-          这样用户SONIC的表SONIC就被导出 
-    2、IMP: 
-      具有三种模式（完全、用户、表） 
-      1、完全： 
-          IMP SYSTEM/MANAGER BUFFER=64000 FILE=C:\FULL.DMP FULL=Y 
-      2、用户模式： 
-          IMP SONIC/SONIC    BUFFER=64000 FILE=C:\SONIC.DMP FROMUSER=SONIC TOUSER=SONIC 
-          这样用户SONIC的所有对象被导入到文件中。必须指定FROMUSER、TOUSER参数，这样才能导入数据。 
-      3、表模式： 
-          EXP SONIC/SONIC    BUFFER=64000 FILE=C:\SONIC.DMP OWNER=SONIC TABLES=(SONIC) 
-          这样用户SONIC的表SONIC就被导入。
-```
-> https://www.cnblogs.com/yugen/archive/2010/07/25/1784763.html
+
