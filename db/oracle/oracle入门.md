@@ -47,6 +47,33 @@ SQL> shutdown immediate
 ```
 参考 https://www.cnblogs.com/mchina/archive/2012/11/27/2782993.html
 
+- 启动监听器
+```
+$ lsnrctl status  //查询状态
+$ lsnrctl stop  //停止
+$ lsnrctl  start  //启动
+$ lsnrctl  reload  //重新加载
+
+一般对应配置文件  /opt/oracle/oradb/home/network/admin/listener.ora
+LISTENER_ORA =
+  (DESCRIPTION_LIST =
+    (DESCRIPTION =
+      (ADDRESS_LIST =
+        (ADDRESS = (PROTOCOL = TCP)(HOST = 10.11.12.13)(PORT = 1526))
+      )
+    )
+  )
+
+SID_LIST_LISTENER_ORA =
+  (SID_LIST =
+    (SID_DESC =
+      (ORACLE_HOME = /opt/oracle/oradb/home)
+      (SID_NAME = oradb)
+    )
+  )
+注意：上面的配置对应的是 lsnrctl status LISTENER_ORA
+```
+
 ### 2、如何创建database
 ```sql
 -- 创建新的数据库，对应mysql上的create database
