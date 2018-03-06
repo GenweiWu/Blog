@@ -38,6 +38,9 @@ If-Modified-Since: Tue, 06 Mar 2018 11:23:59 GMT
 ```
 
 
+### 2. windows下https证书
+http://nassir.iteye.com/blog/1983667
+
 
 
 
