@@ -52,3 +52,12 @@ Query OK, 0 rows affected (0.00 sec)
 mysql> flush privileges; 
 Query OK, 0 rows affected (0.01 sec)
 ```
+
+#### 5. 创建用户
+```
+CREATE USER 'dog'@'localhost' IDENTIFIED BY '123456'; 
+CREATE USER 'pig'@'192.168.1.101_' IDENDIFIED BY '123456'; 
+CREATE USER 'pig'@'%' IDENTIFIED BY '123456'; 
+CREATE USER 'pig'@'%' IDENTIFIED BY ''; 
+CREATE USER 'pig'@'%'; 
+```
