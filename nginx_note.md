@@ -41,7 +41,20 @@ If-Modified-Since: Tue, 06 Mar 2018 11:23:59 GMT
 ### 2. windows下https证书
 http://nassir.iteye.com/blog/1983667
 
+### 3. nginx中location的正则写法
 
+#### nginx正则的语法：
+| .|换行符以外的其他字符|
+|--|--|
+|*|重复0次或多次|
+|+|重复1次或多次|
+|?|重复0次或1次|
+|^|匹配开头|
+|$|匹配结束|
+
+所以，使用 `. `的时候要转义处理为 `\.` 
+
+[另参见Issues](https://github.com/GenweiWu/Blog/issues/22)
 
 
 
