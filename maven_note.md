@@ -33,3 +33,6 @@ Cannot access central (https://repo.maven.apache.org/maven2) in offline mode and
 原因是
 You also need to use the same repository <id>s in both locations.
 ```
+
+- maven中的mirror和repository  
+> [Maven：mirror和repository 区别](https://my.oschina.net/sunchp/blog/100634)
