@@ -36,3 +36,14 @@ You also need to use the same repository <id>s in both locations.
 
 - maven中的mirror和repository  
 > [Maven：mirror和repository 区别](https://my.oschina.net/sunchp/blog/100634)
+
+- mvn指定settings运行,[参考](https://stackoverflow.com/a/25279325)
+```
+You can simply use:
+mvn --settings YourOwnSettings.xml clean install
+or
+mvn -s YourOwnSettings.xml clean install
+
+注意:要指定settings文件全路径，要用引号包含
+mvn clean compile --settings "D:\dev\maven\conf\settings_aaa.xml"  
+```
