@@ -47,3 +47,13 @@ mvn -s YourOwnSettings.xml clean install
 注意:要指定settings文件全路径，要用引号包含
 mvn clean compile --settings "D:\dev\maven\conf\settings_aaa.xml"  
 ```
+
+- maven本地install带源码（[参考](https://stackoverflow.com/a/5102640)）
+```
+To download sources for your dependencies:
+
+mvn eclipse:eclipse -DdownloadSources=true
+To attach sources to an installation:
+
+mvn source:jar install
+```
