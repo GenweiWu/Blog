@@ -93,4 +93,13 @@ grant create session to dave;
  - 从windows本地使用`oracle client`+`sqlplus`连接远程linux环境的oracle服务器，进行导入导出
  - 导出使用`oracle client`和服务器oracle版本的区别，导致导出经常出错。此时建议从linux服务器端直接用`exp`命令进行导出。
 
+### 4.oracle操作建议使用plsql，用navicat导出数据出现不兼容
+```
+1、导出使用的exe
+E:\app\dave\product\11.1.0\client_1\BIN\exp.exe
+
+2、导入使用的exe
+E:\app\dave\product\11.1.0\client_1\bin\imp.exe
+```
+
 
