@@ -1,12 +1,12 @@
 Maven
 ==
 
-- 离线模式运行 `-o`  
+### 1. 离线模式运行 `-o`  
 ```
 mvn -o clean
 ```
 
-- maven打包资源文件  
+### 2. maven打包资源文件  
   如何把web-fragment.xml放到META-INF目录下（[参考](https://stackoverflow.com/a/17531764)）
 ```
 Create a new source folder with the location src/main/resources, then create your META-INF/services folder in there and drop in your FQCN file. This should copy them into the jar file automatically. So you'll have:
@@ -22,7 +22,7 @@ Project
 |         | [your service files]
 ```
 
-- maven的repo复用问题
+### 3. maven的repo复用问题
   从一台电脑上的repo直接拷贝到另一台机器上,但是修改了settting的源地址;发现没法直接用了。  
   （[参考](https://stackoverflow.com/a/31525835)）
 ```
@@ -34,10 +34,10 @@ Cannot access central (https://repo.maven.apache.org/maven2) in offline mode and
 You also need to use the same repository <id>s in both locations.
 ```
 
-- maven中的mirror和repository  
+### 4. maven中的mirror和repository  
 > [Maven：mirror和repository 区别](https://my.oschina.net/sunchp/blog/100634)
 
-- mvn指定settings运行,[参考](https://stackoverflow.com/a/25279325)
+### 5. mvn指定settings运行,[参考](https://stackoverflow.com/a/25279325)
 ```
 You can simply use:
 mvn --settings YourOwnSettings.xml clean install
@@ -48,7 +48,7 @@ mvn -s YourOwnSettings.xml clean install
 mvn clean compile --settings "D:\dev\maven\conf\settings_aaa.xml"  
 ```
 
-- maven本地install带源码（[参考](https://stackoverflow.com/a/5102640)）
+### 6. maven本地install带源码（[参考](https://stackoverflow.com/a/5102640)）
 ```
 To download sources for your dependencies:
 
