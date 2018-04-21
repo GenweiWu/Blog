@@ -15,7 +15,7 @@ Vue counter
 #### 1. 父组件通过 `props` 传递数据给子组件
 
 - 父组件中通过 `v-bind:value` 的方式传递值
-```js
+```html
 <counter @count="doCount1" :init-value="count1" :step="2"></counter>
 ```
 
@@ -29,3 +29,38 @@ props:{
   }
 }
 ```
+
+#### 2. 子组件通过 `$emit` 传递消息给父组件
+
+- 子组件在触发修改后，手工调用`$emit`方法
+```js
+//其中"count"是触发的事件名称,{countValue:xxx}是传递的参数内容
+methods:{
+  increase:function(){
+    this.count += this.countStep;
+    this.$emit("count",{countValue:this.count});
+  },
+  decrease:function(){
+    this.count -= this.countStep;
+    this.$emit("count",{countValue:this.count});
+  }
+}
+``` 
+
+- 父组件捕获对应的事件，在方法中读取对应的参数内容
+```html
+//注意这里的方法就是count
+<counter @count="doCount1" :init-value="count1" :step="2"></counter>
+```
+
+```js
+methods:{
+  doCount1:function(_c){
+  //这里读取参数
+    this.count1 = _c.countValue;
+  }
+}
+```
+
+
+
