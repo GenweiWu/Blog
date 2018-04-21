@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>component@counter</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id="app">
+		<div>{{msg}}</div>
+		<counter @count="doCount1" :init-value="count1" :step="2"></counter>
+		<counter @count="doCount2" :init-value="count2"></counter>
+	</div>
+
+<script type="text/javascript">
+	Vue.component("counter",{
+		template:`
+		<div>
+			<input type="button" style="width:40px;" value="<" v-on:click="decrease"/>
+			<span>{{count}}</span>
+			<input type="button" style="width:40px;" value=">" v-on:click="increase"/>
+		</div>			
+		`,
+		data:function(){
+			return {
+				count: this.initValue,
+				countStep: this.step
+			}
+		},
+		methods:{
+			increase:function(){
+				this.count += this.countStep;
+				this.$emit("count",{countValue:this.count});
+			},
+			decrease:function(){
+				this.count -= this.countStep;
+				this.$emit("count",{countValue:this.count});
+			}
+		},
+		props:{
+			'initValue':Number,
+			'step':{
+				default: 1,
+				type: Number
+			}
+		}
+	})
+
+	new Vue({
+		el:"#app",
+		data:{
+			count1:10,
+			count2:20
+		},
+		computed:{
+			msg:function(){
+				return this.count1 + this.count2;
+			}
+		},
+		methods:{
+			doCount1:function(_c){
+				this.count1 = _c.countValue;
+			},
+			doCount2:function(_c){
+				this.count2 = _c.countValue;
+			}
+		}
+	})
+
+
+</script>	
+</body>
+</html>
