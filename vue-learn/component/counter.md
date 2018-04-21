@@ -62,5 +62,7 @@ methods:{
 }
 ```
 
-
+---
+### 其他
+ [:memo:完整代码](../counter.html)
 
