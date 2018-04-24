@@ -14,3 +14,7 @@ I have tried 2 options which both work on my company's NTLM authenticated proxy.
 
 If you are still having trouble I would suggest installing a proxy authentication service (I use CNTLM) and pointing pip at it ie something like --proxy http://localhost:3128
 ```
+
+
+### 二、python 乱码问题
+https://stackoverflow.com/a/14540022
