@@ -18,3 +18,6 @@ If you are still having trouble I would suggest installing a proxy authenticatio
 
 ### 二、python 乱码问题
 https://stackoverflow.com/a/14540022
+
+### 参考
+[python3-cookbook](http://python3-cookbook.readthedocs.io/zh_CN/latest/c02/p15_interpolating_variables_in_strings.html)
