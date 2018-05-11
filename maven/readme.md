@@ -37,7 +37,7 @@ You also need to use the same repository <id>s in both locations.
 ### 4. maven中的mirror和repository  
 > [Maven：mirror和repository 区别](https://my.oschina.net/sunchp/blog/100634)
 
-### 5. mvn指定settings运行,[参考](https://stackoverflow.com/a/25279325)
+### 5. mvn指定settings运行, [--参考--](https://stackoverflow.com/a/25279325)
 ```
 You can simply use:
 mvn --settings YourOwnSettings.xml clean install
@@ -48,7 +48,7 @@ mvn -s YourOwnSettings.xml clean install
 mvn clean compile --settings "D:\dev\maven\conf\settings_aaa.xml"  
 ```
 
-### 6. maven本地install带源码（[参考](https://stackoverflow.com/a/5102640)）
+### 6. maven本地install带源码 [--参考--](https://stackoverflow.com/a/5102640)
 ```
 To download sources for your dependencies:
 
@@ -56,4 +56,19 @@ mvn eclipse:eclipse -DdownloadSources=true
 To attach sources to an installation:
 
 mvn source:jar install
+```
+
+### 4. 设置maven下载超时时间 [--参考--](https://stackoverflow.com/a/27015320/6182927)
+```xml
+<server>
+  <id>central</id>
+  <configuration>
+    <httpConfiguration>
+      <all>
+        <connectionTimeout>120000</connectionTimeout>
+        <readTimeout>120000</readTimeout>
+      </all>
+    </httpConfiguration>
+  </configuration>
+</server>
 ```
