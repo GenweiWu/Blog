@@ -39,6 +39,13 @@ If-Modified-Since: Tue, 06 Mar 2018 11:23:59 GMT
 
 
 ### 2. windows下https证书
+```
+openssl genrsa -des3 -out openssl.key 2048  
+  
+openssl req -new -x509 -key openssl.key -out openssl.crt -days 3650  
+  
+openssl rsa -in openssl.key -out openssl_nopass.key  
+```
 http://nassir.iteye.com/blog/1983667
 
 ### 3. nginx中location的正则写法
