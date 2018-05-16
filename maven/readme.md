@@ -58,7 +58,7 @@ To attach sources to an installation:
 mvn source:jar install
 ```
 
-### 4. 设置maven下载超时时间 [--参考--](https://stackoverflow.com/a/27015320/6182927)
+### 7. 设置maven下载超时时间 [--参考--](https://stackoverflow.com/a/27015320/6182927)
 ```xml
 <server>
   <id>central</id>
