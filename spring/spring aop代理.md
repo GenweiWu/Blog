@@ -13,3 +13,10 @@ Spring AOP 代理
 ```
 
 #### - 要使用cglib代理，则该类或方法不能声明称final的。
+
+
+---
+### 参考
+- http://www.cnblogs.com/binyue/p/4519652.html 
+- https://docs.spring.io/spring/docs/3.0.0.M3/reference/html/ch08s06.html 
+- http://www.cnblogs.com/hustyangli/archive/2008/09/01/1281319.html 
