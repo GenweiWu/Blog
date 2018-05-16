@@ -1,5 +1,6 @@
 Spring AOP 代理
 ==
+## 一、两种代理方式
 
 ### 1. JDK动态代理：
 其代理对象必须是某个接口的实现，它是通过在运行期间创建一个接口的实现类来完成对目标对象的代理。
@@ -14,6 +15,13 @@ Spring AOP 代理
 
 #### - 要使用cglib代理，则该类或方法不能声明称final的。
 
+## 二、自动创建代理
+参考：https://blog.csdn.net/yangshangwei/article/details/77547287  
+```
+Spring-AOP 自动创建代理之BeanNameAutoProxyCreator
+Spring-AOP 自动创建代理之DefaultAdvisorAutoProxyCreator
+Spring-AOP 自动创建代理之AnnotationAwareAspectJAutoProxyCreator
+```
 
 ---
 ### 参考
