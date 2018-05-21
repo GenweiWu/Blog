@@ -18,6 +18,16 @@ https://stackoverflow.com/a/14540022
 ## 3. 一些module
 - print-colored-output-to-the-terminal-in-python  
 https://pypi.org/project/termcolor/
+  ```py
+  from termcolor import colored, cprint
+
+  text = colored('Hello, World!', 'red', attrs=['reverse', 'blink'])
+  print(text)
+  cprint('Hello, World111!', 'green', 'on_red')
+  cprint('Hello, World111!', 'red')
+
+  cprint('%s ==> %s' % ('param1', 3), 'red')
+  ```
 
 ---
 ## 参考
