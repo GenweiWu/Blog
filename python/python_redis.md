@@ -1,4 +1,8 @@
 python redis操作
 ==
 
-https://redis.readthedocs.io/en/2.4/index.html
+## 1、redis-py
+- 官网
+https://github.com/andymccurdy/redis-py
+- 资料
+http://redis-py.readthedocs.io/en/latest/#
