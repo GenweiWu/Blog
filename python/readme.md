@@ -18,7 +18,7 @@ https://stackoverflow.com/a/14540022
 ## 3. 一些module
 - print-colored-output-to-the-terminal-in-python  
 https://pypi.org/project/termcolor/
-  ```py
+  ```python
   from termcolor import colored, cprint
 
   text = colored('Hello, World!', 'red', attrs=['reverse', 'blink'])
@@ -27,6 +27,22 @@ https://pypi.org/project/termcolor/
   cprint('Hello, World111!', 'red')
 
   cprint('%s ==> %s' % ('param1', 3), 'red')
+  ```
+
+- pretty-table 表格输出  
+https://pypi.org/project/PrettyTable/
+  ```python
+  import prettytable as pt
+
+  # 按行添加数据
+  tb = pt.PrettyTable()
+  tb.field_names = ["City name", "Area", "Population", "Annual Rainfall"]
+  tb.add_row(["Adelaide", 1295, 1158259, 600.5])
+  tb.add_row(["Brisbane", 5905, 1857594, 1146.4])
+  tb.add_row(["Darwin", 112, 120900, 1714.7])
+  tb.add_row(["Hobart", 1357, 205556, 619.5])
+
+  print(tb)
   ```
 
 ---
