@@ -18,3 +18,6 @@ print(r.dbsize())
 
 print(r.get('test'))
 ```
+## 3. 常用
+- zset  
+[python 操作redis之——有序集合(sorted set) （七）](http://www.cnblogs.com/xuchunlin/p/7097255.html)
