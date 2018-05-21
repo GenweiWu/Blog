@@ -15,6 +15,9 @@ If you are still having trouble I would suggest installing a proxy authenticatio
 ## 2. python 乱码问题
 https://stackoverflow.com/a/14540022
 
+## 3. 一些module
+- print-colored-output-to-the-terminal-in-python  
+https://pypi.org/project/termcolor/
 
 ---
 ## 参考
