@@ -15,7 +15,21 @@ If you are still having trouble I would suggest installing a proxy authenticatio
 ## 2. python 乱码问题
 https://stackoverflow.com/a/14540022
 
-## 3. 一些module
+## 3. [Windows上Python2和3如何兼容](https://python.freelycode.com/contribution/detail/139)
+
+```
+使用pip
+
+当Python2和Python3同时存在于windows上时，它们对应的pip都叫pip.exe，所以不能够直接使用 pip install 命令来安装软件包。而是要使用启动器py.exe来指定pip的版本。命令如下：
+
+py -2 -m pip install XXXX
+
+-2 还是表示使用 Python2，-m pip 表示运行 pip 模块，也就是运行pip命令了。如果是为Python3安装软件，那么命令类似的变成
+
+py -3 -m pip install XXXX
+```
+
+## 4. 一些module
 - print-colored-output-to-the-terminal-in-python  
 https://pypi.org/project/termcolor/
   ```python
