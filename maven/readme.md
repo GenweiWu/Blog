@@ -72,3 +72,9 @@ mvn source:jar install
   </configuration>
 </server>
 ```
+
+### 8. Maven中classifier
+用于对jar包进行区分。
+- https://blog.csdn.net/qiumengchen12/article/details/71688395
+- https://blog.csdn.net/lovingprince/article/details/5894459
+
