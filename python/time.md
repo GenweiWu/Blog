@@ -27,4 +27,25 @@ print(datetime.datetime.fromtimestamp(1519695947430 / 1000).strftime('%Y-%m-%d %
 print(datetime.datetime.fromtimestamp(int("1519695947430") / 1000).strftime('%Y-%m-%d %H:%M:%S'))
 ```
 
+## 字符串转换成时间
+```py
+import datetime
+
+d1 = datetime.datetime.strptime("2018-07-08", "%Y-%m-%d")
+d2 = datetime.datetime.strptime("2018-07-08 11:12:13", "%Y-%m-%d %H:%M:%S")
+# d1 = {datetime} 2018-07-08 00:00:00
+# d2 = {datetime} 2018-07-08 11:12:13
+```
+
+## 时间比较
+```py
+import datetime
+
+d1 = datetime.datetime.strptime("2018-07-08", "%Y-%m-%d")
+d2 = datetime.datetime.strptime("2018-07-08 11:12:13", "%Y-%m-%d %H:%M:%S")
+# d1 = {datetime} 2018-07-08 00:00:00
+# d2 = {datetime} 2018-07-08 11:12:13
+print(d1 > d2)
+# False
+```
 
