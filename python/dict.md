@@ -44,3 +44,34 @@ for (k, v) in a.items():
 # 2 -> ['2a', '2b']
 # 1 -> 1
 ```
+
+## 按照key排序
+```py
+a = dict()
+
+# 1、正常打印是乱的
+a['2018-04-01'] = 'aaa'
+a['2018-02-01'] = 'bb'
+a['2018-01-01'] = 'cc'
+for (k, v) in a.items():
+    print("%s ==> %s" % (k, v))
+# 2018-02-01 ==> bb
+# 2018-01-01 ==> cc
+# 2018-04-01 ==> aaa
+
+# 2、升序排序,默认
+sorted_key = sorted(a)
+for key in sorted_key:
+    print("%s ==> %s" % (key, a[key]))
+# 2018-01-01 ==> cc
+# 2018-02-01 ==> bb
+# 2018-04-01 ==> aaa
+
+# 3、降序排序，需要指定
+sorted_key = sorted(a, reverse=True)
+for key in sorted_key:
+    print("%s ==> %s" % (key, a[key]))
+# 2018-04-01 ==> aaa
+# 2018-02-01 ==> bb
+# 2018-01-01 ==> cc
+```
