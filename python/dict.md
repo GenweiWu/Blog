@@ -75,3 +75,32 @@ for key in sorted_key:
 # 2018-02-01 ==> bb
 # 2018-01-01 ==> cc
 ```
+
+## 根据value进行过滤
+```py
+simple = dict()
+
+# 1、简单类型过滤
+simple['2018-04-01'] = 11
+simple['2018-02-01'] = 22
+simple['2018-01-01'] = 33
+print(simple)
+
+simple_filter = {k: v for k, v in simple.items() if v == 22}
+print(simple_filter)
+
+# 复杂的
+obj = dict()
+obj['2018-04-01'] = {"name": "aa"}
+obj['2018-02-01'] = {"name": 'bb'}
+obj['2018-01-01'] = {"name": 'cc'}
+print(obj)
+
+obj_filter = {k: v for k, v in obj.items() if v['name'] == 'cc'}
+print(obj_filter)
+```
+
+> {'2018-02-01': 22, '2018-01-01': 33, '2018-04-01': 11}
+{'2018-02-01': 22}
+{'2018-02-01': {'name': 'bb'}, '2018-01-01': {'name': 'cc'}, '2018-04-01': {'name': 'aa'}}
+{'2018-01-01': {'name': 'cc'}}
