@@ -27,7 +27,32 @@ Similarly, we can set a zero-length String as the default value:
 private String stringWithBlankDefaultValue;
 ```
 
+### @Value in constructor
+下面的获取失败，变量为null
+```java
+@Service
+class Foo{
+  @Value("${my.property}")
+  private int delay;
 
+  @Autowired
+  Foo(){
+    taskDelay = this.delay;
+    ...
+   }
+}
+```
+这样就可以了
+```java
+@Service
+class Foo{
+  @Autowired
+  Foo(@Value("${my.property}")int delay){
+    taskDelay = delay;
+    ...
+   }
+}
+```
 
 
 
