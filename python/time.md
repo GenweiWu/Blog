@@ -24,6 +24,7 @@ import time
 # long转换到时间
 print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
 print(datetime.datetime.fromtimestamp(1519695947430 / 1000).strftime('%Y-%m-%d %H:%M:%S'))
+print(datetime.datetime.fromtimestamp(int("1519695947430") / 1000).strftime('%Y-%m-%d %H:%M:%S'))
 ```
 
 
