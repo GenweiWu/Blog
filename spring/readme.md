@@ -10,6 +10,24 @@
 |session|Scopes a single bean definition to the lifecycle of a HTTP Session. Only valid in the context of a web-aware Spring ApplicationContext.|
 |global session|Scopes a single bean definition to the lifecycle of a global HTTP Session. Typically only valid when used in a portlet context. Only valid in the context of a web-aware Spring ApplicationContext.|
 
+## @Value
+
+> http://www.baeldung.com/spring-value-defaults
+
+Let’s look at the basic syntax for setting a default value for a String property:
+```java
+@Value("${some.key:my default value}")
+private String stringWithDefaultValue;
+```
+If some.key cannot be resolved, then stringWithDefaultValue will be set to the default value of “my default value”.
+
+Similarly, we can set a zero-length String as the default value:
+```java
+@Value("${some.key:})"
+private String stringWithBlankDefaultValue;
+```
+
+
 
 
 
