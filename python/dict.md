@@ -9,10 +9,12 @@ a['1'] = 1
 print(a)
 # 判断key是否在字典中
 print('1' in a)
-print('2' in a
+print('1' not in a)
+print('2' in a)
 
 # {'1': 1}
 # True
+# False
 # False
 ```
 
