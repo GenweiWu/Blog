@@ -3,8 +3,10 @@
 ```py
 import time
 
+# 当前时间
 print(time.localtime())
 
+# 当前时间字符串
 print(time.strftime("%Y-%m-%d %H:%M:%S"))
 print("time is %s" % time.strftime("%Y-%m-%d %H:%M:%S"))
 ```
@@ -14,4 +16,14 @@ print("time is %s" % time.strftime("%Y-%m-%d %H:%M:%S"))
 time is 2018-05-22 09:21:38
 
 
-## 讲ms转换成时间字符串
+## long转换成时间字符串
+```py
+import datetime
+import time
+
+# long转换到时间
+print(datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'))
+print(datetime.datetime.fromtimestamp(1519695947430 / 1000).strftime('%Y-%m-%d %H:%M:%S'))
+```
+
+
