@@ -104,3 +104,20 @@ print(obj_filter)
 {'2018-02-01': 22}
 {'2018-02-01': {'name': 'bb'}, '2018-01-01': {'name': 'cc'}, '2018-04-01': {'name': 'aa'}}
 {'2018-01-01': {'name': 'cc'}}
+
+## 修改Value的内容
+```py
+a = dict()
+
+a['key1'] = {"name": "zhangsan"}
+a['key2'] = {"name": "list"}
+print(a)
+
+for (k, v) in a.items():
+    v['name'] = v['name'].upper()
+print(a)
+
+# {'key2': {'name': 'list'}, 'key1': {'name': 'zhangsan'}}
+# {'key2': {'name': 'LIST'}, 'key1': {'name': 'ZHANGSAN'}}
+```
+
