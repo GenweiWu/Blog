@@ -32,3 +32,16 @@ b=[4,5,6]
 a.extend(b)
 #此时a变成<class 'list'>: [1, 2, 3, 4, 5, 6]
 ```
+
+## list过滤元素
+```py
+a = [1, 2, 3, 4, 5]
+print(a)
+
+b = [i for i in a if i > 3]
+print(b)
+
+```
+> [1, 2, 3, 4, 5]
+[4, 5]
+
