@@ -21,3 +21,21 @@ public static <T> List<T> readValueAsList(Object srcData, Class<T> valueType)
         }
     }
 ```
+
+## readValueAsClass
+```java
+public static <T> T readValueAsType(Object srcData, Class<T> valueType)
+        throws IOException
+    {
+        ObjectNode jsonData = objectMapper.valueToTree(srcData);
+
+        if (null == jsonData)
+        {
+            return null;
+        }
+        else
+        {
+            return objectMapper.readValue(jsonData.traverse(), valueType);
+        }
+    }
+```    
