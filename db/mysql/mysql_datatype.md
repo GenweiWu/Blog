@@ -12,6 +12,6 @@
 
 - 但是`PRIORITY` integer DEFAULT NULL 执行后得到的是 `PRIORITY`(11) DEFAULT NULL，暂且认为是默认值
 
-- int(11)并不是说只能存储11位，只是说展示的时候有区别(比如补齐到XX位)
+- int(11)并不是说只能存储11位，只是说展示的时候有区别(比如补齐到XX位),所以没有int(11)比int(5)存储的数据长一说
 > https://www.virendrachandak.com/techtalk/mysql-int11-what-does-it-means/
 > https://blog.csdn.net/allenjay11/article/details/76549503
