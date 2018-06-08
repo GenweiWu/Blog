@@ -17,7 +17,10 @@ List<Integer> intArray = Arrays.asList(1, 6, 4, 9);
 Stream.of(split).collect(Collectors.joining("-"));
 ```
 
-
+## [toMap](./ToMapTest.java)
+```java
+bookList.stream().collect(Collectors.toMap(Book::getName, n -> n));
+```
 
 ---
 ## 参考
