@@ -6,6 +6,12 @@ import java.util.List;
 
 import org.junit.Test;
 
+/**
+ * 总结：
+ * 可以理解为max是排序后的最右边，min是排序后的最左边
+ * 所以升序排序，则max为最大，min为最小；
+ * 但是如果是降序排列，min才是最大，max反而是最小
+ */
 public class MaxTest
 {
     /**
@@ -55,10 +61,3 @@ public class MaxTest
         System.out.println(intArray);
     }
 }
-
-/**
-* 总结：
- 可以理解为max是排序后的最右边，min是排序后的最左边
- 所以升序排序，则max为最大，min为最小；
- 但是如果是降序排列，min才是最大，max反而是最小
-*/
