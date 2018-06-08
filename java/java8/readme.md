@@ -22,6 +22,14 @@ Stream.of(split).collect(Collectors.joining("-"));
 bookList.stream().collect(Collectors.toMap(Book::getName, n -> n));
 ```
 
+## [findFirst+findAny](./FindTest.java)
+```java
+Integer target = nums.stream().filter(n -> {
+            System.out.println(n);
+            return n > 5;
+        }).findFirst().orElse(-1);
+```        
+
 ---
 ## 参考
 - https://howtodoinjava.com/java-8/stream-max-min-examples/
