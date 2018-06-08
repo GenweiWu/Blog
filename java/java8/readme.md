@@ -10,7 +10,12 @@ List<Integer> intArray = Arrays.asList(1, 6, 4, 9);
         //max
         Integer maxResult = intArray.stream().max(comparator).orElse(-1);
         System.out.println("max:" + maxResult);
-```        
+``` 
+
+## [joining](./JoinTest.java)
+```java
+Stream.of(split).collect(Collectors.joining("-"));
+```
 
 
 
