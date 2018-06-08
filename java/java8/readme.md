@@ -30,6 +30,13 @@ Integer target = nums.stream().filter(n -> {
         }).findFirst().orElse(-1);
 ```        
 
+## [groupBy+partitionBy](./GroupByTest.java)
+```
+bookList.stream().collect(Collectors.groupingBy(Book::getType));
+
+bookList.stream().collect(Collectors.partitioningBy(b -> b.getPrice() > 25));
+```
+
 ---
 ## 参考
 - https://howtodoinjava.com/java-8/stream-max-min-examples/
