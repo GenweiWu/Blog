@@ -1,6 +1,6 @@
 java8 新玩法
 ==
-## [max和min](./maxTest.java)
+## [max和min](./MaxTest.java)
 ```java
 List<Integer> intArray = Arrays.asList(1, 6, 4, 9);
         System.out.println(intArray);
