@@ -13,23 +13,24 @@ public class EnumTest
     @Test(expected = IllegalArgumentException.class)
     public void testBasic()
     {
-        Assert.assertEquals(TypeEnum.valueOf("aaa"), TypeEnum.AAA);
-        Assert.assertEquals(TypeEnum.valueOf("bbb"), TypeEnum.BBB);
+        //Assert.assertTrue(TypeEnum.valueOf("aaa")== TypeEnum.AAA);
+        Assert.assertSame(TypeEnum.valueOf("aaa"), TypeEnum.AAA);
+        Assert.assertSame(TypeEnum.valueOf("bbb"), TypeEnum.BBB);
     }
 
     @Test
     public void testBasic2()
     {
         //enum.valueOf方法必须使用enum变量本身的定义，不是属性detail，而且大小写都必须一样
-        Assert.assertEquals(TypeEnum.valueOf("AAA"), TypeEnum.AAA);
-        Assert.assertEquals(TypeEnum.valueOf("BBB"), TypeEnum.BBB);
+        Assert.assertSame(TypeEnum.valueOf("AAA"), TypeEnum.AAA);
+        Assert.assertSame(TypeEnum.valueOf("BBB"), TypeEnum.BBB);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testEqual01()
     {
-        Assert.assertEquals(TypeEnum.valueOf("--aa"), TypeEnum.AAA);
-        Assert.assertEquals(TypeEnum.valueOf("--bb"), TypeEnum.BBB);
+        Assert.assertSame(TypeEnum.valueOf("--aa"), TypeEnum.AAA);
+        Assert.assertSame(TypeEnum.valueOf("--bb"), TypeEnum.BBB);
     }
 
     @Test
@@ -43,8 +44,8 @@ public class EnumTest
     @Test
     public void testEqual03()
     {
-        Assert.assertEquals(TypeEnum.from("--aa"), TypeEnum.AAA);
-        Assert.assertEquals(TypeEnum.from("--bb"), TypeEnum.BBB);
+        Assert.assertSame(TypeEnum.from("--aa"), TypeEnum.AAA);
+        Assert.assertSame(TypeEnum.from("--bb"), TypeEnum.BBB);
     }
 
     @Test(expected = IllegalArgumentException.class)
