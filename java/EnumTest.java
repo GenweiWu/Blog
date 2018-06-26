@@ -47,10 +47,16 @@ public class EnumTest
         Assert.assertEquals(TypeEnum.from("--bb"), TypeEnum.BBB);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void illegal01()
     {
         TypeEnum.valueOf("***");
+    }
+
+    @Test
+    public void illegal02()
+    {
+        Assert.assertNull(TypeEnum.from("***"));
     }
 
     enum TypeEnum
