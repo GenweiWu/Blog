@@ -30,3 +30,11 @@ public class JacksonIgnoreGetter
 //    }
 //    realPwd:Project(name=test, startDate=Tue Jul 10 19:16:26 CST 2018, password=password)
 
+
+//正确的避免前台展示密码，同时后台正确读取密码的方法(以为入库等操作，框架处理会自动调用get方法)
+//{
+//    "name" : "test",
+//    "startDate" : 1531221582727,
+//    "formatedStartDate" : "2018-07-10 19:19:42"
+//    }
+//    realPwd:Project(name=test, startDate=Tue Jul 10 19:19:42 CST 2018, password=admin123)
