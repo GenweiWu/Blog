@@ -45,22 +45,12 @@ public class Project
     }
 
     /**
-     * 3.避免密码泄露，所以复写get方法来避免内容被打印
-     *
-     * @return
-     */
-    public String getPassword()
-    {
-        return "password";
-    }
-
-    /**
-     * 4.避免get方法就会出现在json后的字段中，进行ignore标识
+     * 3.避免密码泄露，json格式化时不打印，但是入库等操作时还说正确读取的
      *
      * @return
      */
     @JsonIgnore
-    public String getRealPassword()
+    public String getPassword()
     {
         return this.password;
     }
