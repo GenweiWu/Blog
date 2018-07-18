@@ -182,7 +182,7 @@ user-service-ext:
       path: /user-service/ext/**
       serviceId: user-service
 ```      
-
+(多试几次，你可能只加了个别的配置项，比如我发现加path有效果，但是像retryable: true这种可能没用)
 
 
 
