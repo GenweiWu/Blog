@@ -26,3 +26,27 @@ Spring cloud config的使用
 ```
 http://127.0.0.1:8080/env
 ```
+
+## refresh更新配置
+> https://spring.io/guides/gs/centralized-configuration/
+
+### 组件
+
+(1) 基础刷新方法  
+`curl -XPOST http://127.0.0.1:8081/refresh`
+
+(2)进阶
+application.yml
+```yaml
+server:
+    port: 21020
+    context-path: /test-service
+    
+management:
+    add-application-context-header: false
+    context-path: /admin
+    security:
+        enabled: false        
+```
+则对应的请求是 `curl -XPOST http://127.0.0.1:8081/test-service/admin/refresh`
+
