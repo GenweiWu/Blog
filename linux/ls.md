@@ -3,6 +3,6 @@
 -t按日志排序  
 -r倒序  
 ```
-ls -t
-ls -tr
+ll -t
+ll -tr
 ```
