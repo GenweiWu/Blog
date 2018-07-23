@@ -124,6 +124,13 @@ protected ZuulRoute getZuulRoute(String adjustedPath) {
 zuul组件要设置`zuul.debug.request=true`
 ```
 2. 日志配置要打开spring的debug级别的配置
+这样设置，可以避免debug日志太多的问题，同时又能看到route信息
+```xml
+<logger name="org.springframework.cloud.netflix.zuul.filters.SimpleRouteLocator" additivity="true" level="debug">
+    <appender-ref ref="CONSOLE" />
+    <appender-ref ref="FILE" />
+</logger>
+```    
 
 ## 遇到的route匹配问题
 
