@@ -14,6 +14,12 @@ Spring Cloud Zuul
 如果一个路径被多个规则匹配，则按照先后顺序，排在前面的被匹配；
 所以，要用yaml格式，而不是properties格式
 
+## Zuul核心过滤器
+|过滤器|	order	|描述|	类型|
+|-|-|-|-|
+|RibbonRoutingFilter	|10	|如果写配置的时候用ServiceId则用这个route过滤器，该过滤器可以用Ribbon 做负载均衡，用hystrix做熔断|	route|
+|SimpleHostRoutingFilter|	100	|如果写配置的时候用url则用这个route过滤|	route|
+
 
 ## 路由的原理
 
