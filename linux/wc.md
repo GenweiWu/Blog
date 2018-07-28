@@ -59,3 +59,6 @@ $ ls |wc -l
 4
 
 ```
+
+## 参考
+- [每天一个linux命令（40）：wc命令 - peida - 博客园](https://www.cnblogs.com/peida/archive/2012/12/18/2822758.html)
