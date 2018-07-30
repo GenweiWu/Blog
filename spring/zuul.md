@@ -1,5 +1,17 @@
 Spring Cloud Zuul
 ==
+## 超时配置
+```yaml
+ribbon:
+# 6000 = 6s
+    ReadTimeout: 6000
+    ConnectTimeout: 6000
+#   Max number of retries on the same server (excluding the first try)  
+    MaxAutoRetries: 1
+#   Max number of next servers to retry (excluding the first server)
+    MaxAutoRetriesNextServer: 1
+```
+
 ## 路径匹配
 
 #### 1、基础
