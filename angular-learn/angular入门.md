@@ -2,11 +2,31 @@ angular入门
 ==
 ## 1、环境搭建
 
-#### 1.1 安装nodejs,npm
+### 1.1 安装nodejs,npm
 
-#### 1.2 安装angularCli
+> npm基本命令
+```
+npm config list
+npm config edit
+```
 
+### 1.2 安装angularCli
 
+- （1）angular-cli vs @angular-cli
+```
+@angular/cli is the new package, which name is according to another Angular 2 modules names like @angular/common, @angular/router and so on.
+
+And also @angular/cli requires Node 6.9.0 or higher, but angular-cli requires Node 4 or higher. So @angular/cli with Node 4 will not work.
+```
+
+- （2）安装
+```
+npm uninstall -g angular-cli
+npm uninstall -g @angular-cli
+
+npm install -g @angular/cli
+//yarn global add @angular/cli
+```
 
 ## 2、问题
 
