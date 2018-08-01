@@ -10,6 +10,15 @@ npm config list
 npm config edit
 ```
 
+```
+$ npm list rxjs
+adc-demo@0.0.0 D:\daveCode\adc-demo
++-- @angular/cli@1.3.2
+| `-- rxjs@5.5.11
+`-- rxjs@5.1.0
+```
+
+
 ### 1.2 安装angularCli
 
 - （1）angular-cli vs @angular-cli
