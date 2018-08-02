@@ -11,3 +11,58 @@
 <li *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}></li>
 </ul>
 ```
+
+## 两种路由方式
+
+- 直接路由component
+- 路由module，再路由component
+参考：https://angular.io/guide/lazy-loading-ngmodules
+
+> app-routing.module.ts
+```ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { SelectDemoComponent } from './select-demo/select-demo.component';
+
+const allRoutes : Routes = [
+  {
+    path: 'ds-select',
+    component: SelectDemoComponent
+  },
+  {
+    path:'module-test',
+    loadChildren:'./hello-route/hello-route.module#HelloRouteModule'
+  }
+];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(allRoutes)
+  ],
+  exports:[RouterModule],
+  declarations: []
+})
+export class AppRoutingModule { }
+```
+
+> hello-route.module.ts
+```ts
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+
+import { HelloRouteComponent } from './hello-route.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forChild([{
+      path:'',
+      component: HelloRouteComponent
+    }])
+  ],
+  declarations: [HelloRouteComponent]
+})
+export class HelloRouteModule { }
+```
+
