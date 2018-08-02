@@ -1,7 +1,7 @@
 
 ## routeLink
 
-一般用在a上，但是用在其他元素上也可以，比如
+#### 1、一般用在a上，但是用在其他元素上也可以，比如
 ```
 <a routerLink="/dashboard">DashBoard</a>
 ```
@@ -11,6 +11,10 @@
 <li *ngFor="let hero of heroes" routerLink="/detail/{{hero.id}}></li>
 </ul>
 ```
+
+#### 2、 [routerLink] vs routerLink
+https://stackoverflow.com/a/41371094/6182927
+> 前者是用一个对应的变量，可以动态传内容；后者是直接用的内容
 
 ## 两种路由方式
 
