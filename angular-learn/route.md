@@ -1,7 +1,7 @@
 
 ## routeLink
 
-#### 1、一般用在a上，但是用在其他元素上也可以，比如
+### 1、一般用在a上，但是用在其他元素上也可以，比如
 ```
 <a routerLink="/dashboard">DashBoard</a>
 ```
@@ -12,9 +12,26 @@
 </ul>
 ```
 
-#### 2、 [routerLink] vs routerLink
+### 2、 [routerLink] vs routerLink
 https://stackoverflow.com/a/41371094/6182927
-> 前者是用一个对应的变量，可以动态传内容；后者是直接用的内容
+> 前者是用一个对应的变量，可以动态传内容；  
+> 后者是直接用的内容
+
+### 3、queryParam
+
+```
+<ul>
+    <li><a href="" routerLink="/module-test" [queryParams]="{n:1}">11</a></li>
+    <!-- href="/module-test?n=1" -->
+    <li><a href="" routerLink="/module-test" [queryParams]="{n:1,m:2}">22</a></li>
+    <!-- href="/module-test?n=1&m=2" -->
+    <li><a href="" routerLink="/module-test" [queryParams]="{n:1,m:2,k:3}">33</a></li>
+    <!-- href="/module-test?n=1&m=2&k=3" -->
+</ul>
+```
+
+
+
 
 ## 两种路由方式
 
