@@ -30,6 +30,29 @@ https://stackoverflow.com/a/41371094/6182927
 </ul>
 ```
 
+对应的参数读取方法：
+```ts
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'document-preview',
+  templateUrl: './document-preview.component.html',
+  styleUrls: ['./document-preview.component.css']
+})
+export class DocumentPreviewComponent implements OnInit {
+
+  constructor(private activatedRoute:ActivatedRoute) { }
+
+  ngOnInit() {
+    //参数读取
+    var queryParams = this.activatedRoute.snapshot.queryParams;
+    debugger;
+  }
+
+}
+```
+
 
 
 
