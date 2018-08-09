@@ -28,3 +28,32 @@ instead of
 
 .sample { background-image: url(../img/bg.jpg); }
 ```
+
+## 枚举值enum的使用
+
+> TypeEnum.ts
+```ts
+export enum TypeEnum{
+    one,
+    two
+}
+```
+
+为了在template或者说html中使用，你需要
+
+> component中
+```ts
+import {TypeEnum} from '../TypeEnum';
+
+...
+thisType:TypeEnum = TypeEnum.two;
+//注意下面这里，为了让前台认识TypeEnum
+TypeEnum = TypeEnum;
+...
+```
+
+> html中
+```html
+<div *ngIf="thisType === TypeEnum.one">one</div>
+<div *ngIf="thisType === TypeEnum.two">two</div>
+```
