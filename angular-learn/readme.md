@@ -57,3 +57,14 @@ TypeEnum = TypeEnum;
 <div *ngIf="thisType === TypeEnum.one">one</div>
 <div *ngIf="thisType === TypeEnum.two">two</div>
 ```
+
+## ts中的对象类型 interface VS class
+```
+interface用于进行类型检查，但是它无法创建对象(使用new的方式)
+class也可用于类型检查，而且可以用于创建对象
+
+所以，如果单纯的类型检查就用interface，否则就用class
+```
+
+参考 https://toddmotto.com/classes-vs-interfaces-in-typescript
+
