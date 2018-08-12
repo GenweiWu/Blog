@@ -5,6 +5,14 @@ https://angular.cn/guide/quickstart
 ## angular/cli
 https://github.com/angular/angular-cli
 
+```
+npm uninstall -g @angular/cli
+npm uninstall --save-dev @angular/cli
+npm cache clean
+npm install -g @angular/cli@latest
+npm install --save-dev @angular/cli@latest
+```
+
 ### 1、ng generaete xxx -d 可以让你提前知道效果，但不会真的生成
 ```
 D:\daveCode\adc-demo222>ng generate component hello-route -d
