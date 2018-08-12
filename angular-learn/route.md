@@ -53,6 +53,19 @@ export class DocumentPreviewComponent implements OnInit {
 }
 ```
 
+## roure in ts
+
+> ts中使用`router.navigate`或`router.navigateByUrl`方法
+```ts
+import { Router } from '@angular/router';
+
+...
+//in your constructor
+  constructor(public router: Router){}
+
+//navigation link.
+this.router.navigateByUrl('/login');
+```
 
 
 
