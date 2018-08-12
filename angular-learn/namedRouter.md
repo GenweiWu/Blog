@@ -102,3 +102,12 @@ export class OuterletDemoComponent implements OnInit {
   }
 }
 ```
+
+## 个人总结
+1. 内部路由，需要在配置路由时，设置为children，且需要设置outlet属性
+2. 路由链接(无论是html方式还是ts方式)则需要制定对应的outlet名称
+
+
+## 参考
+- https://stackoverflow.com/a/38038733
+- https://onehungrymind.com/named-router-outlets-in-angular-2/
