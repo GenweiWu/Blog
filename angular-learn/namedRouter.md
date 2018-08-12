@@ -103,6 +103,9 @@ export class OuterletDemoComponent implements OnInit {
 }
 ```
 
+## 效果
+![](./img/namedRouter.gif)
+
 ## 个人总结
 1. 内部路由，需要在配置路由时，设置为children，且需要设置outlet属性
 2. 路由链接(无论是html方式还是ts方式)则需要制定对应的outlet名称
