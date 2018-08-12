@@ -1,3 +1,7 @@
+## debug
+```ts
+ RouterModule.forRoot(myRoutes, { enableTracing: true })
+```
 
 ## routeLink
 
