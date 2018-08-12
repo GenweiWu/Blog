@@ -104,6 +104,8 @@ export class OuterletDemoComponent implements OnInit {
 ```
 
 ## 效果
+- 点击hello是覆盖了整个页面，而inner则只覆盖的下半部分
+- 点击时可以看到浏览器中的url变化，对应的ts中实现就是对应的url
 ![](./img/namedRouter.gif)
 
 ## 个人总结
