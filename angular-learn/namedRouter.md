@@ -112,6 +112,51 @@ export class OuterletDemoComponent implements OnInit {
 1. 内部路由，需要在配置路由时，设置为children，且需要设置outlet属性
 2. 路由链接(无论是html方式还是ts方式)则需要制定对应的outlet名称
 
+## 扩展：NamedRouter with lazy load
+即在module中使用Named Router
+
+#### 需要用一个中转component:`ProxyRouteComponent`
+参考：https://github.com/angular/angular/issues/12842
+
+```ts
+{
+    path: 'me',
+    outlet: 'hub',
+    component: ProxyRouteComponent,
+    children: [
+        {
+            path: '',
+            loadChildren: 'hello#HelloModule',
+        },
+    ],
+},
+```    
+Where proxy route component is simply
+
+```
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'b-proxy-route',
+    template: '<router-outlet></router-outlet>',
+})
+export class ProxyRouteComponent {
+}
+```
+
+对应的链接是 ...xxx`/(hub:me)`
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 参考
 - https://stackoverflow.com/a/38038733
