@@ -71,7 +71,15 @@ import { Router } from '@angular/router';
 this.router.navigateByUrl('/login');
 ```
 
+## 不改变url
+参考：https://stackoverflow.com/a/37055297/6182927
+```ts
+router.navigateByUrl("/team/33/user/11", { skipLocationChange: true });
+```
 
+```html
+<a [routerLink]="..." skipLocationChange>click me</a>
+```
 
 ## 两种路由方式
 
