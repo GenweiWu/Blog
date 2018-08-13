@@ -103,6 +103,12 @@ export class OuterletDemoComponent implements OnInit {
 }
 ```
 
+#### 扩展：使用queryParam传参数
+```ts
+    let param  = {"fileId":'xxx'};
+    this.router.navigate(['/outerlet', {outlets: {'inner':['innerMargin']}}],{queryParams:param,skipLocationChange:true});
+```
+
 ## 效果
 - 点击hello是覆盖了整个页面，而inner则只覆盖的下半部分
 - 点击时可以看到浏览器中的url变化，对应的ts中实现就是对应的url
