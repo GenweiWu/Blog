@@ -117,6 +117,34 @@ export class OuterletDemoComponent implements OnInit {
 ## 个人总结
 1. 内部路由，需要在配置路由时，设置为children，且需要设置outlet属性
 2. 路由链接(无论是html方式还是ts方式)则需要制定对应的outlet名称
+3. forChild写法中，我测试的结果是只能写在`path`非空的下面,为空的我没试成功
+```ts
+    RouterModule.forChild([
+      {
+        path: '',
+        redirectTo: "content",
+        pathMatch:"full"
+      },
+      {
+        path: 'content',  //<---  这里不能是空的 path:''
+        component: HelloComponent,
+        children: [
+          {
+            path: 'innerPreview',
+            outlet: "previewOutlet",
+            component: ProxyRouteComponent,
+            children:[
+              {
+                path:'',
+                loadChildren: 'xxx#xxxModule'
+              }
+            ]
+          }
+        ]
+      }
+    ])
+```
+
 
 ## 扩展：NamedRouter with lazy load
 即在module中使用Named Router
