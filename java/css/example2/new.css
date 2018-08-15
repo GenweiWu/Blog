@@ -1,0 +1,22 @@
+.icon-arrowrt {
+    background: url(@@@icon-arrowrt.gif) 0px 2px no-repeat;
+    text-decoration: none;
+    color: rgb(0, 0, 238);
+    cursor: pointer;
+    text-decoration: underline;
+    padding-left: 10px;
+    margin-left: 2px
+}
+.icon-arrowdn {
+    background: url(@@@icon-arrowdn.gif) 0px 4px no-repeat;
+    text-decoration: none;
+    color: rgb(0, 0, 238);
+    cursor: pointer;
+    text-decoration: underline;
+    padding-left: 10px
+}
+.link_css {
+    background-image: url(@@@icon-cc.png);
+    cursor: pointer;
+    text-decoration: underline
+}
