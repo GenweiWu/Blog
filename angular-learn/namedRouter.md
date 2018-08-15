@@ -149,7 +149,7 @@ export class OuterletDemoComponent implements OnInit {
 ## 扩展：NamedRouter with lazy load
 即在module中使用Named Router
 
-#### 需要用一个中转component:`ProxyRouteComponent`
+### 1）需要用一个中转component:`ProxyRouteComponent`
 参考：https://github.com/angular/angular/issues/12842
 
 ```ts
@@ -180,14 +180,79 @@ export class ProxyRouteComponent {
 
 对应的链接是 ...xxx`/(hub:me)`
 
+### 2）component被多个module使用会报错
 
+上面的`ProxyRouteComponent`被多个module使用会遇到一个报错：
+```
+Using multiple components in different modules causing "Type X is part of the declarations of 2 modules" error
+```
+#### 需要用module包一层
+参考：https://github.com/angular/angular/issues/10646
 
+解决的方法是，用一个module包一层
+> proxy-route.module.ts
+```proxy-route.module.ts
+import {NgModule}      from '@angular/core';
+import { ProxyRouteComponent } from './proxy-route.component';
+import { RouterModule } from '@angular/router';
 
+@NgModule({
+  imports: [
+      RouterModule   //<==需要引用这个，否则不认识router-outlet元素
+  ],
+  exports:      [ ProxyRouteComponent ],
+  declarations: [ProxyRouteComponent]
+})
+export class ProxyRouteModule {
 
+}
+```
 
+- 引用的使用，改import ProxyRouteModule，不再declarations ProxyRouteComponent  
+- 引入module，可以直接使用module中的component
 
+> Xxx.module.ts
+```Xxx.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { XxxComponent } from './xxx.component';
+import { ProxyRouteComponent } from '../common/proxy-route.component';
+import { ProxyRouteModule } from '../common/proxy-route.module';
 
+@NgModule({
+  imports: [
+    ProxyRouteModule,   //<==引入module
+    RouterModule.forChild([
+      {
+        path: '',
+        redirectTo: "content",
+        pathMatch:"full"
+      },
+      {
+        path: 'content',
+        component: XxxComponent,   //<== 这里配置子路由
+        children: [
+          {
+            path: 'innerPreview',
+            outlet: "previewOutlet",
+            component: ProxyRouteComponent,   //<==这里直接使用component
+            children:[
+              {
+                path:'',
+                loadChildren: '..hello#HelloModule'
+              }
+            ]
+          }
+        ]
+      }
+    ])
+  ],
+  declarations: [],  //<==不需要引用component了
+  providers:[]
+})
+export class XxxModule { }
 
+```
 
 
 
