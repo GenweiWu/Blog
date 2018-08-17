@@ -24,17 +24,16 @@ public class MvcConfig implements WebMvcConfigurer {
 `/opt/files/111/222.html`  
 
 ### 2)在rest中部分映射
-如果需要在restController中部分映射，可以进行redirect处理
+- 如果需要在restController中部分映射，可以进行redirect处理
 
 ```java
 @GetMapping(value = "/viewHighlightDoc/**")
 public String viewHighlightDoc(@RequestParam(value = "key", required = false) String key,
     HttpServletRequest request, HttpServletResponse response)
-    throws IOException
 {
     if (ValidateUtil.isNotEmptyString(key))
     {
-        ...本身的处理逻辑
+        //...本身的处理逻辑
         return "xx";
     }
 
@@ -44,11 +43,51 @@ public String viewHighlightDoc(@RequestParam(value = "key", required = false) St
     String targetUri = sourceUri.replace("/viewHighlightDoc", "/resources");
     log.debug("viewHighlightDoc redirect from [{}] to [{}] finish", sourceUri, targetUri);
 
-    response.sendRedirect(targetUri);
+    try
+    {
+        response.sendRedirect(targetUri);
+    }
+    catch (IOException e)
+    {
+        log.error("viewHighlightDoc redirect to {} failed", targetUri, e);
+        response.setStatus(HttpStatus.NOT_FOUND.value());
+    }
     return null;
 }
 ```
 
+- 也可以使用forward方式进行转发
+```java
+    @GetMapping(value = "/viewHighlightDoc/**")
+    public String viewHighlightDoc(@RequestParam(value = "key", required = false) String key,
+        HttpServletRequest request, HttpServletResponse response)
+    {
+        if (ValidateUtil.isNotEmptyString(key))
+        {
+            //...本身的处理逻辑
+            return "xx";
+        }
+
+        //转发给静态资源处理
+        // /service111/viewHighlightDoc/[xxx] => /service111/resources/[xxx]
+		// /service111/resources/[xxx] => /resources/[xxx]
+        String sourceUri = request.getRequestURI();
+        String targetUri = sourceUri.replace("/viewHighlightDoc", "/resources");
+        targetUri = targetUri.replace(request.getContextPath(), "");
+        log.debug("viewHighlightDoc redirect from [{}] to [{}] finish", sourceUri, targetUri);
+
+        try
+        {
+            request.getRequestDispatcher(targetUri).forward(request,response);
+        }
+        catch (IOException | ServletException e)
+        {
+            log.error("viewHighlightDoc redirect to {} failed", targetUri, e);
+            response.setStatus(HttpStatus.NOT_FOUND.value());
+        }
+        return null;
+    }
+```
 
 
 ## 参考
