@@ -24,7 +24,9 @@ public class MvcConfig implements WebMvcConfigurer {
 `/opt/files/111/222.html`  
 
 ### 2)在rest中部分映射
-- 如果需要在restController中部分映射，可以进行redirect处理
+如果需要在restController中部分映射，即部分情况使用restController的逻辑，另外的情况是静态资源访问的话，可以使用redirect或forward
+
+- 方法1：redirect处理
 
 ```java
 @GetMapping(value = "/viewHighlightDoc/**")
@@ -56,7 +58,7 @@ public String viewHighlightDoc(@RequestParam(value = "key", required = false) St
 }
 ```
 
-- 也可以使用forward方式进行转发
+- 方法2：forward处理
 ```java
     @GetMapping(value = "/viewHighlightDoc/**")
     public String viewHighlightDoc(@RequestParam(value = "key", required = false) String key,
@@ -89,6 +91,9 @@ public String viewHighlightDoc(@RequestParam(value = "key", required = false) St
     }
 ```
 
+#### 区别总结
+1. redirect时,是包含content-path的(service111),所以forward支持跨应用的;而forward是不带content-path的,所以只能应用中转发
+2. redirect会导致同一个请求在前台请求两次,一次302,一次200，会导致网页加载变慢!而forward在前台还是一次请求,所以性能要好一些
 
 ## 参考
 - https://www.baeldung.com/spring-mvc-static-resources
