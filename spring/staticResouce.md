@@ -150,6 +150,73 @@ F:\WORKSPACE\SPRINGAOPDEMO\SRC
 - http://127.0.0.1:8080/test/111.html  200
 - http://127.0.0.1:8080/222.html  200
 
+### 使用EnableWebMvc导致默认配置失效
+最近使用上面的自定义映射后，发现系统默认的static目录资源都无法访问了
+
+- spring自动配置  
+
+其中的自动配置代码: 
+`org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#addResourceHandlers`
+```java
+@Override
+public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	if (!this.resourceProperties.isAddMappings()) {
+		logger.debug("Default resource handling disabled");
+		return;
+	}
+	Duration cachePeriod = this.resourceProperties.getCache().getPeriod();
+	CacheControl cacheControl = this.resourceProperties.getCache()
+			.getCachecontrol().toHttpCacheControl();
+	//(1)		
+	if (!registry.hasMappingForPattern("/webjars/**")) {
+		customizeResourceHandlerRegistration(registry
+				.addResourceHandler("/webjars/**")
+				.addResourceLocations("classpath:/META-INF/resources/webjars/")
+				.setCachePeriod(getSeconds(cachePeriod))
+				.setCacheControl(cacheControl));
+	}
+	String staticPathPattern = this.mvcProperties.getStaticPathPattern();
+	//(2)
+	if (!registry.hasMappingForPattern(staticPathPattern)) {
+		customizeResourceHandlerRegistration(
+				registry.addResourceHandler(staticPathPattern)
+						.addResourceLocations(getResourceLocations(
+								this.resourceProperties.getStaticLocations()))
+						.setCachePeriod(getSeconds(cachePeriod))
+						.setCacheControl(cacheControl));
+	}
+}
+```
+
+其中(2)就是默认配置的代码,调试发现效果是添加了下面的映射
+```
+addResourceHandler("/**")
+
+addResourceLocations
+classpath:/META-INF/resources/
+classpath:/resources/
+classpath:/static/
+classpath:/public/
+/
+```
+
+- 默认配置失效原因  
+参考：https://www.cnblogs.com/sufferingStriver/p/9026764.html
+
+`WebMvcAutoConfiguration`类上有`@ConditionalOnMissingBean(WebMvcConfigurationSupport.class)`;  
+而`@EnableWebMvc`就是引用了`DelegatingWebMvcConfiguration`,就是继承了`WebMvcConfigurationSupport`，所以上面的代码就不运行了。  
+```java
+@Import(DelegatingWebMvcConfiguration.class)
+public @interface EnableWebMvc {
+}
+...
+```
+
+```java
+public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
+...
+}
+```
 
 
 
