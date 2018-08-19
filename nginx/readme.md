@@ -2,7 +2,7 @@ nginx知识
 ==
 
 
-### 1. nginx调试
+## 1. nginx调试
 
 #### 方法1.为了测试location是否匹配成功,可以巧妙使用错误码进行测试
 ```
@@ -38,7 +38,7 @@ If-Modified-Since: Tue, 06 Mar 2018 11:23:59 GMT
 ```
 
 
-### 2. windows下https证书
+## 2. windows下https证书
 ```
 openssl genrsa -des3 -out openssl.key 2048  
   
@@ -48,7 +48,15 @@ openssl rsa -in openssl.key -out openssl_nopass.key
 ```
 http://nassir.iteye.com/blog/1983667
 
-### 3. nginx中location的正则写法
+## 3. nginx中location的写法
+
+#### 匹配符号
+```
+= : 表示精确匹配后面的url
+~ : 表示正则匹配，但是区分大小写
+~* : 正则匹配，不区分大小写
+^~ : 表示普通字符匹配，如果该选项匹配，只匹配该选项，不匹配别的选项，一般用来匹配目录
+```
 
 #### nginx正则的语法：
 | .|换行符以外的其他字符|
