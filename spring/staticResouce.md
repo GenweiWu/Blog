@@ -220,7 +220,7 @@ public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
 
 ### 问题修复
 
-自定义映射的同时，加上默认映射即可
+- 自定义映射的同时，加上默认映射即可
 ```java
 package com.njust.config;
 
@@ -249,6 +249,24 @@ public class MvcConfig implements WebMvcConfigurer {
 }
 
 ```
+
+- 对应的日志也可以看出来
+> 默认的,不自定义映射
+```
+2018-08-19 15:00:57.534  INFO 11700 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-19 15:00:57.535  INFO 11700 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+```
+> 加了自定义映射，导致默认映射失效
+```
+2018-08-19 15:02:10.493  INFO 13112 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/wResource/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+```
+> 修复问题后
+```
+2018-08-19 15:34:44.395  INFO 2728 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/wResource/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-19 15:34:44.395  INFO 2728 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+```
+
+
 
 
 
