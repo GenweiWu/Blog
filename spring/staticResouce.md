@@ -95,6 +95,68 @@ public String viewHighlightDoc(@RequestParam(value = "key", required = false) St
 1. redirect时,是包含content-path的(service111),所以forward支持跨应用的;而forward是不带content-path的,所以只能应用中转发
 2. redirect会导致同一个请求在前台请求两次,一次302,一次200，会导致网页加载变慢!而forward在前台还是一次请求,所以性能要好一些
 
+## 自定义资源映射 与 默认映射
+
+### 默认映射
+
+- 说明  
+根据官方说明，系统初始化时候，会自动对resource目录下的多个指定目录进行映射
+
+> 附官方说明：https://spring.io/blog/2013/12/19/serving-static-web-content-with-spring-boot
+```
+/META-INF/resources/
+/resources/
+/static/
+/public/
+```
+
+- 个人测试结果  
+个人测试结果为：的确可以，但是这些目录是放在resources目录下的，否则可能需要手工修改打包配置
+> 工程目录如下：
+```
+F:\workspace\springaopdemo>tree /f src
+卷 学习 的文件夹 PATH 列表
+卷序列号为 000001CE 4E60:7797
+F:\WORKSPACE\SPRINGAOPDEMO\SRC
+├─main
+│  ├─java
+│  │  └─com
+│  │      └─njust
+│  │          │  AopApplication.java
+│  │          │  WebLogAspect.java
+│  │          │
+│  │          ├─config
+│  │          │      MvcConfig.java
+│  │          │
+│  │          └─controller
+│  │                  HelloController.java
+│  │                  HelloController222.java
+│  │
+│  └─resources
+│      │  bootstrap.yml
+│      │
+│      ├─public
+│      │  └─test
+│      │          111.html   
+│      │
+│      └─static
+│              222.html
+│
+└─test
+    └─java
+```
+
+则对应的访问链接为：
+- http://127.0.0.1:8080/test/111.html  200
+- http://127.0.0.1:8080/222.html  200
+
+
+
+
+
+
+
+
 ## 参考
 - https://www.baeldung.com/spring-mvc-static-resources
 - https://stackoverflow.com/a/29088306/6182927
