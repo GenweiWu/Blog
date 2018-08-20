@@ -36,3 +36,35 @@ Iframe with src attribute with HTML Content is cross domain,
 
 But iframe with srcDoc attribute with HTML Content is not cross domain
 ```
+
+## iframe高度自适应+onload事件+定位到章节
+```html
+<iframe #contentIframe [src]="contentResource" frameborder="0" on-load="iframeLoaded()"></iframe>
+```
+
+```ts
+//iframe引用
+@ViewChild("contentIframe") contentIframe: ElementRef;
+
+iframeLoaded(){
+    console.log("iframeload:" + new Date())
+    this.justifyIframeHeight(()=>{
+      setTimeout(() => {
+        this.jumpToChapter();
+      }, 666);
+    });    
+}
+
+justifyIframeHeight(callback = ()=>{}){
+    var thisIframe = this.contentIframe.nativeElement;
+    var justifyHeight = thisIframe.contentWindow.document.body.scrollHeight + 50;
+    thisIframe.height = justifyHeight + "px";
+
+    callback();
+}
+
+private jumpToChapter() {
+    let thisIframe = this.contentIframe.nativeElement;
+    thisIframe.contentWindow.window.location.hash = "#chapter1";
+}      
+```    
