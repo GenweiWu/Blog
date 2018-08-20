@@ -220,7 +220,7 @@ public class DelegatingWebMvcConfiguration extends WebMvcConfigurationSupport {
 
 ### 问题修复
 
-- 自定义映射的同时，加上默认映射即可
+- 修复1：自定义映射的同时，加上默认映射即可
 ```java
 package com.njust.config;
 
@@ -246,8 +246,43 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/**").addResourceLocations(
                 RESOURCE_LOCATIONS);
     }
+    
+    //修复index.html的映射
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry)
+    {
+        registry.addViewController("/").setViewName("forward:/index.html");
+    }
 }
 
+```
+
+- 修复2：去掉`@EnableWebMvc`（推荐方法）
+> If you want to keep Spring Boot MVC features and you want to add additional MVC configuration (interceptors, formatters, view controllers, and other features), you can add your own @Configuration class of type WebMvcConfigurer but without @EnableWebMvc.  
+> https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-spring-mvc-auto-configuration  
+
+```java
+package com.njust.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class MvcConfig implements WebMvcConfigurer {
+
+    private static final String[] RESOURCE_LOCATIONS = {
+        "classpath:/META-INF/resources/", "classpath:/resources/",
+        "classpath:/static/", "classpath:/public/"};
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+            .addResourceHandler("/wResource/**")
+            .addResourceLocations("file:F:/go/");
+    }
+
+}
 ```
 
 - 对应的日志也可以看出来
@@ -260,12 +295,20 @@ public class MvcConfig implements WebMvcConfigurer {
 ```
 2018-08-19 15:02:10.493  INFO 13112 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/wResource/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 ```
-> 修复问题后
+> 修复1修复后：只有自定义的，和人为添加的默认
 ```
 2018-08-19 15:34:44.395  INFO 2728 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/wResource/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 2018-08-19 15:34:44.395  INFO 2728 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
 ```
-
+> 修复2修复后：包含自定义的，和所有默认
+```
+2018-08-20 12:54:32.131  INFO [test-service,,,] 10120 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/wResources/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 12:54:32.131  INFO [test-service,,,] 10120 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 12:54:32.131  INFO [test-service,,,] 10120 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 12:54:32.261  INFO [test-service,,,] 10120 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : Detected ResponseBodyAdvice implementation in headerModifierAdvice
+2018-08-20 12:54:32.934  INFO [test-service,,,] 10120 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-20 12:54:33.343  INFO [test-service,,,] 10120 --- [main] oConfiguration$WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+```
 
 
 
@@ -287,4 +330,10 @@ public class FooController {
 ``` 
 
 - [修复/映射到/index.html的支持](https://stackoverflow.com/a/27383522/6182927)  
+```java
+@Override
+public void addViewControllers(ViewControllerRegistry registry) {
+    registry.addViewController("/").setViewName("forward:/index.html");
+}
+```
 - https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-spring-mvc-auto-configuration  
