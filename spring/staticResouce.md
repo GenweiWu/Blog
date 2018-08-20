@@ -284,4 +284,7 @@ public class FooController {
     response.sendRedirect("some-url");
   }
 }
-```
+``` 
+
+- [修复/映射到/index.html的支持](https://stackoverflow.com/a/27383522/6182927)  
+- https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-spring-mvc-auto-configuration  
