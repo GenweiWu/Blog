@@ -40,3 +40,6 @@ css组合选择器
      border-color:blue;
   }
 ```
+
+## 样例
+[==> 在线demo](https://jsfiddle.net/GenweiWu/37Lumyh0/)
