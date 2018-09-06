@@ -311,6 +311,56 @@ public class MvcConfig implements WebMvcConfigurer {
 ```
 
 
+## 静态资源再加工
+比如静态资源返回html内容，你想在文件最后加一下内容，则需要用到`ResourceTransformer`
+
+参考：https://stackoverflow.com/a/40205853/6182927
+
+```java
+@Configuration
+public class MvcConfig implements WebMvcConfigurer {
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+          .addResourceHandler("/resources/**")
+          .addResourceLocations("file:/opt/files/")
+	  .resourceChain(false)
+          .addTransformer(new MyHtmlTransformer());
+    }
+}
+```
+
+> MyHtmlTransformer.java
+```java
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.springframework.core.io.Resource;
+import org.springframework.web.servlet.resource.ResourceTransformer;
+import org.springframework.web.servlet.resource.ResourceTransformerChain;
+import org.springframework.web.servlet.resource.TransformedResource;
+
+public class MyHtmlTransformer implements ResourceTransformer
+{
+    @Override
+    public Resource transform(HttpServletRequest request, Resource resource, ResourceTransformerChain transformerChain)
+        throws IOException
+    {
+        Document document = Jsoup.parse(resource.getFile(), "utf-8", "");
+        Element a = document.createElement("a");
+        a.attr("id", "previewId");
+        a.attr("href", "xxx");
+        document.body().appendChild(a);
+
+        return new TransformedResource(resource, document.toString().getBytes("utf-8"));
+    }
+}
+```
+
 
 
 
