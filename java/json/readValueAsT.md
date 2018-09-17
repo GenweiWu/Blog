@@ -22,6 +22,12 @@ public static <T> List<T> readValueAsList(Object srcData, Class<T> valueType)
     }
 ```
 
+```java
+ObjectMapper objectMapper = JsonUtil.getMapper();
+MenuConfig[] menuConfigs = objectMapper.readValue(inputStream, MenuConfig[].class);
+return Arrays.asList(menuConfigs);
+```
+
 ## readValueAsClass
 ```java
 public static <T> T readValueAsType(Object srcData, Class<T> valueType)
