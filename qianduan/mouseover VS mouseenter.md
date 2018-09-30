@@ -6,9 +6,11 @@
 ## 例子
 
 #### 在线演示
-[==> 在线演示](https://jsfiddle.net/GenweiWu/0c5qk1t8/)
+[==> 在线演示](https://jsfiddle.net/GenweiWu/0c5qk1t8/)  
+
 
 #### 效果
+> (说明：`div2`是`div1`的子元素)  
 ![](./img/mouseover.png)
 
 ```
@@ -34,5 +36,7 @@
 ```
 
 #### 解说
-
+1. `mouseover`和`mouseout`会进行冒泡，而`mouseenter`和`mouseleave`不会冒泡  
+    进入`div1`和进入`子元素div2`时，都会触发`div1`的`mouseover`，因为进入`子元素div2`时,`div2`的mouseover事件会冒泡给父元素`div1`  
+  
 
