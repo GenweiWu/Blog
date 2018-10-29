@@ -1,0 +1,14 @@
+1 ==> hello
+2 ==> hello:dave
+
+3 ==> [list]
+<ul>
+  <li>monday</li>
+  <li>tuesday</li>
+  <li>wednesday</li>
+</ul>
+
+4 ==> [map]
+ key1 --> value111
+ key2 --> value222
+ key3 --> value333
