@@ -30,6 +30,14 @@ nginx调试技巧
  access_log  logs/access.log  main;
  error_log   logs/error.log  debug;
 ```
+```nginx
+location /test-service {
+	proxy_pass http://localhost:777;
+	error_log logs/test-service.log;
+}
+```
+
+
 3. 开启后主要需要看到日志如下：
 可以看出当前请求匹配的location,以及匹配的具体过程。
 ```txt
