@@ -26,6 +26,10 @@ tcpdump src host 127.0.0.1 and dst host 10.10.10.120 and port 443  -c 60 -w ./ta
 `tcpdump host 1.2.3.4 and tcp`
 > 限制协议为tcp
 
+#### 5.直接用tcpdump读取文件
+`tcpdump -A -r test.dump`
+
+
 ## 总结
 TODO
 
