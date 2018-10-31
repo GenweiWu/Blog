@@ -11,9 +11,10 @@ TCP协议中，TCP首部有6个标志位(0或1)
 ## 2、wireshark怎么看传输的数据的内容呢?
 #### :)理解
 
-i. 排除SYN这种三次握手的连接,会有一些[PSH,ACK]这种连接,选中其中一个,会发现下方有一个Data内容
-ii 选中Data部分 -> Copy -> Bytes -> Printable Text Only
+i. 排除SYN这种三次握手的连接,会有一些[PSH,ACK]这种连接,选中其中一个,会发现下方有一个`Data`内容  
+ii 选中`Data`部分 -> `Copy` -> `Bytes` -> `Printable Text Only`
 
+![](./resource/wiershark_data_copy.png)
 
 #### :)参考
 [学习Wireshark之二：数据包分析](http://blog.51cto.com/skypegnu1/1540728)
