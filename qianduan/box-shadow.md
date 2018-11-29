@@ -24,4 +24,11 @@ boxshadow 添加边框阴影，发光效果
 ## 简写
 `box-shadow:h-shadow v-shadow color`  
 `box-shadow:h-shadow v-shadow blur color`  
-`box-shadow:h-shadow v-shadow blur spread color`  
+`box-shadow:h-shadow v-shadow blur spread color` 
+
+  `box-shadow: 10px 5px green;`
+= `box-shadow: 10px 5px 0 0 green;`
+
+  `box-shadow: 10px 5px 5px green;`
+= `box-shadow: 10px 5px 5px 0 green;`
+
