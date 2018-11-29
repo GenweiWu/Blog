@@ -22,14 +22,19 @@ boxshadow 添加边框阴影，发光效果
 [在线演示_box-shadow基本属性](http://jsfiddle.net/GenweiWu/gexhyq38/)
 
 ## 简写
+- 三属性、四属性、五属性   
 `box-shadow:h-shadow v-shadow color`  
 `box-shadow:h-shadow v-shadow blur color`  
 `box-shadow:h-shadow v-shadow blur spread color` 
 
-  `box-shadow: 10px 5px green;`
+- 比如：  
+  `box-shadow: 10px 5px green;`  
 = `box-shadow: 10px 5px 0 0 green;`
 
-  `box-shadow: 10px 5px 5px green;`
+  `box-shadow: 10px 5px 5px green;`  
 = `box-shadow: 10px 5px 5px 0 green;`
+
+  `box-shadow: 10px 5px 0px 3px green inset;`  
+= `box-shadow: inset 10px 5px 0px 3px green;`
 
 [在线演示_box-shadow简写](http://jsfiddle.net/GenweiWu/5fa4jrgx/)
