@@ -20,3 +20,8 @@ boxshadow 添加边框阴影，发光效果
 注意：不能写outset
 
 [在线演示_box-shadow基本属性](http://jsfiddle.net/GenweiWu/gexhyq38/)
+
+## 简写
+`box-shadow:h-shadow v-shadow color`  
+`box-shadow:h-shadow v-shadow blur color`  
+`box-shadow:h-shadow v-shadow blur spread color`  
