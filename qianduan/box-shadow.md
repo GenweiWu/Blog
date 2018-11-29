@@ -32,3 +32,4 @@ boxshadow 添加边框阴影，发光效果
   `box-shadow: 10px 5px 5px green;`
 = `box-shadow: 10px 5px 5px 0 green;`
 
+[在线演示_box-shadow简写](http://jsfiddle.net/GenweiWu/5fa4jrgx/)
