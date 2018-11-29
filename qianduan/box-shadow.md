@@ -48,7 +48,7 @@ boxshadow 添加边框阴影，发光效果
 
 [在线演示_单侧的box-shadow](http://jsfiddle.net/GenweiWu/r2xh4wam/)
 
-
+[在线演示_多元素的边框模拟](http://jsfiddle.net/GenweiWu/L0fk3juh/)
 
 
 
