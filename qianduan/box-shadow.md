@@ -51,4 +51,6 @@ boxshadow 添加边框阴影，发光效果
 [在线演示_多元素的边框模拟](http://jsfiddle.net/GenweiWu/L0fk3juh/)
 
 
-
+## 参考 
+- https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow 
+- http://www.w3school.com.cn/cssref/pr_box-shadow.asp 
