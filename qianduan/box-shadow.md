@@ -38,3 +38,17 @@ boxshadow 添加边框阴影，发光效果
 = `box-shadow: inset 10px 5px 0px 3px green;`
 
 [在线演示_box-shadow简写](http://jsfiddle.net/GenweiWu/5fa4jrgx/)
+
+## 单侧的box-shadow
+可以通过x偏移+y偏移来实现单侧的`box-shadow`，但是效果需要通过调整spread来避免其他边也显示。
+
+另外，多个元素的边框效果用单个元素的单侧来拼凑效果不好，要么影响其他边，要么两元素之前有隔断效果
+
+**建议另行设置一个元素的边框来模拟多个元素的边框效果**
+
+[在线演示_单侧的box-shadow](http://jsfiddle.net/GenweiWu/r2xh4wam/)
+
+
+
+
+
