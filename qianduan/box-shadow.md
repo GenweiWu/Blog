@@ -2,7 +2,7 @@ boxshadow 添加边框阴影，发光效果
 
 
 ## 基本语法 
-`box-shadow: h-shadow v-shadow blur spread color;`
+`box-shadow: h-shadow v-shadow blur spread color;`  
 `box-shadow: h-shadow v-shadow blur spread color inset;`
 
 - `h-shadow`:沿x轴的偏移
