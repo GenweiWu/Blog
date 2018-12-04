@@ -12,6 +12,8 @@ inline-block布局
   
   [demo here](https://jsfiddle.net/GenweiWu/w92zya9d/)  
 
+  [在线演示](http://jsfiddle.net/GenweiWu/2uogwzjs/)
+
 ##### 3、如果有需要的话还要设置`vertical-align:center`
 
 
