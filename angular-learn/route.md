@@ -57,6 +57,33 @@ export class DocumentPreviewComponent implements OnInit {
 }
 ```
 
+### 4、Path Param
+
+路由的写法
+```ts
+const routes: Routes = [
+  {
+    path: 'article-view/:articleId',
+    component: ArticleViewComponent
+  }
+];
+```
+
+读取参数
+```ts
+export class ArticleViewComponent implements OnInit {
+
+  constructor(private activeRoute:ActivatedRoute) { }
+
+  ngOnInit() {
+    this.activeRoute.snapshot.params["articleId"]
+  }
+
+}
+```
+
+
+
 ## roure in ts
 
 > ts中使用`router.navigate`或`router.navigateByUrl`方法
