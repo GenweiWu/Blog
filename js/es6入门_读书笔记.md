@@ -16,3 +16,23 @@ xx === Number.prototype.toString  //true
 ```
 
 > 我的理解是：解析赋值适用于属性,不适用方法;上面的String.length是属性,而String.prototype.toString()是方法.
+
+## [字符串扩展-标签模板](http://es6.ruanyifeng.com/#docs/string#%E6%A0%87%E7%AD%BE%E6%A8%A1%E6%9D%BF)
+
+```ts
+let aa = "hello";
+let bb = "world";
+test`this is ${aa} and ${bb}`;
+
+function test(_word, ..._params) {
+console.log(`word==> ${_word}`)
+console.log(`params==> ${_params}`)
+console.log`word==> ${_word}`
+
+//word==> this is , and ,
+//params==> hello,world
+//(2) ["word==> ", "", raw: Array(2)]0: "word==> "1: ""length: 2raw: (2) ["word==> ", ""]__proto__: Array(0) (3) ["this is ", " and ", "", raw: Array(3)]
+```
+![](./assets/es001.png)
+
+> 
