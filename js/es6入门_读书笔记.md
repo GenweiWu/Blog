@@ -56,3 +56,25 @@ console.log`word==> ${_word}`
 ![](./assets/es001.png)
 
 > 个人理解,除非你需要把模板字符串本身和它的参数分开处理，否则没必要这样用,它不等价于直接用
+
+#### 例3：raw属性
+```ts
+print`hello \n dave`;
+
+let name = "dave"
+print`hello ${name}`
+
+function print(_msg, ...params) {
+  debugger;
+}
+```
+- print`hello \n dave`  
+![image](https://user-images.githubusercontent.com/16630659/50410487-36aade00-0834-11e9-8679-da40dae9994a.png)
+![image](https://user-images.githubusercontent.com/16630659/50410505-5215e900-0834-11e9-86ad-b9888b1f24ea.png)
+
+- print`hello ${name}`  
+![image](https://user-images.githubusercontent.com/16630659/50410552-b2a52600-0834-11e9-89c7-af8e3940061c.png)
+![image](https://user-images.githubusercontent.com/16630659/50410554-b638ad00-0834-11e9-8486-a0b0a6e78d43.png)
+
+
+
