@@ -19,6 +19,26 @@ xx === Number.prototype.toString  //true
 
 ## [字符串扩展-标签模板](http://es6.ruanyifeng.com/#docs/string#%E6%A0%87%E7%AD%BE%E6%A8%A1%E6%9D%BF)
 
+#### -基本效果：字符串 和 参数 分隔开
+```ts
+let who = "dave";
+test`hello there ${who}`
+test(['hello there ', ''], 'dave')
+
+function test(_word, ..._params) {
+  console.log(`word==> ${_word}`)
+  console.log(`params==> ${_params}`)
+}
+
+//word==> hello there ,
+//params==> dave
+
+//word==> hello there ,
+//params==> dave
+```
+> 上面两个输出效果一样，可以对比理解下模板标签的作用
+
+#### -例2
 ```ts
 let aa = "hello";
 let bb = "world";
