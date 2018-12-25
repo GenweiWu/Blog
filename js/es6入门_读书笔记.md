@@ -2,7 +2,7 @@
 http://es6.ruanyifeng.com
 
 
-## 变量的解析赋值
+## 1、变量的解析赋值
 ```ts
 let {length:len} = "1234"
 len  //4
@@ -17,7 +17,7 @@ xx === Number.prototype.toString  //true
 
 > 我的理解是：解析赋值适用于属性,不适用方法;上面的String.length是属性,而String.prototype.toString()是方法.
 
-## [字符串扩展-标签模板](http://es6.ruanyifeng.com/#docs/string#%E6%A0%87%E7%AD%BE%E6%A8%A1%E6%9D%BF)
+## 2、[字符串扩展-标签模板](http://es6.ruanyifeng.com/#docs/string#%E6%A0%87%E7%AD%BE%E6%A8%A1%E6%9D%BF)
 
 #### -基本效果：字符串 和 参数 分隔开
 ```ts
@@ -88,3 +88,39 @@ String.raw({raw:['1122\\n33']})
 //  "1122\n33"  
 ```
 
+## 3、String.raw
+```ts
+var name="dave"
+String.raw`this is ${name}`
+"this is dave"
+
+String.raw`this is ${name} \n123`
+"this is dave \n123"
+String.raw({raw:'this is \n123'},'dave')
+//  "tdavehis is 
+// 123"
+String.raw({raw:['this is ',' \n123']},'dave')
+//  "this is dave 
+// 123"
+String.raw({raw:['this is ',' \\n123']},'dave')
+"this is dave \n123"
+
+String.raw`this is ${name} \n123  then\end`
+"this is dave \n123  then\end"
+String.raw({raw:['this is ',' \n123  then\end']},'dave')
+//  "this is dave 
+//  123  thenend"
+String.raw({raw:['this is ',' \\n123  then\end']},'dave')
+"this is dave \n123  thenend"
+String.raw({raw:['this is ',' \\n123  then\\end']},'dave')
+"this is dave \n123  then\end"
+```
+
+```ts
+console.log('1\n2')
+//  1
+//  2
+
+console.log('1\\n2')
+//  1\n2
+```
