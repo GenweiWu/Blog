@@ -124,3 +124,6 @@ console.log('1\n2')
 console.log('1\\n2')
 //  1\n2
 ```
+
+> String.raw的两个作用：转义\比如`\`-->`\\`，另外变量值替换`${name}`-->`dave`
+
