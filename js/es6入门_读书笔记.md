@@ -76,5 +76,15 @@ function print(_msg, ...params) {
 ![image](https://user-images.githubusercontent.com/16630659/50410552-b2a52600-0834-11e9-89c7-af8e3940061c.png)
 ![image](https://user-images.githubusercontent.com/16630659/50410554-b638ad00-0834-11e9-8486-a0b0a6e78d43.png)
 
+> raw属性存放的是字符串转义后的原始字符串，但是\都被转义了(看下面的例子)
 
+```ts
+String.raw`1122\n33`
+//  "1122\n33"
+String.raw({raw:['1122\n33']})
+//  "1122
+//  33"
+String.raw({raw:['1122\\n33']})
+//  "1122\n33"  
+```
 
