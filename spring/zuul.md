@@ -1,5 +1,23 @@
 Spring Cloud Zuul
 ==
+## 基本配置
+```yaml
+zuul:
+  routes:
+    users:
+      path: /test-service/**
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+      url: https://127.0.0.1
+```
+
+### 1)黑名单`sensitiveHeaders`  
+> 用于控制cookie和会话等信息的传递  
+> sensitiveHeaders中的内容会被拦截  
+
+[参考Cookies and Sensitive Headers](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html#_cookies_and_sensitive_headers)
+
+
+
 ## 超时配置
 ```yaml
 ribbon:
