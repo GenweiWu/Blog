@@ -28,6 +28,9 @@ this.contentMenuList = [
 因为instant方法是同步的,执行instant方法的时候,可能国际化还没加载完成,就会出现这个问题.
 
 #### 3) 规避
+
+- 方法一(推荐)
+
 ```html
 <div *ngFor="let menu of contentMenuList">
     <div (click)="changeContentMenu(menu.id)">{{menu.name | translate}}</div>
@@ -41,4 +44,17 @@ this.contentMenuList = [
   { "id": "essence", "name": 'app.home-page.menu-essence' }
 ];  
 ```
+
+- 方法二
+```ts
+// 解决加载国际化失败的问题
+this.translate.get('app.home-page.menu-article').subscribe(e => {
+  this.contentMenuList = [
+    { "id": "article", "name": this.translate.instant('app.home-page.menu-article') },
+    { "id": "question", "name": this.translate.instant('app.home-page.menu-question') },
+    { "id": "essence", "name": this.translate.instant('app.home-page.menu-essence') }
+  ];
+});
+```
+
 
