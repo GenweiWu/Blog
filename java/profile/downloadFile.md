@@ -90,5 +90,5 @@ public void downloadToolFile(@RequestParam("path") String fileId, HttpServletRes
 
 - 性能对比(测试下载600M文件)
   - 方法1 内存从0.78G--> 2.37G,且直到下次GC内存才会下降。
-  - 方法1 内存从600M-->800M
+  - 方法2 内存从600M-->800M
   
