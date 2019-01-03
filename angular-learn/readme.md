@@ -25,6 +25,15 @@ You specified the dry-run flag, so no changes will be written.
   update src\app\app.module.ts
 ```
 
+### 2. ng g without test
+
+to generate a component without a "...spec.ts" file   
+you simply run "--spec false". Example below
+```
+ng g c testfile --spec false
+```
+
+
 ## angular中css的使用
 
 ### 1、css中引用图片资源，建议用绝对路径(错，是从根目录开始的相对路径)
