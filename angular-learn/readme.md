@@ -58,7 +58,7 @@ ng g c testfile --spec false
 由于index.html中的开发时和部署后的href的差别，如果写成(2)的绝对路径是不行,在环境上不会自动加上`/test-service`，会有问题
 
 #### - 结论
-使用相对路径(1)
+css使用相对路径(1)
 ```css
 .title-icon {
   background-image: url('../../../assets/imgs/hi_icon.png') -79px -209px no-repeat;
@@ -66,6 +66,13 @@ ng g c testfile --spec false
   height: 28px;
   float: left;
 }
+```
+
+html使用绝对路径
+```html
+<div>
+<img src="assets/imgs/111.png>
+</div>
 ```
 
 ## 枚举值enum的使用
