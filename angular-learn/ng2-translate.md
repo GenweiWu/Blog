@@ -57,4 +57,29 @@ this.translate.get('app.home-page.menu-article').subscribe(e => {
 });
 ```
 
+## 参数
+
+### html中使用参数
+
+> zh.json
+```zh.json
+"articleToMain": "{{count}}s后跳转到首页"
+```
+
+> html
+```html
+<b>
+({{'articleToMain'|translate:{count:leftTime} }})
+</b>
+```
+[注意:leftTime后的大括号后要有空格](https://stackoverflow.com/a/46593334)
+
+> ts
+```ts
+leftTime:number = 5;
+```
+
+
+
+
 
