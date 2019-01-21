@@ -28,4 +28,6 @@ export class SafeStylePipe implements PipeTransform {
 > ts
 ```ts
 this.loginBackgroundImage = "URL('assets/imgs/login.jpg')";
+//or server: http:10.11.12.13:8080/test-service/welcome/xx.jpg
+this.loginBackgroundImage = "URL('/test-service/welcome/xx.jpg')";
 ```
