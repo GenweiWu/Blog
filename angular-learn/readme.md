@@ -75,6 +75,11 @@ html使用绝对路径
 </div>
 ```
 
+ts中绝对路径
+```ts
+logoPath:any = this.domSanitizer.bypassSecurityTrustResourceUrl("assets/imgs/system_profile_pic/system_profile_pic_big_8.png");
+```
+
 ## 枚举值enum的使用
 
 > TypeEnum.ts
