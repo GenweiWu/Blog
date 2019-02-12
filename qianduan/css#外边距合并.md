@@ -8,6 +8,7 @@
 ## 2、基本场景
 
 ### 2.1 相邻的兄弟元素
+![image](https://user-images.githubusercontent.com/16630659/52623545-88442080-2ee7-11e9-8a5b-884622a84d2e.png)
 
 ### 2.2 父亲元素和第一个、最后一个子元素
 
