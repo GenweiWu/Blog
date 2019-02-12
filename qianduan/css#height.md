@@ -89,9 +89,9 @@ html,body{
 - 参考fix1的方法,显式设置高度,则inner的height:100%就能生效
  `parent的高度(非auto) * 100%` 
 
-### 3.2 设置为postion:absolute
+### 3.2 设置绝对定位（postion:absolute或postion:fixed）
 - 如果父元素的高度是auto，即它的高度是子元素撑起来的，则可以设置`postion:absolute`来让他实现height:100%的效果
-- 个人理解：这里的父元素的描述不太准确，应该叫做`containing block`，父元素是relative则是父元素，否则可能是根元素
+- 个人理解：这里的父元素的描述不太准确，应该叫做`containing block`(单独研究)
 
 ## 4. 非absolute和absolute元素的heigh:100%的区别
 
