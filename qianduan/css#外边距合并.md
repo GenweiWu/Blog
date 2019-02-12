@@ -11,8 +11,10 @@
 ![image](https://user-images.githubusercontent.com/16630659/52623545-88442080-2ee7-11e9-8a5b-884622a84d2e.png)
 
 ### 2.2 父亲元素和第一个、最后一个子元素
+![image](https://user-images.githubusercontent.com/16630659/52623722-fc7ec400-2ee7-11e9-8235-572bfe58c2fd.png)
 
 ### 2.3 空的块级元素
+![image](https://user-images.githubusercontent.com/16630659/52623930-7e6eed00-2ee8-11e9-9799-3aa199a52f81.png)
 
 ## 3、如何避免外边距合并
 
