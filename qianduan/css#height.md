@@ -20,3 +20,15 @@
 ```
 此时高度是0  
 ![image](https://user-images.githubusercontent.com/16630659/52607087-f66cf100-2eaf-11e9-8092-b033267752f3.png)
+
+### 正确方法是要设置html,body的高度为100%
+> css
+```css
+html,body{
+  height:100%;
+}
+
+.area{
+  height:100%;
+}
+```
