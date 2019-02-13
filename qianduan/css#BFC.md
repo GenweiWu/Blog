@@ -24,6 +24,16 @@ BFC即块格式化上下文，可以理解成一个封闭的大箱子(box)，内
 
 ## 4、块格式化上下文的作用
 
+### 4.1 [防止外边距合并](https://jsfiddle.net/GenweiWu/8px72y5f/)   
+- (外边距合并要求两者在同一个块中)  
+
+![image](https://user-images.githubusercontent.com/16630659/52697143-c6a31380-2fab-11e9-87a4-5a1b6f86a876.png)
+
+### 4.2 [防止浮动高度坍塌](https://jsfiddle.net/GenweiWu/busa073v/)
+![image](https://user-images.githubusercontent.com/16630659/52697271-0ec23600-2fac-11e9-8ceb-9fb422a118e5.png)
+
+### 4.3 [不与浮动元素重叠](https://jsfiddle.net/GenweiWu/d02fxago/)
+![image](https://user-images.githubusercontent.com/16630659/52698334-3e723d80-2fae-11e9-8c21-e7b96900c5ae.png)
 
 ## 5、参考
 - https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context
