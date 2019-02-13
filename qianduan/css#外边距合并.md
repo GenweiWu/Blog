@@ -9,27 +9,30 @@
 
 ## 2、基本场景
 
-### 2.1 [相邻的兄弟元素](https://jsfiddle.net/GenweiWu/afz8wyv1/)
+### 2.1 相邻的兄弟元素
 ![image](https://user-images.githubusercontent.com/16630659/52623545-88442080-2ee7-11e9-8a5b-884622a84d2e.png)
 
-### 2.2 [父亲元素和第一个、最后一个子元素](https://jsfiddle.net/GenweiWu/ok5b9tvs/)
+### 2.2 父亲元素和第一个、最后一个子元素
 ![image](https://user-images.githubusercontent.com/16630659/52623722-fc7ec400-2ee7-11e9-8235-572bfe58c2fd.png)
 
-### 2.3 [空的块级元素](https://jsfiddle.net/GenweiWu/5yacgdkx/)
+### 2.3 空的块级元素
 ![image](https://user-images.githubusercontent.com/16630659/52623930-7e6eed00-2ee8-11e9-9799-3aa199a52f81.png)
 
 ## 3、如何避免外边距合并
 
-### 3.1 相邻的兄弟元素
+### 3.1 [相邻的兄弟元素](https://jsfiddle.net/GenweiWu/afz8wyv1/)
+
+其实下面这些感觉不大好用，建议用一个父元素包一下
 - float: left / right
 - position: absolute
 - display: inline-block
 
-### 3.2 父亲元素和第一个、最后一个子元素
+
+### 3.2 [父亲元素和第一个、最后一个子元素](https://jsfiddle.net/GenweiWu/ok5b9tvs/)
 - 父元素创建BFC(块格式化上下文)
 - 设置垂直方向padding,垂直方向border,插入内联元素进行分割
 
-### 3.3 空的块级元素
+### 3.3 [空的块级元素](https://jsfiddle.net/GenweiWu/5yacgdkx/)
 - 设置垂直方向padding,垂直方向border,插入内联元素进行分割
 
 ## 4、参考
