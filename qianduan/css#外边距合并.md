@@ -20,7 +20,7 @@
 
 ## 3、如何避免外边距合并
 
-参考：https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing 
+> 参考：https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing 
 ```
 (1)相邻元素之间
 毗邻的两个元素之间的外边距会折叠（除非后一个元素需要清除之前的浮动）。
@@ -35,6 +35,20 @@
 height、min-height 将两者分开，则该元素的上下外边距会折叠。
 ```
 
+> 参考：https://segmentfault.com/a/1190000010346113
+```
+浮动元素不会与任何元素发生叠加，也包括它的子元素
+绝对定位元素和其他任何元素之间不发生外边距叠加，也包括它的子元素
+inline-block 元素和其他任何元素之间不发生外边距叠加，也包括它的子元素
+
+创建了 BFC 的元素不会和它的子元素发生外边距叠加
+
+普通流中的块级元素的 margin-bottom 永远和它相邻的下一个块级元素的 margin-top 叠加，除非相邻的兄弟元素 clear
+普通流中的块级元素（没有 border-top、没有 padding-top）的 margin-top 和它的第一个普通流中的子元素（没有clear）发生 margin-top 叠加
+普通流中的块级元素（height为 auto、min-height为0、没有 border-bottom、没有 padding-bottom）和它的最后一个普通流中的子元素（没有自身发生margin叠加或clear）发生 margin-bottom叠加
+如果一个元素的 min-height 为0、没有 border、没有padding、高度为0或者auto、不包含子元素，那么它自身的外边距会发生叠加
+```
 
 ## 4、参考
 - https://www.w3.org/TR/2011/REC-CSS2-20110607/box.html#collapsing-margins
+- https://segmentfault.com/a/1190000010346113
