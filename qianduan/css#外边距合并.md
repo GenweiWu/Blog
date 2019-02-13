@@ -20,6 +20,24 @@
 
 ## 3、如何避免外边距合并
 
+### 3.1 相邻的兄弟元素
+- float: left / right
+- position: absolute
+- display: inline-block
+
+### 3.2 父亲元素和第一个、最后一个子元素
+- 父元素创建BFC(块格式化上下文)
+- 设置垂直方向padding,垂直方向border,插入内联元素进行分割
+
+### 3.3 空的块级元素
+- 设置垂直方向padding,垂直方向border,插入内联元素进行分割
+
+## 4、参考
+- https://www.w3.org/TR/2011/REC-CSS2-20110607/box.html#collapsing-margins
+- https://segmentfault.com/a/1190000010346113
+- https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing 
+
+
 > 参考：https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing 
 ```
 (1)相邻元素之间
@@ -48,7 +66,3 @@ inline-block 元素和其他任何元素之间不发生外边距叠加，也包�
 普通流中的块级元素（height为 auto、min-height为0、没有 border-bottom、没有 padding-bottom）和它的最后一个普通流中的子元素（没有自身发生margin叠加或clear）发生 margin-bottom叠加
 如果一个元素的 min-height 为0、没有 border、没有padding、高度为0或者auto、不包含子元素，那么它自身的外边距会发生叠加
 ```
-
-## 4、参考
-- https://www.w3.org/TR/2011/REC-CSS2-20110607/box.html#collapsing-margins
-- https://segmentfault.com/a/1190000010346113
