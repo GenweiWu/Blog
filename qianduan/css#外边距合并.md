@@ -34,3 +34,7 @@
 如果一个块级元素中不包含任何内容，并且在其 margin-top 与 margin-bottom 之间没有边框、内边距、行内内容、
 height、min-height 将两者分开，则该元素的上下外边距会折叠。
 ```
+
+
+## 4、参考
+- https://www.w3.org/TR/2011/REC-CSS2-20110607/box.html#collapsing-margins
