@@ -9,3 +9,7 @@ _el.getBoundingClientRect()
 ```ts
 element.getBoundingClientRect().bottom;
 ```
+
+## [含义](http://www.webhek.com/post/getclientrects-getboundingclientrect.html)
+![image](https://user-images.githubusercontent.com/16630659/53394088-1c7ab100-39d9-11e9-85eb-46f383842352.png)
+![image](https://user-images.githubusercontent.com/16630659/53394108-2997a000-39d9-11e9-8d58-4ed1aba21bf6.png)
