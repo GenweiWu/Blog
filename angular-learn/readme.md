@@ -25,12 +25,19 @@ You specified the dry-run flag, so no changes will be written.
   update src\app\app.module.ts
 ```
 
-### 2. ng g without test
+### 2、ng g without test
 
 to generate a component without a "...spec.ts" file   
 you simply run "--spec false". Example below
 ```
 ng g c testfile --spec false
+```
+
+### 3、ng命令传参数
+下面的效果是一样的：
+```
+npm start -- --port 4301
+ng serve --port 4301
 ```
 
 
