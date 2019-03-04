@@ -131,5 +131,9 @@ section>div{
 }
 ```
 
+![image](https://user-images.githubusercontent.com/16630659/53733460-0333a200-3ebc-11e9-8aba-d558dc12edaa.png)
+![image](https://user-images.githubusercontent.com/16630659/53733526-337b4080-3ebc-11e9-91a5-7bbb3772dee8.png)
+
+
 ## 参考资料
 https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient
