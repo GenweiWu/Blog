@@ -187,6 +187,61 @@ div{
 ![image](https://user-images.githubusercontent.com/16630659/53804876-9b488e80-3f83-11e9-8c00-7d948ded332f.png)
 
 
+## Hard Color Stops
+可以形成硬边界，而不是过滤效果，见下方的例子
+
+```html
+<h4>hard stop效果</h4>  
+<section>
+  <div class="test1"></div>
+  <div class="test2"></div>
+  <div class="test3"></div>
+  <div class="test4"></div>
+</section>
+  
+<h4>期望的进度条效果</h4>
+<section>
+  <div class="demo1"></div>
+  <div class="demo2"></div>
+</section>
+```
+
+```css
+section>div{
+  height:40px;
+  border:1px solid ; 
+  margin-bottom:10px;
+}
+
+.test1{
+  background: linear-gradient(to right, red, white 40%,blue);
+}
+.test2{
+  background: linear-gradient(to right, red,white 40%,yellow 40%, blue);
+}
+
+.test3{
+  background: linear-gradient(to right, red,yellow 40%,blue);
+}
+.test4{
+  background: linear-gradient(to right, red,yellow 40%,white 40%, blue);
+}
+
+.demo1{
+ background-color:#5cb85c;
+  background-image: linear-gradient(45deg,rgba(255,255,255,0.2) 25%,yellow 25%,transparent 50%,yellow 50%,
+    rgba(255,255,255,0.2) 75%,yellow 75%,transparent);
+}
+.demo2{
+  background-color:#5cb85c;
+  background-image: linear-gradient(45deg,rgba(255,255,255,0.2) 25%,transparent 25%,transparent 50%,rgba(255,255,255,0.2) 50%,
+    rgba(255,255,255,0.2) 75%,transparent 75%,transparent);
+}
+```
+
+![image](https://user-images.githubusercontent.com/16630659/53805590-879e2780-3f85-11e9-8c51-f80afdf196e7.png)
+
+
 ## 参考资料
 - https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient 
 - https://css-tricks.com/snippets/css/css-linear-gradient/
