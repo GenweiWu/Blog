@@ -134,10 +134,63 @@ section>div{
 ![image](https://user-images.githubusercontent.com/16630659/53733460-0333a200-3ebc-11e9-8aba-d558dc12edaa.png)
 ![image](https://user-images.githubusercontent.com/16630659/53733526-337b4080-3ebc-11e9-91a5-7bbb3772dee8.png)
 
+## 透明
+
+```html
+  <h4>完全透明(0)时，颜色没影响</h4>
+  <section>
+    <div class="test1"></div>
+    <div class="test2"></div>
+  </section>
+  <h4>不完全透明时，颜色有影响</h4>
+  <section>
+    <div class="test3"></div>
+    <div class="test4"></div>
+  </section>
+  <h4>支持图片+透明</h4>
+  <section>
+    <div class="light-image1"></div>
+    <div class="light-image2"></div>
+  </section>
+```
+
+```css
+div{
+  height:30px;
+  margin-top:10px;
+}
+.test1 {
+  background: linear-gradient(to right, blue, rgba(0,0,0,0));
+}
+.test2{
+  background: linear-gradient(to right, blue, rgba(255,255,255,0));
+}
+.test3 {
+  background: linear-gradient(to right, blue, rgba(0,0,0,0.3));
+}
+.test4{
+  background: linear-gradient(to right, blue, rgba(255,255,255,0.3));
+}
+
+
+.light-image1{
+  height:50px;
+   background: url(https://user-images.githubusercontent.com/16630659/53804491-a51dc200-3f82-11e9-9bda-0ccb0bb59611.png);
+}
+.light-image2{
+  height:50px;
+   background: linear-gradient(to right,rgba(255,255,255,0), rgba(255,255,255,1)),
+     url(https://user-images.githubusercontent.com/16630659/53804491-a51dc200-3f82-11e9-9bda-0ccb0bb59611.png);
+}
+```
+
+![image](https://user-images.githubusercontent.com/16630659/53804876-9b488e80-3f83-11e9-8c00-7d948ded332f.png)
+
 
 ## 参考资料
 - https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient 
 - https://css-tricks.com/snippets/css/css-linear-gradient/
+- https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Using_CSS_gradients
 
 ## 备忘
 
