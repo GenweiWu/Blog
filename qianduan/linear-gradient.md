@@ -136,8 +136,8 @@ section>div{
 
 
 ## 参考资料
-https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient
-https://css-tricks.com/snippets/css/css-linear-gradient/
+- https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient 
+- https://css-tricks.com/snippets/css/css-linear-gradient/
 
 ## 备忘
 
