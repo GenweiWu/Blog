@@ -137,3 +137,14 @@ section>div{
 
 ## 参考资料
 https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient
+
+## 备忘
+
+> 白毛浮绿水 白F
+```
+#FFF 白色
+#000 黑色
+```
+
+
+
