@@ -14,7 +14,7 @@ where <side-or-corner> = [left | right] || [top | bottom]
   and <color-stop>     = <color> [ <percentage> | <length> ]?
 ```
 
-## 举例(关注css部分)
+## 基础用法(关注css部分)
 ```html
 <h4>单方向</h4>
 <section>
