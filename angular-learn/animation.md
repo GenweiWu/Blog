@@ -20,6 +20,9 @@ trigger('myAwesomeAnimation', [
 ```
 
 ### 1.2 样例
+
+![animation1](https://user-images.githubusercontent.com/16630659/54354618-13086e80-4692-11e9-9056-9be1768e3822.gif)
+
 [样例1](https://stackblitz.com/edit/angular-list-animations-stagger)  
 ```html
 <h2>Angular Animations In Lists</h2>
@@ -125,6 +128,9 @@ export class AppComponent {
 ```
 
 ## 2、keyframes动画
+
+![animation22](https://user-images.githubusercontent.com/16630659/54354617-13086e80-4692-11e9-904c-4ed26404be58.gif)
+
 [在线样例](https://stackblitz.com/edit/angular-list-animation-keyframes)
 
 ```html
