@@ -22,6 +22,13 @@ trigger('myAwesomeAnimation', [
 ### 1.2 样例
 [样例1](https://stackblitz.com/edit/angular-list-animations-stagger)  
 ```html
+<h2>Angular Animations In Lists</h2>
+<button (click)="toggle()">Show / Hide Items</button>
+<button (click)="reload()">Reload Items</button>
+<button (click)="reload222()">setTimeout Reload Items</button>
+
+
+<hr />
 <!-- 下面这样是不行，没有动态效果 -->
 <!-- <div @listAnimation -->
 <div [@listAnimation]="items.length"
@@ -35,6 +42,13 @@ trigger('myAwesomeAnimation', [
 ```
 
 ```ts
+import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
+
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
   animations: [
     trigger('listAnimation', [
       transition('* => *', [ // each time the binding value changes
@@ -52,6 +66,45 @@ trigger('myAwesomeAnimation', [
       ])
     ])
   ],
+  styleUrls: ['./app.component.css'],
+})
+
+
+export class AppComponent {
+  items = [];
+
+
+  logAnimation(_event) {
+    console.log(_event)
+  }
+  showItems() {
+    // [0, 1, 2, 3, 4, 6, 7, 8, 9, 10].map((i) => {
+    //   this.items.push("User Number - " + i)
+    // })
+
+    this.items = [0, 1, 2, 3, 4, 6, 7, 8, 9, 10];
+
+  }
+
+  hideItems() {
+    this.items = [];
+  }
+
+  toggle() {
+    this.items.length ? this.hideItems() : this.showItems();
+  }
+
+  reload() {
+    this.items = [1, 2, 3, 4, 5, 6];
+  }
+
+  reload222() {
+    this.items = [];
+    setTimeout(() => {
+      this.items = [1, 2, 3, 4, 5, 6];
+    }, 100)
+  }
+}
 ```
 
 ### 1.2.1 注意:不要直接写在组件上，写在父层div上
@@ -88,12 +141,18 @@ trigger('myAwesomeAnimation', [
 ```
 
 ```ts
+import { Component } from '@angular/core';
+import { trigger, transition, style, animate, query, stagger, keyframes } from '@angular/animations';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
   animations: [
     trigger('listAnimation', [
       transition('* => *', [ // each time the binding value changes
 
         query(':enter', [
-           //这里指定初始效果
           style({ transform: 'translateX(-100%)' }),
           stagger(400, [
             animate(600, keyframes([ // 回弹的效果
@@ -107,6 +166,19 @@ trigger('myAwesomeAnimation', [
       ])
     ])
   ],
+})
+export class AppComponent {
+  name = 'Angular';
+  nameList = [];
+
+  ngOnInit() {
+
+  }
+
+  toggle() {
+    this.nameList = this.nameList.length ? [] : [1, 2, 3, 4, 5, 6];
+  }
+}
 ```
 
 
