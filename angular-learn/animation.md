@@ -54,9 +54,9 @@ trigger('myAwesomeAnimation', [
   ],
 ```
 
-### 1.3 注意:不要直接写在组件上，写在父层div上
+### 1.2.1 注意:不要直接写在组件上，写在父层div上
 > 成功
-```
+```html
 <div [@listAnimation]="sectionExperts">
       <div *ngFor="let item of items">
          <card [item]="item"></card>
@@ -65,11 +65,9 @@ trigger('myAwesomeAnimation', [
 ```
 
 > 失败
-```
+```html
 <div [@listAnimation]="sectionExperts">
-      <div *ngFor="let item of items">
-         <card [item]="item"></card>
-      </div>
+   <card [item]="item" *ngFor="let item of items"></card>
 </div>
 ```
 
