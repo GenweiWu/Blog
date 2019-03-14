@@ -18,6 +18,42 @@ trigger('myAwesomeAnimation', [
 ])
 ```
 
+#### [样例1](https://stackblitz.com/edit/angular-list-animations-stagger)
+```html
+<!-- 下面这样是不行，没有动态效果 -->
+<!-- <div @listAnimation -->
+<div [@listAnimation]="items.length"
+    (@listAnimation.start)="logAnimation($event)"
+    (@listAnimation.done)="logAnimation($event)"
+>
+  <div *ngFor="let item of items">
+    <div>{{ item }}</div>
+  </div>
+</div>
+```
+
+```ts
+  animations: [
+    trigger('listAnimation', [
+      transition('* => *', [ // each time the binding value changes
+        query(':leave', [
+          stagger(100, [
+            animate('0.5s', style({ opacity: 0 }))
+          ])
+        ], { optional: true }),
+        query(':enter', [
+          style({ opacity: 0 }),
+          stagger(100, [
+            animate('0.5s', style({ opacity: 1 }))
+          ])
+        ], { optional: true })
+      ])
+    ])
+  ],
+```
+
+
+
 
 ### 参考
 - https://angular.cn/guide/transition-and-triggers
