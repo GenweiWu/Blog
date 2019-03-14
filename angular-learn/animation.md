@@ -1,8 +1,9 @@
 动画效果 Animation
 ==
 
-### 使用 stagger() 来实现在每个动画之间延迟 xx毫秒
+## 1.使用 stagger() 来实现在每个动画之间延迟 xx毫秒
 
+### 1.1 说明
 [参考](https://stackoverflow.com/a/45360755)
 ```ts
 trigger('myAwesomeAnimation', [
@@ -18,7 +19,8 @@ trigger('myAwesomeAnimation', [
 ])
 ```
 
-#### [样例1](https://stackblitz.com/edit/angular-list-animations-stagger)
+### 1.2 样例
+[样例1](https://stackblitz.com/edit/angular-list-animations-stagger)  
 ```html
 <!-- 下面这样是不行，没有动态效果 -->
 <!-- <div @listAnimation -->
@@ -52,7 +54,24 @@ trigger('myAwesomeAnimation', [
   ],
 ```
 
+### 1.3 注意:不要直接写在组件上，写在父层div上
+> 成功
+```
+<div [@listAnimation]="sectionExperts">
+      <div *ngFor="let item of items">
+         <card [item]="item"></card>
+      </div>
+</div>
+```
 
+> 失败
+```
+<div [@listAnimation]="sectionExperts">
+      <div *ngFor="let item of items">
+         <card [item]="item"></card>
+      </div>
+</div>
+```
 
 
 ### 参考
