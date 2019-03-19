@@ -48,6 +48,7 @@ public class InterruptThread extends Thread
         
         //强行结束，否则会一直运行
         Thread.sleep(30);
+        System.out.println(new Date() + "--> force exit");
         System.exit(0);
     }
     
@@ -65,6 +66,7 @@ Tue Mar 19 14:49:32 CST 2019--> Someone interrupted me.
 ....................
 Tue Mar 19 14:49:32 CST 2019--> Someone interrupted me.
 Tue Mar 19 14:49:32 CST 2019--> Someone interrupted me.
+Tue Mar 19 14:49:32 CST 2019--> force exit
 
 Process finished with exit code 0
 ```
