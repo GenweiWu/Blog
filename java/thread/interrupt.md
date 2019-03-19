@@ -16,6 +16,7 @@ Thread.isInterrupted()
 
 ## 代码样例
 
+### 样例1继续运行，`isInterrupted`被设置为true
 ```java
 import java.util.Date;
 
@@ -68,5 +69,62 @@ Tue Mar 19 14:49:32 CST 2019--> Someone interrupted me.
 Process finished with exit code 0
 ```
 
+### 样例2继续运行，捕获`InterruptedException`异常，且`isInterrupted`被重置为false
+```java
 
+import java.util.Date;
+
+public class InterruptThread2 extends Thread
+{
+    public void run()
+    {
+        while (true)
+        {
+            try
+            {
+                Thread.sleep(500);
+                if (Thread.currentThread().isInterrupted())
+                {
+                    System.out.println(new Date() + "--> Someone interrupted me.");
+                }
+                else
+                {
+                    System.out.println(new Date() + "--> Thread is Going...");
+                }
+            }
+            catch (InterruptedException e)
+            {
+                boolean status = Thread.currentThread().isInterrupted();
+                System.out.println(new Date() + "--> Thread InterruptedException --> " + status);
+            }
+        }
+    }
+    
+    public static void main(String[] args)
+        throws InterruptedException
+    {
+        InterruptThread2 t = new InterruptThread2();
+        t.start();
+        //本来想设置interrupt标识为true，但是由于该线程在阻塞状态，所以该子线程捕获了InterruptedException异常，且状态被重置了
+        t.interrupt();
+        
+        Thread.sleep(3000);
+        System.out.println(new Date() + "--> force exit");
+        System.exit(0);
+    }
+    
+}
+```
+
+```console
+Tue Mar 19 15:09:35 CST 2019--> Thread InterruptedException --> false
+Tue Mar 19 15:09:36 CST 2019--> Thread is Going...
+Tue Mar 19 15:09:37 CST 2019--> Thread is Going...
+Tue Mar 19 15:09:37 CST 2019--> Thread is Going...
+Tue Mar 19 15:09:38 CST 2019--> Thread is Going...
+Tue Mar 19 15:09:38 CST 2019--> Thread is Going...
+Tue Mar 19 15:09:38 CST 2019--> force exit
+
+Process finished with exit code 0
+```
 
