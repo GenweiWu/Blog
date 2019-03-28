@@ -99,6 +99,8 @@ this.router.navigateByUrl('/login');
 ```
 
 ## 不改变url
+
+#### 1)skipLocationChange:保持url不变  
 参考：https://stackoverflow.com/a/37055297/6182927
 ```ts
 router.navigateByUrl("/team/33/user/11", { skipLocationChange: true });
@@ -107,6 +109,12 @@ router.navigateByUrl("/team/33/user/11", { skipLocationChange: true });
 ```html
 <a [routerLink]="..." skipLocationChange>click me</a>
 ```
+
+#### 2)replaceUrl:替换url  
+```ts
+router.navigateByUrl("/team/33/user/11", { replaceUrl: true });
+```
+
 
 ## 两种路由方式
 
