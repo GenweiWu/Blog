@@ -100,7 +100,7 @@ this.router.navigateByUrl('/login');
 
 ## 不改变url
 
-#### 1)skipLocationChange:保持url不变  
+#### 1)`skipLocationChange`:保持url不变  
 参考：https://stackoverflow.com/a/37055297/6182927
 ```ts
 router.navigateByUrl("/team/33/user/11", { skipLocationChange: true });
@@ -110,10 +110,17 @@ router.navigateByUrl("/team/33/user/11", { skipLocationChange: true });
 <a [routerLink]="..." skipLocationChange>click me</a>
 ```
 
-#### 2)replaceUrl:替换url  
+#### 2)`replaceUrl`:替换url  
 ```ts
 router.navigateByUrl("/team/33/user/11", { replaceUrl: true });
 ```
+
+### 3)总结
+- 都会触发路由的逻辑，即页面内容发生改变。
+- `skipLocationChange`是保留前面的1，抛弃后面的2
+- `replaceUrl`则是抛弃前面的1，保留后面的2
+
+![image](https://user-images.githubusercontent.com/16630659/55144613-30523800-517c-11e9-8e27-446759b3a3b8.png)
 
 
 ## 两种路由方式
