@@ -6,6 +6,7 @@
 ## 适配方法1
 **利用`label`的`for`功能**
 
+#### :)代码
 ```html
   <input type="file" name="file" id="file" class="inputfile"/>
   <label for="file">点击上传</label>
@@ -41,7 +42,10 @@ label {
 }
 ```
 
-效果  
+#### :)效果  
 ![image](https://user-images.githubusercontent.com/16630659/55272580-6ec13180-52f9-11e9-972d-6ea0395284b6.png)
 
+#### :)总结
+- 样式有局限性：只能用label,在label下放其他元素都不行
+- 移上去，没有`没有选择文件`的提示，这块国际化没法搞
 
