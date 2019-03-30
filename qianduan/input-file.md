@@ -49,3 +49,45 @@ label {
 - 样式有局限性：只能用label,在label下放其他元素都不行
 - 移上去，没有`没有选择文件`的提示，这块国际化没法搞
 
+## 适配方法2
+**将input-file透明化放在前面**
+
+#### :)代码
+```html
+  <div class="file-input-wrapper">
+    <button>点击上传</button>
+    <input id="custom-input" type="file"/>
+  </div>
+```
+
+```css
+.file-input-wrapper {
+  position: relative;
+  width: 90px;
+  overflow: hidden;
+}
+
+.file-input-wrapper > input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+button{
+  padding:10px 10px;
+}
+```
+
+
+#### :)效果
+![image](https://user-images.githubusercontent.com/16630659/55272674-eba0db00-52fa-11e9-8472-834d665608c1.png)
+
+
+#### :)总结
+- 缺点是有移上去的提示无法国际化处理
+- 优点是样式调整更方便
+
