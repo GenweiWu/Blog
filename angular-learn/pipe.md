@@ -5,6 +5,7 @@
 <div>{{''|currentLocale}}</div>
 ```
 
+### **有缺陷的**
 ```ts
 import { ChangeDetectorRef, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from 'ng2-translate';
@@ -42,3 +43,55 @@ export class CurrentLocalePipe implements PipeTransform {
 }
 
 ```
+
+### 上面的代码存在缺陷：`ERROR Error: ViewDestroyedError: Attempt to use a destroyed view: detectChanges`
+原来的页面关闭后，打开新页面，之前的代码还是会执行，所以会报错
+
+```ts
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { TranslateService } from 'ng2-translate';
+import { Subscription } from 'rxjs';
+
+@Pipe({
+  name: 'currentLocale',
+  pure: false
+})
+export class CurrentLocalePipe implements PipeTransform, OnDestroy {
+  private _currentLocale: string;
+
+  private changes$$: Subscription;
+
+  constructor(
+    private translate: TranslateService,
+    private ref: ChangeDetectorRef
+  ) {
+  //记录下Subscription用于后面释放
+    this.changes$$ = translate.onLangChange.subscribe(x => {
+      this.update();
+      this.ref.detectChanges();
+    });
+
+    this.update();
+  }
+
+  private update() {
+    this._currentLocale = this.translate.currentLang;
+  }
+
+  transform(value: any): any {
+    return this._currentLocale;
+  }
+
+  ngOnDestroy() {
+  //重要!!!这里要释放
+    if (this.changes$$) {
+      this.changes$$.unsubscribe();
+    }
+  }
+
+
+}
+
+```
+
+
