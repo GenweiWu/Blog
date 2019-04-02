@@ -94,4 +94,6 @@ export class CurrentLocalePipe implements PipeTransform, OnDestroy {
 
 ```
 
+参考：https://github.com/angular/angular/issues/15041#issuecomment-334156205
+
 
