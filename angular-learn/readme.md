@@ -126,3 +126,13 @@ class也可用于类型检查，而且可以用于创建对象
 
 参考 https://toddmotto.com/classes-vs-interfaces-in-typescript
 
+
+## 类型定义`type`
+```ts
+export interface SelectOption {
+  label: string;
+  value: string;
+}
+
+export type SelectOptions = SelectOption[];
+```
