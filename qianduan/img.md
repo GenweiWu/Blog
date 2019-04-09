@@ -2,7 +2,7 @@ img
 ==
 
 
-### 1. img的alt属性和title属性的区别
+### `img`的`alt`属性和`title`属性的区别
 
 ```
 （1）区别
