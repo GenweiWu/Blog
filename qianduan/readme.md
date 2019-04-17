@@ -1,3 +1,10 @@
+## pre
+```css
+pre{
+  word-break: break-all;
+  word-wrap: break-word;
+}
+```
 
 ## css中的url
 参考：https://developer.mozilla.org/en-US/docs/Web/CSS/url  
