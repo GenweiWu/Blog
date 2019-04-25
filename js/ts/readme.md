@@ -2,6 +2,10 @@
 - [ts中文网](https://www.tslang.cn/docs/handbook/classes.html)
 
 
+## 编译
+#### a)单文件编译测试 
+`tsc --target es5 hello.ts --watch`
+
 ## 枚举值enum的使用
 
 > TypeEnum.ts
