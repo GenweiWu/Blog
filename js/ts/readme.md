@@ -1,3 +1,7 @@
+## 资料
+- [ts中文网](https://www.tslang.cn/docs/handbook/classes.html)
+
+
 ## 枚举值enum的使用
 
 > TypeEnum.ts
