@@ -1,3 +1,13 @@
+## animation vs transition
+
+https://www.kirupa.com/html5/css3_animations_vs_transitions.htm
+> If what I want requires the flexibility provided by having multiple keyframes and easy looping, then I go with an animation.
+If I am looking for a simple from/to animation, I go with a transition.
+If I want to manipulate the property values that I wish to animate using JavaScript, I go with a transition.
+
+
+
+
 ## pre
 ```css
 pre{
