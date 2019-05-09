@@ -6,6 +6,11 @@ Maven
 mvn -o clean
 ```
 
+### 1.a 强制更新 `-U`
+```
+mvn clean -U
+```
+
 ### 2. maven打包资源文件  
   如何把web-fragment.xml放到META-INF目录下（[参考](https://stackoverflow.com/a/17531764)）
 ```
