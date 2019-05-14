@@ -22,6 +22,15 @@ Stream.of(split).collect(Collectors.joining("-"));
 bookList.stream().collect(Collectors.toMap(Book::getName, n -> n));
 ```
 
+## [flatMap](./flatMapTest.java)
+```java
+List<String> list1 = Arrays.asList("1", "2", "3");
+List<String> list2 = Arrays.asList("a", "b", "c");
+
+List<Object> collect = listList.stream().flatMap(l -> l.stream()).collect(Collectors.toList());
+System.out.println(collect);  //[1, 2, 3, a, b, c]
+```
+
 ## [findFirst+findAny](./FindTest.java)
 ```java
 Integer target = nums.stream().filter(n -> {
