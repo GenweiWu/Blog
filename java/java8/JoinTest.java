@@ -31,7 +31,7 @@ public class JoinTest
         System.out.println(sum); //aa-bb-cc
         
         //java8
-        String sum222 = Stream.of(split).collect(Collectors.joining("-")).toString();
+        String sum222 = Stream.of(split).collect(Collectors.joining("-"));
         System.out.println(sum222); //aa-bb-cc
     }
 }
