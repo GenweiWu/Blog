@@ -15,4 +15,23 @@ public class JoinTest
         System.out.println(joinResult);
         //1-2-3-4-5
     }
+    
+    @Test
+    public void test2()
+    {
+        String[] split = {"aa", "bb", "cc"};
+        
+        //java8之前
+        String sum = "";
+        for (String s : split)
+        {
+            sum = sum + s + "-";
+        }
+        sum = sum.substring(0, sum.length() - 1);
+        System.out.println(sum); //aa-bb-cc
+        
+        //java8
+        String sum222 = Stream.of(split).collect(Collectors.joining("-")).toString();
+        System.out.println(sum222); //aa-bb-cc
+    }
 }
