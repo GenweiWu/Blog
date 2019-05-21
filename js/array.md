@@ -23,3 +23,59 @@ const moreFruits = [ 'orange', 'plum' ];
 
 fruits.push(...moreFruits); // ["apple", "banana", "orange", "plum"]
 ```
+
+## 循环
+
+```ts
+let someArray = ['aa', 'bb', 'cc'];
+
+//for of方式
+for (let i of someArray) {
+  console.log(i);
+}
+console.log('----------------');
+
+//for in方式：注意for in得到的是下标不是元素本身
+for (let i in someArray) {
+  console.log(i + '-->' + someArray[i]);
+}
+console.log('----------------');
+
+//传统的for循环方式
+for (let i = 0; i < someArray.length; i++) {
+  console.log(i + '-->' + someArray[i]);
+}
+console.log('----------------');
+
+//es5 forEach方法
+someArray.forEach((val, index, arr) => {
+  //var元素值，index下标，arr数组本身
+  console.log(index + '==>' + val);
+  console.log(arr);
+});
+```
+
+output:
+```
+aa
+bb
+cc
+----------------
+0-->aa
+1-->bb
+2-->cc
+----------------
+0-->aa
+1-->bb
+2-->cc
+----------------
+0==>aa
+(3) ["aa", "bb", "cc"]
+1==>bb
+(3) ["aa", "bb", "cc"]
+2==>cc
+(3) ["aa", "bb", "cc"]
+```
+
+
+
