@@ -26,6 +26,11 @@ fruits.push(...moreFruits); // ["apple", "banana", "orange", "plum"]
 
 ## 循环
 
+- for of方法
+- for in方法
+- 传统for循环方法
+- forEach方法
+
 ```ts
 let someArray = ['aa', 'bb', 'cc'];
 
