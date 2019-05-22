@@ -35,6 +35,12 @@ result = [1, 2, -1].every(x => x > 0);
 console.log(result);//false
 ```
 
+空数组返回true
+```ts
+[].every(x => x > 0)
+true
+```
+
 ## some 判断是否有元素满足某个条件
 只要有一个元素满足这个条件，就返回true，都不满足才返回false
 
@@ -44,6 +50,12 @@ console.log(result);//true
 
 result = [-1, -2, -3].some(x => x > 0);
 console.log(result);//false
+```
+
+空数组返回false
+```ts
+[].some(x => x > 0);
+false
 ```
 
 ## 循环
