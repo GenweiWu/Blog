@@ -24,6 +24,28 @@ const moreFruits = [ 'orange', 'plum' ];
 fruits.push(...moreFruits); // ["apple", "banana", "orange", "plum"]
 ```
 
+## every 判断是否所有元素都满足某个条件
+都满足返回true，有一个不满足就返回false
+
+```ts
+let result: boolean = [1, 2, 3].every(x => x > 0);
+console.log(result);//true
+
+result = [1, 2, -1].every(x => x > 0);
+console.log(result);//false
+```
+
+## some 判断是否有元素满足某个条件
+只要有一个元素满足这个条件，就返回true，都不满足才返回false
+
+```ts
+let result: boolean = [-1, -2, 3].some(x => x > 0);
+console.log(result);//true
+
+result = [-1, -2, -3].some(x => x > 0);
+console.log(result);//false
+```
+
 ## 循环
 
 - for of方法
