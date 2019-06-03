@@ -3,7 +3,9 @@ angular2 自定义控件(学习笔记)
 
 ## 一、如何支持ngModel绑定?
 
+参考：   
 https://angular.io/api/forms/ControlValueAccessor
+https://github.com/angular/angular/blob/master/packages/forms/src/directives/checkbox_value_accessor.ts
 
 需要实现`ControlValueAccessor`接口，对应四个方法
 ```ts
