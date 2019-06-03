@@ -3,6 +3,8 @@ angular2 自定义控件(学习笔记)
 
 ## 一、如何支持ngModel绑定?
 
+https://angular.io/api/forms/ControlValueAccessor
+
 需要实现`ControlValueAccessor`接口，对应四个方法
 ```ts
 //Set touched on blur
