@@ -6,11 +6,18 @@ https://angular-flexdemo.stackblitz.io
 
 ## flex项目属性
 
-#### order影响排序
+- order  
+![image](https://user-images.githubusercontent.com/16630659/58795212-ae273980-862c-11e9-9b39-ff3e0c113455.png)
 
-![image](https://user-images.githubusercontent.com/16630659/58791948-c6478a80-8625-11e9-94f4-b27d3c6e2632.png)
+- flex-grow  
+![image](https://user-images.githubusercontent.com/16630659/58795231-b54e4780-862c-11e9-8b2b-e875db181335.png)
 
+- flex-shrink  
+![image](https://user-images.githubusercontent.com/16630659/58796245-5b9b4c80-862f-11e9-89de-e72c8e324551.png) 
+![GIF222](https://user-images.githubusercontent.com/16630659/58796226-4e7e5d80-862f-11e9-91a9-bd782c6f39db.gif) 
 
+- align-self  
+![image](https://user-images.githubusercontent.com/16630659/58796294-7e2d6580-862f-11e9-92bc-838ec72b0792.png)
 
 ## 参考
 http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
