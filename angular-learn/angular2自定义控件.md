@@ -9,28 +9,31 @@ https://github.com/angular/angular/blob/master/packages/forms/src/directives/che
 
 需要实现`ControlValueAccessor`接口，对应四个方法
 ```ts
-//Set touched on blur
-    onBlur() {
-        this.onTouchedCallback();
-    }
+	onTouchedCallback = () => { };
+	onChangeCallback = (_:any) => { };
 
-    //From ControlValueAccessor interface
-    writeValue(value: any) {
-        // debugger;
-        if (value !== this.innerValue) {
-            this.innerValue = value;
-        }
-    }
+	//Set touched on blur
+	onBlur() {
+	this.onTouchedCallback();
+	}
 
-    //From ControlValueAccessor interface
-    registerOnChange(fn: any) {
-        this.onChangeCallback = fn;
-    }
+	//From ControlValueAccessor interface
+	writeValue(value: any) {
+	// debugger;
+	if (value !== this.innerValue) {
+	    this.innerValue = value;
+	}
+	}
 
-    //From ControlValueAccessor interface
-    registerOnTouched(fn: any) {
-        this.onTouchedCallback = fn;
-    }
+	//From ControlValueAccessor interface
+	registerOnChange(fn: any) {
+	this.onChangeCallback = fn;
+	}
+
+	//From ControlValueAccessor interface
+	registerOnTouched(fn: any) {
+	this.onTouchedCallback = fn;
+	}
 ```
 其中的`writeValue`方法，会在你通过ngModel设置值的时候，触发`writeValue`方法。  
 入参就是ngModel绑定传递来的值，无论是字符串，还是动态变量的值。
