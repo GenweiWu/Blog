@@ -20,5 +20,5 @@ https://angular-flexdemo.stackblitz.io
 ![image](https://user-images.githubusercontent.com/16630659/58796294-7e2d6580-862f-11e9-92bc-838ec72b0792.png)
 
 ## 参考
-http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
-https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox 
+- http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
+- https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox 
