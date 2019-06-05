@@ -1,3 +1,8 @@
+## 基础
+![image](https://user-images.githubusercontent.com/16630659/35807167-ebc93492-0abc-11e8-8f84-1a552cafa7ff.png)
+
+
+
 ## animation vs transition
 
 https://www.kirupa.com/html5/css3_animations_vs_transitions.htm
