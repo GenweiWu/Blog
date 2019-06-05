@@ -4,6 +4,9 @@ Flex布局
 ## flex容器属性
 https://angular-flexdemo.stackblitz.io
 
+![image](https://user-images.githubusercontent.com/16630659/58924108-13864200-8775-11e9-99e0-1086f26de811.png)
+
+
 ## flex项目属性
 
 - order  影响元素的排序
