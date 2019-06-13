@@ -52,4 +52,7 @@
 ![animation](https://user-images.githubusercontent.com/16630659/59418639-f21ff880-8dfb-11e9-8771-3fccb3da8088.gif)
 
 
+## 参考
+- https://developer.mozilla.org/zh-CN/docs/Web/CSS/animation
+- https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations
 
