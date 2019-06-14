@@ -13,6 +13,7 @@
 ## 详细描述
 
 ### :) animation-direction 
+> 测试信息
 ```css
 .main{
   /* animation: 3s ease-in 1s infinite reverse both running slidein; */
@@ -37,6 +38,39 @@
 ![direction_alternate_reverse](https://user-images.githubusercontent.com/16630659/59479613-4379c780-8e90-11e9-8c36-d4eb3970219f.gif)
 
 
+### :) animation-fillmode
+> 测试信息
+```css
+.main{
+    margin: 20px;
+    margin-top:50px;
+    border: 5px solid #333;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.main{
+  /* animation: 3s ease-in 1s infinite reverse both running slidein; */
+    animation-name: slidein;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+    animation-delay: 2s;
+    animation-iteration-count: 2;
+    animation-direction: alternate-reverse;
+    animation-fill-mode: none; 
+    animation-play-state: running;
+}
+
+@keyframes slidein {
+ 0% {margin-left: 0%;background-color:red}
+ 100% {margin-left: calc(100% - 100px - 5px);background-color:yellow}
+}
+```
+
+> 我的理解
+
+![image](https://user-images.githubusercontent.com/16630659/59480289-a5d3c780-8e92-11e9-995d-1a206229a44a.png)
 
 
 
