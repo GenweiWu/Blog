@@ -72,9 +72,16 @@
 
 ![image](https://user-images.githubusercontent.com/16630659/59480289-a5d3c780-8e92-11e9-995d-1a206229a44a.png)
 
+> demo
 
-
-
+- none (空->动画->空)  
+![fillmode_none](https://user-images.githubusercontent.com/16630659/59480997-33b0b200-8e95-11e9-8426-5685c71c65c5.gif)
+- forward (空->动画->黄色)  
+![fillmode_forwards](https://user-images.githubusercontent.com/16630659/59480998-33b0b200-8e95-11e9-882a-653523f07e70.gif)
+- backwards (红色->动画->空)  
+![fillmode_backwards](https://user-images.githubusercontent.com/16630659/59480999-34494880-8e95-11e9-929f-b5700a3f8f62.gif)
+- both (红色->动画->黄色)  
+![fillmode_both](https://user-images.githubusercontent.com/16630659/59481000-34494880-8e95-11e9-8fe4-79421bbe24e5.gif)
 
 
 ## 样例
