@@ -11,7 +11,37 @@
 `animation-play-state` 动画播放状态，主要有`paused`,`running`  (默认值是running)  
 
 ## 详细描述
-- TODO 
+
+### :) animation-direction 
+```css
+.main{
+  /* animation: 3s ease-in 1s infinite reverse both running slidein; */
+    animation-name: slidein;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+    animation-delay: 2s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+    animation-fill-mode: none; 
+    animation-play-state: running;
+}
+```
+
+-  normal 向右跑了两次  
+![direction_normal](https://user-images.githubusercontent.com/16630659/59479614-4379c780-8e90-11e9-8f3d-61565c2de7d9.gif)
+- reverse 向左跑了两次  
+![direction_reverse](https://user-images.githubusercontent.com/16630659/59479611-42e13100-8e90-11e9-8e70-a1dbf4a54f6d.gif)
+- alternate 先向右，又向左弹回来  
+![direction_alternate](https://user-images.githubusercontent.com/16630659/59479612-42e13100-8e90-11e9-8f77-ae77d6a70a72.gif)
+- alternate-reverse  先向左，又向右弹回来  
+![direction_alternate_reverse](https://user-images.githubusercontent.com/16630659/59479613-4379c780-8e90-11e9-8c36-d4eb3970219f.gif)
+
+
+
+
+
+
+
 
 ## 样例
 
