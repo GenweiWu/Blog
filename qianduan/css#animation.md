@@ -55,10 +55,10 @@
     animation-name: slidein;
     animation-duration: 1.5s;
     animation-timing-function: ease-in;
-    animation-delay: 2s;
-    animation-iteration-count: 2;
-    animation-direction: alternate-reverse;
-    animation-fill-mode: none; 
+    animation-delay: 3s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
     animation-play-state: running;
 }
 
