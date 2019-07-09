@@ -14,9 +14,9 @@ sed [options] -f 'scriptFiles' file(s)
 #### 基本
 ```
 替换每行的第一个匹配
-sed '/s/oldstring/newstring/' file
+sed 's/oldstring/newstring/' file
 使用g替换每行的所有匹配
-sed '/s/oldstring/newstring/g' file
+sed 's/oldstring/newstring/g' file
 ```
 
 > 例1：替换第一个`aaa`到`---`
