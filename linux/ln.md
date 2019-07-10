@@ -71,7 +71,75 @@ total 4
 -rw-------. 1 root root 16 Jul 10 16:03 log2019.log
 ```
 
+### 1.2 目录的软链接
 
+> 1.新建目录软链接
+```console
+[root@SZX1000536229 test]# ll
+total 4
+drwx------. 2 root root 4096 Jul 10 16:22 test
+[root@SZX1000536229 test]# ll test/
+total 4
+-rw-------. 1 root root 6 Jul 10 16:22 hello.txt
+[root@SZX1000536229 test]# ln -s test/  linktest
+[root@SZX1000536229 test]# ll
+total 4
+lrwxrwxrwx. 1 root root    5 Jul 10 16:25 linktest -> test/
+drwx------. 2 root root 4096 Jul 10 16:22 test
+[root@SZX1000536229 test]# ll linktest/
+total 4
+-rw-------. 1 root root 6 Jul 10 16:22 hello.txt
+```
+
+> 2.修改目录软链接
+```console
+[root@SZX1000536229 test]# ll
+total 8
+lrwxrwxrwx. 1 root root    7 Jul 10 16:31 linktest -> test222
+drwx------. 2 root root 4096 Jul 10 16:22 test
+drwx------. 2 root root 4096 Jul 10 16:33 test222
+[root@SZX1000536229 test]# ll test
+total 4
+-rw-------. 1 root root 6 Jul 10 16:22 hello.txt
+[root@SZX1000536229 test]# ll test222/
+total 4
+-rw-------. 1 root root 8 Jul 10 16:31 hello222.txt
+[root@SZX1000536229 test]# ll linktest
+lrwxrwxrwx. 1 root root 7 Jul 10 16:31 linktest -> test222
+[root@SZX1000536229 test]# ll linktest/
+total 4
+-rw-------. 1 root root 8 Jul 10 16:31 hello222.txt
+[root@SZX1000536229 test]# ln -snf test linktest
+[root@SZX1000536229 test]# ll test
+total 4
+-rw-------. 1 root root 6 Jul 10 16:22 hello.txt
+[root@SZX1000536229 test]# ll test222
+total 4
+-rw-------. 1 root root 8 Jul 10 16:31 hello222.txt
+[root@SZX1000536229 test]# ll linktest
+lrwxrwxrwx. 1 root root 4 Jul 10 16:34 linktest -> test
+[root@SZX1000536229 test]# ll linktest/
+total 4
+-rw-------. 1 root root 6 Jul 10 16:22 hello.txt
+```
+
+> 3.删除目录软链接
+```console
+[root@SZX1000536229 test]# ll
+total 4
+lrwxrwxrwx. 1 root root    5 Jul 10 16:38 linktest -> test/
+drwx------. 2 root root 4096 Jul 10 16:22 test
+[root@SZX1000536229 test]# rm -f linktest/
+rm: cannot remove 鈥榣inktest/鈥 Is a directory
+[root@SZX1000536229 test]# ll
+total 4
+lrwxrwxrwx. 1 root root    5 Jul 10 16:38 linktest -> test/
+drwx------. 2 root root 4096 Jul 10 16:22 test
+[root@SZX1000536229 test]# rm -f linktest
+[root@SZX1000536229 test]# ll
+total 4
+drwx------. 2 root root 4096 Jul 10 16:22 test
+```
 
 
 ## 2. 参考
