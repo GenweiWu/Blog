@@ -147,3 +147,4 @@ drwx------. 2 root root 4096 Jul 10 16:22 test
 
 ## 2. 参考
 - https://www.cnblogs.com/peida/archive/2012/12/11/2812294.html
+- https://blog.csdn.net/m290345792/article/details/78518360
