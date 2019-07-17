@@ -30,3 +30,7 @@ Device     Boot Start       End   Sectors Size Id Type
 上面表示有两块磁盘，分别是`/dev/xvda`和`/dev/xvde`;  
 其中`/dev/xvda`大小为40G，且已经分区为 `/dev/xvda1` 4G和 `/dev/xvda2` 36G  
 而`/dev/xvde`大小为100G,目前只有分区`/dev/xvde1`为60G,剩余40G没有分区  
+
+
+## fdisk /dev/xcde 进行分区操作
+http://man.linuxde.net/fdisk
