@@ -15,3 +15,8 @@
 ```
 yum install --disableplugin=fastestmirror httpd
 ```
+
+## 查找命令对应的包
+```
+yum provides find
+```
