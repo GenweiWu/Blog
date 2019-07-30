@@ -14,3 +14,7 @@ export http_proxy
  
 上面的设置只对某个用户生效，如果要对所有系统用户生效，写在/etc/profile中就可以了。
 ```
+
+## epel软件源
+https://mirror.tuna.tsinghua.edu.cn/help/epel/
+
