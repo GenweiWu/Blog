@@ -149,9 +149,11 @@ end
 ```
 
 ## couldn't open temporary file ./sedAbp74q: Permission denied
-个人理解：
-sed的过程是，先读取当前文件，然后在当前目录新建一个temp文件，将替换的内容写到temp文件,删除旧文件
-文件属主都会发生改变了
+
+### 个人理解：
+- sed的过程是，先读取当前文件，然后在当前目录新建一个temp文件，将替换的内容写到temp文件,删除旧文件
+- 文件属主都会发生改变了
+- 即要求的权限是: 读取旧文件 + 创建新文件
 
 > 如果sed的文件不可读,报错:sed: can't read clearContainer.sh: Permission denied  
 ```
