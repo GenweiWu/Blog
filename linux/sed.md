@@ -148,6 +148,53 @@ ddd
 end
 ```
 
+## couldn't open temporary file ./sedAbp74q: Permission denied
+个人理解：
+sed的过程是，先读取当前文件，然后在当前目录新建一个temp文件，将替换的内容写到temp文件,删除旧文件
+文件属主都会发生改变了
+
+> 如果sed的文件不可读,报错:sed: can't read clearContainer.sh: Permission denied  
+```
+[test@SZX1000538971 dave]$ ll -a
+total 24
+drwxr-xr-x. 5 root root 4096 Jul 29 15:36 .
+drwxr-xr-x. 9 root root 4096 Jul 31 15:41 ..
+-rwxr--r--. 1 root root   30 Jul 24 15:04 clearContainer.sh
+...
+[test@SZX1000538971 dave]$ sed -i 's/aaa/bbb/' clearContainer.sh 
+sed: can't read clearContainer.sh: Permission denied
+```
+
+> 如果目录不可写，即使文件是可读可写，还是报错sed: couldn't open temporary file ./sedeXtuss: Permission denied
+```
+[test@SZX1000538971 dave]$ ll -a
+total 24
+drwxr-xr-x. 5 root root 4096 Jul 29 15:36 .
+drwxr-xr-x. 9 root root 4096 Jul 31 15:41 ..
+-rwxrw-rw-. 1 root root   30 Jul 24 15:04 clearContainer.sh
+...
+[test@SZX1000538971 dave]$  sed -i 's/aaa/bbb/' clearContainer.sh 
+sed: couldn't open temporary file ./sedeXtuss: Permission denied
+```
+
+> 如果目录可读写，且文件可读，则才能成功
+```
+[test@SZX1000538971 dave]$ ll -a
+total 24
+drwxrwxrwx. 5 root root 4096 Jul 29 15:36 .
+drwxr-xr-x. 9 root root 4096 Jul 31 15:41 ..
+-rwxr--r--. 1 root root   30 Jul 24 15:04 clearContainer.sh
+...
+[test@SZX1000538971 dave]$ 
+[test@SZX1000538971 dave]$  sed -i 's/aaa/bbb/' clearContainer.sh 
+[test@SZX1000538971 dave]$ ll -a
+total 24
+drwxrwxrwx. 5 root root 4096 Jul 31 15:56 .
+drwxr-xr-x. 9 root root 4096 Jul 31 15:41 ..
+-rwxr--r--. 1 test test   30 Jul 31 15:56 clearContainer.sh
+...
+```
+
 
 
 ## 参考
