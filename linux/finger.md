@@ -21,3 +21,8 @@ On since Mon Aug  5 11:39 (CST) on pts/2 from 1.2.3.6
 No mail.
 No Plan.
 ```
+
+## 需要先安装下
+```
+yum install finger
+```
