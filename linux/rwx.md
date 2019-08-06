@@ -39,3 +39,50 @@ x (access directory)：
 咦！目录的执行权限有啥用途啊？目录只是记录文件名而已，总不能拿来执行吧？没错！目录不可以被执行，目录的x代表的是用户能否进入该目录成为工作目录的用途！ 所谓的工作目录(work directory)就是你目前所在的目录啦！举例来说，当你登入Linux时， 你所在的家目录就是你当下的工作目录。而变换目录的指令是『cd』(change directory)啰！
 ```
 
+## `bash script.sh` vs `./script.sh`
+
+> https://unix.stackexchange.com/a/136550
+- bash script.sh只需要文件的读权限
+- ./script.sh 则需要读权限+执行权限
+
+> run.sh对于test用户是只读的，所以只能`bash run.sh`，而无法`./run.sh`
+```
+[root@SZX1000538970 test222]# ll -a
+total 12
+drwx-----x.  2 root root 4096 Aug  5 16:40 .
+drwxr-xr-x. 10 root root 4096 Aug  5 16:38 ..
+-rwxr--r--.  1 root root   13 Aug  5 16:40 run.sh
+```
+
+```
+[test@SZX1000538970 test222]$ ll run.sh
+-rwxr--r--. 1 root root 13 Aug  5 16:40 run.sh
+[test@SZX1000538970 test222]$ ll -a
+ls: cannot open directory .: Permission denied
+[test@SZX1000538970 test222]$ bash run.sh
+hello
+[test@SZX1000538970 test222]$ ./run.sh
+-bash: ./run.sh: Permission denied
+```
+
+> run.sh对于test用户是可读可执行的，所以`./run.sh`可以正常执行了
+```
+[root@SZX1000538970 test222]# ll -a
+total 12
+drwx-----x.  2 root root 4096 Aug  5 16:40 .
+drwxr-xr-x. 10 root root 4096 Aug  5 16:38 ..
+-rwxr-xr-x.  1 root root   13 Aug  5 16:40 run.sh
+```
+
+```
+[test@SZX1000538970 test222]$ ll run.sh
+-rwxr-xr-x. 1 root root 13 Aug  5 16:40 run.sh
+[test@SZX1000538970 test222]$ ll -a
+ls: cannot open directory .: Permission denied
+[test@SZX1000538970 test222]$ ./run.sh
+hello
+```
+
+
+
+
