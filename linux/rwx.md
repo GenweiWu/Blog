@@ -83,6 +83,10 @@ ls: cannot open directory .: Permission denied
 hello
 ```
 
+## 可以让文件可执行但是不可读吗
+> https://unix.stackexchange.com/a/34205
+一般来说不可以，因为执行shell脚本时，实际执行的是执行器(比如bash或者python等，它们需要读取文件内容才能执行)
+
 
 
 
