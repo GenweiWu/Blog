@@ -34,3 +34,16 @@ grep hello ./2.txt ./1.txt ./3.txt
 ./1.txt:11hello111
 
 ```
+
+#### xargs -0 [command]  //默认的分割是空格和换行符,-0 表示指定null为分割
+```
+[root@SZX1000538971 test]# tree | xargs echo
+. ├── 1.txt ├── 2.txt └── 3.txt 0 directories, 3 files
+[root@SZX1000538971 test]# tree | xargs -0 echo
+.
+├── 1.txt
+├── 2.txt
+└── 3.txt
+
+0 directories, 3 files
+```
