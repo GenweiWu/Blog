@@ -35,3 +35,13 @@ public class HelloSync implements Runnable
         System.out.println("finish.");
     }
 }
+
+/**
+output:
+*
+hello
+world
+hello
+world
+finish.
+*
