@@ -11,3 +11,6 @@
 
 ## telnet connection refused
 要求对应端口是listen状态
+```
+netstat -anp|grep 3306
+```
