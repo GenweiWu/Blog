@@ -8,7 +8,7 @@
 ### 测试代码
 
 > TestTask.java
-```
+```java
 package com.njust.test.multiple.syncdemo;
 
 public class TestTask
@@ -45,7 +45,7 @@ public class TestTask
 ```
 
 > SyncDemo.java
-```
+```java
 package com.njust.test.multiple.syncdemo;
 
 import org.junit.Test;
