@@ -62,14 +62,17 @@ version                            Show SFTP version
 
 ```
 
-#### 3.一些ls命令
+#### 3.一些基本命令
 ```
-sftp> ls *02-01*runtime.gz
-sftp> cd /home/test
-sftp> find *.log
-Invalid command.
+lpwd 展示本地当前目录
+pwd 展示远程当前目录
+lls 本地ls
+ls 远程ls
+lcd 本地cd
+cd 远程cd
 ```
 - 可以用ls、cd命令，但是find貌似不可以用
+- 不是所有命令加l就是本地，sftp的命令是定好的
 
 #### 4.下载文件，可以批量下载
 ```
@@ -78,6 +81,7 @@ sftp> get *02-01*runtime.gz
 
 #### 5.上传文件
 > -r用来上传文件夹 -P表示要保存文件权限以及修改时间
+> 没有指定目标目录，则表示将本地的 `gitlab` 目录上传到远程的当前目录的`gitlab`目录(没有会自动创建)
 ```
 sftp>put -r -P gitlab
 ```
