@@ -75,3 +75,9 @@ Invalid command.
 ```
 sftp> get *02-01*runtime.gz
 ```
+
+#### 5.上传文件
+> -r用来上传文件夹 -P表示要保存文件权限以及修改时间
+```
+sftp>put -r -P gitlab
+```
