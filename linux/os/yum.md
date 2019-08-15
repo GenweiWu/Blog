@@ -1,3 +1,15 @@
+## 基本命令
+```
+yum search xxx
+yum search all xxx
+
+//显示所有可用版本
+yum search xxx --showduplicate
+//展示已安装软件
+yum list installed |grep xxx
+```
+
+
 ## yum install localrpm
 
 > 好处就是：  
