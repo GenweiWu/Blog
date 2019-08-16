@@ -38,4 +38,11 @@ LC_ALL > LC_* > LANG
 - zh_TW.BIG5 中文 台湾 BIG5编码
 - de_DE.UTF-8@euro 德语 德国 UTF-8编码 按照欧洲习惯修正
 
-
+```
+[root@SZX1000538967 ~]# export LC_TIME=en_US.utf8; date
+Fri Aug 16 14:38:45 CST 2019
+[root@SZX1000538967 ~]# export LC_TIME=zh_CN.utf8; date
+2019年 08月 16日 星期五 14:38:50 CST
+[root@SZX1000538967 ~]# export LC_TIME=zh_TW.utf8; date
+五  8月 16 14:38:54 CST 2019
+```
