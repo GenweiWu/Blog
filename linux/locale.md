@@ -85,19 +85,19 @@ LC_ALL=
 - de_DE.UTF-8@euro 德语 德国 UTF-8编码 按照欧洲习惯修正
 
 ```bash
-[root@SZX1000538967 ~]# export LC_TIME=en_US.utf8; date
-Fri Aug 16 14:38:45 CST 2019
-[root@SZX1000538967 ~]# export LC_TIME=zh_CN.utf8; date
-2019年 08月 16日 星期五 14:38:50 CST
-[root@SZX1000538967 ~]# export LC_TIME=zh_TW.utf8; date
-五  8月 16 14:38:54 CST 2019
-
-[root@SZX1000538967 222]# export LC_MESSAGES=en_US.utf8;ll
+[root@SZX1000538967 222]# LC_TIME=en_US.utf8  date
+Fri Aug 16 14:57:14 CST 2019
+[root@SZX1000538967 222]# LC_TIME=zh_CN.utf8  date
+2019年 08月 16日 星期五 14:57:17 CST
+[root@SZX1000538967 222]# LC_TIME=zh_TW.utf8  date
+五  8月 16 14:57:21 CST 2019
+[root@SZX1000538967 222]# LC_MESSAGES=en_US.utf8 ll
 total 68
--rw-------. 1 root root 67989  8月 13 15:32 gitlab.rb
-[root@SZX1000538967 222]# export LC_MESSAGES=zh_CN.utf8;ll
+-rw-------. 1 root root 67989 Aug 13 15:32 gitlab.rb
+[root@SZX1000538967 222]# LC_MESSAGES=zh_CN.utf8 ll
 总用量 68
--rw-------. 1 root root 67989  8月 13 15:32 gitlab.rb
+-rw-------. 1 root root 67989 Aug 13 15:32 gitlab.rb
+
 ```
 
 
