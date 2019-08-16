@@ -1,6 +1,6 @@
 
 
-## 一、locale的组成
+## 一、locale系统
 
 ### 1.1 组成
 ```cmd
@@ -29,5 +29,13 @@ LC_ALL=
 
 ### 1.2 优先级：
 LC_ALL > LC_* > LANG
+
+## 二、locale组成
+
+`[语言[_地域][.字符集] [@修正值]`
+
+- zh_CN.GB2312 中文 中国 GB2312编码
+- zh_TW.BIG5 中文 台湾 BIG5编码
+- de_DE.UTF-8@euro 德语 德国 UTF-8编码 按照欧洲习惯修正
 
 
