@@ -8,9 +8,9 @@
 ```
 
 ```
-//删除表
+//删除database
 drop database gitlabhq_production;
-//新建表
+//新建database
 create database gitlabhq_production owner=gitlab;
 ```
 
