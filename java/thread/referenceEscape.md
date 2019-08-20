@@ -89,7 +89,30 @@ public class ThisEscape {
 
 [演示程序3](./demo/referenceEscape/demo3)
 
+### (4) 启动线程Thread
 
+```java
+//thread调用start后马上执行了run方法，run方法中可以操作ThreadStarter，而此时ThreadStarter还在初始化过程中
+
+final class ThreadStarter implements Runnable {
+  private String name;
+  public ThreadStarter() {
+    Thread thread = new Thread(this);
+    thread.start();
+    
+    //other code
+    ...xxx
+    this.name="init";
+  }
+ 
+  @Override public void run() {
+    // ...
+    System.out.println(name);
+  }
+}
+```
+
+[演示程序4](./demo/referenceEscape/demo4)
 
 ### 参考
 - https://wiki.sei.cmu.edu/confluence/display/java/TSM01-J.+Do+not+let+the+this+reference+escape+during+object+construction
