@@ -21,7 +21,7 @@ final class Publisher {
 [演示程序1](./demo/referenceEscape/demo1)
 
 ### (2) 外部方法类型,Handler
-> A2处`MyExceptionReporter`的构造方法中调用父类构造函数，而父类构造函数的A1行已经将this暴露给`ExceptionReporter er`了
+> A2处`MyExceptionReporter`的构造方法中调用父类构造函数，而父类构造函数的A1行已经将this暴露给`ExceptionReporter er`了  
 > 如果A2执行完了，但是还没进行A3:logger的初始化，此时`ExceptionReporter er`已经可以访问this了，可能调用某个需要Logger方法的方法则会报错
 
 ```java
@@ -63,6 +63,32 @@ public class MyExceptionReporter extends DefaultExceptionReporter {
 ```
 
 [演示程序2](./demo/referenceEscape/demo2)
+
+
+### (3) 内部类
+由于内部类会有一个指向外部类的引用，内部类的逸出会导致外部类间接逸出
+
+```java
+//EventListener暴露给source了，由于内部类会有指向外部类的引用，间接导致ThisEscape暴露给了source，此时A1处还没完成初始化
+//此时source已经可以访问ThisEscape了，而ThisEscape可能还在初始化过程呢，则结果出错
+
+public class ThisEscape {
+    public ThisEscape(EventSource source){
+        source.registerListener(
+            new EventListener(){
+                public void onEvent(Event e){
+                    doSomething(e)
+                }
+            });
+         
+         //A1:其它的初始化代码
+         ...xxx
+    }
+}
+```
+
+[演示程序3](./demo/referenceEscape/demo3)
+
 
 
 ### 参考
