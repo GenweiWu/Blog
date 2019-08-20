@@ -21,6 +21,8 @@ final class Publisher {
 [演示程序1](./demo/referenceEscape/demo1)
 
 ### (2) 外部方法类型,Handler
+> A2处`MyExceptionReporter`的构造方法中调用父类构造函数，而父类构造函数的A1行已经将this暴露给`ExceptionReporter er`了
+> 如果A2执行完了，但是还没进行A3:logger的初始化，此时`ExceptionReporter er`已经可以访问this了，可能调用某个需要Logger方法的方法则会报错
 
 ```java
 // interface ExceptionReporter
@@ -35,7 +37,7 @@ public interface ExceptionReporter {
 public class DefaultExceptionReporter implements ExceptionReporter {
   public DefaultExceptionReporter(ExceptionReporter er) {
     // Carry out initialization
-    // Incorrectly publishes the "this" reference 这里已经将this逸出了
+    // Incorrectly publishes the "this" reference  //A1:这里已经将this逸出了
     er.setExceptionReporter(this);
   }
  
@@ -49,9 +51,9 @@ public class MyExceptionReporter extends DefaultExceptionReporter {
   private final Logger logger;
  
   public MyExceptionReporter(ExceptionReporter er) {
-    super(er); // Calls superclass's constructor 此处的调用父类构造函数会进行发布，而此时子类还没有初始化完成
+    super(er); // Calls superclass's constructor  //A2:此处的调用父类构造函数会进行发布，而此时子类还没有初始化完成
     // Obtain the default logger
-    logger = Logger.getLogger("com.organization.Log");
+    logger = Logger.getLogger("com.organization.Log");  //A3：Logger初始化
   }
  
   public void report(Throwable t) {
