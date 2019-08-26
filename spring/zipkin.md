@@ -36,3 +36,8 @@ public class ZipkinAutoConfiguration {
 ```yaml
 spring.zipkin.enabled: false
 ```
+
+> idea:Program arguments:
+```
+ --spring.zipkin.enabled=false
+```
