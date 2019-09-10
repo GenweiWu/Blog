@@ -9,6 +9,8 @@ firewall-cmd --state
 > 得到默认区域
 ```CMD
  firewall-cmd --get-default-zone
+ //获取默认区域的信息
+ firewall-cmd --list-all
 ```
 
 > 列出指定区域的规则信息
