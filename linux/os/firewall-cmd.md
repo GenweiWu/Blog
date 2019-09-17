@@ -1,5 +1,10 @@
 
-# 基本命令
+## 基本命令
+
+> 启动
+```
+systemctl start firewalld
+```
 
 >  检查防火墙状态。输出应该是 running 或者 not running
 ```CMD
