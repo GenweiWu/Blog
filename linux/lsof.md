@@ -1,31 +1,25 @@
 
-## 入门
+## 命令参数
 
 ```
-//查看指定pid的进程相关的端口号
-sudo lsof -i -P -n | grep <PID>
+lsof -i 用以显示符合条件的进程情况
+lsof -i[46] [protocol][@hostname|hostaddr][:service|port]
+            46 --> IPv4 or IPv6
+            protocol --> TCP or UDP
+            hostname --> Internet host name
+            hostaddr --> IPv4地址
+            service --> /etc/service中的 service name (可以不只一个)
+            port --> 端口号 (可以不只一个)
 ```
 
-
-
-## 实例
-
-#### 1. 根据进程信息找到文件路径
-    不知道jenkins.war的路径，可以根据进程查找到
-
-```console
-root@SHA1000140068:~# ps -ef|grep jenkins
-root      92484  91962  0 10:48 pts/1    00:00:00 grep --color=auto jenkins
-root     118468      1  3  2018 ?        18-08:50:03 java -jar jenkins.war --requestHeaderSize=32768 --prefix=/jenkins/main-master
-root@SHA1000140068:~# lsof -p 118468|grep 'jenkins\.war'
-java    118468 root  mem       REG              202,2 69874457     318888 /home/jenkins/jenkins.war
-java    118468 root    4r      REG              202,2 69874457     318888 /home/jenkins/jenkins.war
+```
+lsof -n 不将IP转换为hostname，缺省是不加上-n参数
+lsof -P 不将端口号转换成portNames
 ```
 
-
-## man
+> man 
 ```
-[root@SZX1000547861 ~]# lsof -h
+[root@SZX1000538990 ~]# lsof -h
 lsof 4.87
  latest revision: ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/
  latest FAQ: ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/FAQ
@@ -62,6 +56,22 @@ Defaults in parentheses; comma-separated set (s) items; dash-separated ranges.
   names  select named files or files on named file systems
 Anyone can list all files; /dev warnings disabled; kernel ID check disabled.
 ```
+
+
+## 实例
+
+#### 1. 根据进程信息找到文件路径
+    不知道jenkins.war的路径，可以根据进程查找到
+
+```console
+root@SHA1000140068:~# ps -ef|grep jenkins
+root      92484  91962  0 10:48 pts/1    00:00:00 grep --color=auto jenkins
+root     118468      1  3  2018 ?        18-08:50:03 java -jar jenkins.war --requestHeaderSize=32768 --prefix=/jenkins/main-master
+root@SHA1000140068:~# lsof -p 118468|grep 'jenkins\.war'
+java    118468 root  mem       REG              202,2 69874457     318888 /home/jenkins/jenkins.war
+java    118468 root    4r      REG              202,2 69874457     318888 /home/jenkins/jenkins.war
+```
+
 
 ## 参考
 - https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/lsof.html
