@@ -13,8 +13,19 @@ lsof -i[46] [protocol][@hostname|hostaddr][:service|port]
 ```
 
 ```
-lsof -n 不将IP转换为hostname，缺省是不加上-n参数
-lsof -P 不将端口号转换成portNames
+//不将IP转换为hostname，缺省是不加上-n参数
+lsof -n 
+
+//不将端口号转换成portNames
+lsof -P 
+```
+
+```
+//显示command中包含指定字符的，所有打开的文件,它不等于 'lsof |grep string'，因为grep会搜索所有列
+lsof -c <string>
+    
+//显示指定进程打开的文件
+lsof -p <PID>
 ```
 
 > man 
@@ -60,7 +71,7 @@ Anyone can list all files; /dev warnings disabled; kernel ID check disabled.
 
 ## 实例
 
-#### 1. 根据进程信息找到文件路径
+#### 1. 根据进程信息找到文件路径 `lsof -p <PID>`
     不知道jenkins.war的路径，可以根据进程查找到
 
 ```console
@@ -70,6 +81,54 @@ root     118468      1  3  2018 ?        18-08:50:03 java -jar jenkins.war --req
 root@SHA1000140068:~# lsof -p 118468|grep 'jenkins\.war'
 java    118468 root  mem       REG              202,2 69874457     318888 /home/jenkins/jenkins.war
 java    118468 root    4r      REG              202,2 69874457     318888 /home/jenkins/jenkins.war
+```
+
+#### 2. 查找端口22的连接信息 `lsof -i :22`
+```console
+[root@SZX1000538990 ~]# lsof -i :22
+COMMAND   PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+sshd     1340 root    3u  IPv4    18012      0t0  TCP *:ssh (LISTEN)
+sshd     1340 root    4u  IPv6    18014      0t0  TCP *:ssh (LISTEN)
+sshd    55797 root    3u  IPv4 50722423      0t0  TCP SZX1000538990:ssh->10.11.12.13:futrix (ESTABLISHED)
+sshd    57463 root    3u  IPv4 50727746      0t0  TCP SZX1000538990:ssh->10.11.12.13:mcs-calypsoicf (ESTABLISHED)
+[root@SZX1000538990 ~]# lsof -i :22 -n
+COMMAND   PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+sshd     1340 root    3u  IPv4    18012      0t0  TCP *:ssh (LISTEN)
+sshd     1340 root    4u  IPv6    18014      0t0  TCP *:ssh (LISTEN)
+sshd    55797 root    3u  IPv4 50722423      0t0  TCP 10.21.253.119:ssh->10.11.12.13:futrix (ESTABLISHED)
+sshd    57463 root    3u  IPv4 50727746      0t0  TCP 10.21.253.119:ssh->10.11.12.13:mcs-calypsoicf (ESTABLISHED)
+[root@SZX1000538990 ~]# lsof -i :22 -nP
+COMMAND   PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
+sshd     1340 root    3u  IPv4    18012      0t0  TCP *:22 (LISTEN)
+sshd     1340 root    4u  IPv6    18014      0t0  TCP *:22 (LISTEN)
+sshd    55797 root    3u  IPv4 50722423      0t0  TCP 10.21.253.119:22->10.11.12.13:2358 (ESTABLISHED)
+sshd    57463 root    3u  IPv4 50727746      0t0  TCP 10.21.253.119:22->10.11.12.13:3330 (ESTABLISHED)
+```
+
+#### 3. 根据command进行查询 `lsof -c java`
+
+> 注意这里jenkins的command实际上是java而不是jenkins
+```console
+root@SHA1000140068:~# ps -ef|grep jenkins
+root      10749   9732  0 14:18 pts/1    00:00:00 grep --color=auto jenkins
+root     118468      1  3  2018 ?        18-08:53:41 java -jar jenkins.war --requestHeaderSize=32768 --prefix=/jenkins/main-master
+root@SHA1000140068:~# lsof -p 118468|grep 'jenkins\.war'
+java    118468 root  mem       REG              202,2 69874457     318888 /home/jenkins/jenkins.war
+java    118468 root    4r      REG              202,2 69874457     318888 /home/jenkins/jenkins.war
+root@SHA1000140068:~# lsof -c jenkins
+root@SHA1000140068:~# lsof -c java |grep 'jenkins\.war'
+java    118468 root  mem       REG              202,2 69874457     318888 /home/jenkins/jenkins.war
+java    118468 root    4r      REG              202,2 69874457     318888 /home/jenkins/jenkins.war
+```
+
+#### 4. 查找文件/目录当前被哪个进程使用
+```
+root@SHA1000140068:/# lsof  /home/jenkins/
+COMMAND    PID USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+java    118468 root  cwd    DIR  202,2     4096 318885 /home/jenkins
+root@SHA1000140068:/# ps -ef|grep 118468
+root      13455  12950  0 14:29 pts/1    00:00:00 grep --color=auto 118468
+root     118468      1  3  2018 ?        18-08:53:59 java -jar jenkins.war --requestHeaderSize=32768 --prefix=/jenkins/main-master
 ```
 
 
