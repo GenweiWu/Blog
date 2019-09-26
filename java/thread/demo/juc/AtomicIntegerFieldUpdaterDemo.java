@@ -5,6 +5,9 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+* DemoData的字段value3/value4对于AtomicIntegerFieldUpdaterDemo类是不可见的，因此通过反射是不能直接修改其值的
+*/
 public class AtomicIntegerFieldUpdaterDemo
 {
     
