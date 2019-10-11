@@ -21,3 +21,10 @@ public void schedule(TimerTask task, long delay, long period)
 
 > TimerDemo.java
 
+### 3、传统线程互斥synchronized
+
+1. `synchronized`加在本地变量或方法参数上是没用的
+2. `synchronized`加在非静态方法上，等同于`synchronize(this)`
+   `synchronized`加在静态方法上，等同于`synchronize(A.class)`
+
+> SynchronizeDemo.java
