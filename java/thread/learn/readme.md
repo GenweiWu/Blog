@@ -6,3 +6,18 @@
 
 > ThreadDemo.java
 
+### 2、传统定时器Timer
+
+
+```java
+//一次性执行，延迟`delay`ms 
+public void schedule(TimerTask task, long delay)
+```
+
+```java
+//周期性执行，延迟`delay`ms，每隔`period`ms执行 
+public void schedule(TimerTask task, long delay, long period)
+```
+
+> TimerDemo.java
+
