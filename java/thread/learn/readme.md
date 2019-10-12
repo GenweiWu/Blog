@@ -115,5 +115,13 @@ possible, and this method should always be used in a loop:
 
 > WaitNotifyDemo.java
 
+## 5、线程范围内变量共享ThreadLocal
+
+指的是同一个线程，但涉及多个步骤(经常是不同类的方法)，如何共享数据;  
+典型场景是web应用读取session中的登录信息(可能调用多个方法，但是并没有将session信息作为参数传来传去)
+
+1. `ThreadLocal` 类似于 `Map<Thread,T>`
+2. `ThreadLocal`只能保存一个变量，所以保存多个变量，要不多个`ThreadLocal`要么封装成对象
+
 
 
