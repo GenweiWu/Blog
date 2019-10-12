@@ -122,6 +122,19 @@ possible, and this method should always be used in a loop:
 
 1. `ThreadLocal` 类似于 `Map<Thread,T>`
 2. `ThreadLocal`只能保存一个变量，所以保存多个变量，要不多个`ThreadLocal`要么封装成对象
+3. 可以覆盖`initialValue`方法，则可以避免`threadLocal.get()`可能为null的问题
+```java
+    private static ThreadLocal<Student> studentThreadLocal = new ThreadLocal<Student>()
+    {
+        @Override
+        protected Student initialValue()
+        {
+            return new Student();
+        }
+    };
+```
 
+> ThreadScopeShareData.java
+> ThreadLocalDemo.java
 
 
