@@ -33,15 +33,57 @@ public void schedule(TimerTask task, long delay, long period)
 
 ### 1)wait和nofity
 1. 调用`wait`，则将持有当前对象的线程交出对象的控制权，同时进入等待状态(WAITING)
-2. 调用`nofity`，则将唤醒一个正在等待该对象控制权的线程，让它继续运行
+2. 调用`nofity`，则将唤醒一个正在等待该对象控制权的线程B，让B继续运行；而A自己则继续执行，且A执行完同步块才真正释放锁
 3. 调用`nofityAll`则唤醒所有，而不是某一个
 
 ### 2)wait() 与 notify/notifyAll 方法必须在同步代码块中使用
 在synchronized修饰的同步代码块或方法里面调用wait() 与  notify/notifyAll()方法, 
 否则抛异常`java.lang.IllegalMonitorStateException`  
 
+### 3)notify需要退出同步代码块再释放锁
+调用notify的线程A，会唤醒一个等待该对象锁的线程B，而A自己则继续执行，直到执行完对象锁锁住的同步代码块才释放锁
 
-### 3)wait一般总是和while判断一起，而不是if判断一起(可能存在假唤醒)
+> 下面这个，只有执行到2才会真正触发wait的线程继续执行，3则不影响
+```java
+public void notifyTest()
+{
+  synchronized (this)
+  {
+      printLog("notifyTest ==> begin notify");
+      this.notify();
+      //1.这里已经调用了notify
+      printLog("notifyTest ==> end notify");
+
+      try
+      {
+          Thread.sleep(3000);
+          printLog("notifyTest ==> inner sleep end");
+          //2.这里才退出同步代码块
+      }
+      catch (InterruptedException e)
+      {
+          e.printStackTrace();
+      }
+  }
+
+  try
+  {
+      Thread.sleep(3000);
+      printLog("notifyTest ==> outer sleep end");
+      //3.线程继续执行到这儿，不过这里不在同步代码块中
+  }
+  catch (InterruptedException e)
+  {
+      e.printStackTrace();
+  }
+}
+```
+
+> WaitNotifyDemo222.java
+
+
+
+### 4)wait一般总是和while判断一起，而不是if判断一起(可能存在假唤醒)
 ```
 As in the one argument version, interrupts and spurious wakeups are
 possible, and this method should always be used in a loop:
