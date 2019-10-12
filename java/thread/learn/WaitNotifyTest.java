@@ -3,7 +3,7 @@ package com.njust.test.learn;
 /**
  * 启动三个线程，分别打印A B C，现在写一个程序 循环打印ABCABCABC....
  */
-public class WaitNotifyTest222
+public class WaitNotifyTest
 {
     private static final int count = 10;
     
