@@ -134,7 +134,8 @@ possible, and this method should always be used in a loop:
     };
 ```
 
-> ThreadScopeShareData.java
+> ThreadScopeShareData.java  //用Map<Thread,T>模拟ThreadLocal
+
 > ThreadLocalDemo.java
 
 
