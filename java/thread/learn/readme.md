@@ -81,9 +81,25 @@ public void notifyTest()
 
 > WaitNotifyDemo222.java
 
+### 4)interrupt可以打断wait状态
+```java
+synchronized (lock)
+{
+    try
+    {
+        lock.wait();
+        System.out.println("wait end");
+    }
+    catch (InterruptedException e)
+    {
+        System.out.println("interrupt here!!!");
+    }
+}
+```
 
+> WaitNotifyDemo333.java
 
-### 4)wait一般总是和while判断一起，而不是if判断一起(可能存在假唤醒)
+### 5)wait一般总是和while判断一起，而不是if判断一起(可能存在假唤醒)
 ```
 As in the one argument version, interrupts and spurious wakeups are
 possible, and this method should always be used in a loop:
