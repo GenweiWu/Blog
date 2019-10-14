@@ -135,7 +135,7 @@ possible, and this method should always be used in a loop:
 ```
 ```java
    synchronized (obj) {
-       while (&lt;condition does not hold&gt;)
+       while (<condition does not hold>)
            obj.wait(timeout, nanos);
            //wait等待，如果此时被notify唤醒，则继续往下执行，所以用while相当于二次检查条件是否满足
        ... // Perform action appropriate to condition
