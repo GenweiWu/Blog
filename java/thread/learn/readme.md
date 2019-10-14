@@ -138,4 +138,52 @@ possible, and this method should always be used in a loop:
 
 > ThreadLocalDemo.java
 
+## 6、多个线程之前数据共享
+
+#### 1. 如果做的事情是一样的，则可以直接通过同一个Runnable来共享数据
+
+> MultiThreadShareDemo.java
+```java
+class Seller implements Runnable
+{
+    private int count = 100;
+    
+    @Override
+    public void run()
+...
+}
+```
+
+#### 2. 如果做的事情不一样，主要有两种方法
+- 方法1:通过让多个内部类，共享外部类的数据，来实现共享
+
+> MultiThreadShareDemo2a.java
+```java
+ShareData1 shareData1 = new ShareData1();
+
+new Thread(() -> {
+   shareData1.increase();
+}).start();
+new Thread(() -> {
+   shareData1.decrease();
+}).start();
+```
+
+- 方法2:通过将共享数据，作为构造函数的参数，传递给多个Runnable来实现
+> MultiThreadShareDemo2b.java
+```java
+ShareData2 shareData2 = new ShareData2();
+
+for (int i = 0; i < 2; i++)
+{
+   new Thread(new Increase(shareData2)).start();
+}
+for (int i = 0; i < 2; i++)
+{
+   new Thread(new Decrease(shareData2)).start();
+}
+```
+
+
+
 
