@@ -26,6 +26,35 @@ public void schedule(TimerTask task, long delay, long period)
 1. `synchronized`加在本地变量或方法参数上是没用的
 2. `synchronized`加在非静态方法上，等同于`synchronize(this)`
    `synchronized`加在静态方法上，等同于`synchronize(A.class)`
+3. `synchronized`必须锁object，int是不行的(编译错误)
+```java
+ private  int num = 0;
+
+ public void method1()
+ {
+     synchronized (num) //报错，要求是Object类型，比如Integer,String等
+     {
+
+     }
+ }
+```
+4. `synchronized`不要去锁变化的对象，比如Integer类型一直在修改，就不要用它了
+```
+//Integer修改值后其实已经变了
+int num = 300;
+System.out.println("identityHashCode-->" + System.identityHashCode(num));
+
+num++;
+System.out.println("identityHashCode-->" + System.identityHashCode(num));
+```
+> SynchronizeDemo2.java
+
+5. 避免使用使用常量池的对象，万一刚好使用了常量池的同一变量
+```
+Byte,Short,Integer,Long,Character,Boolean,这5种包装类默认创建了数值[-128，127]的相应类型的缓存数据
+两种浮点数类型的包装类Float,Double并没有实现常量池技术
+String也是有常亮池的
+```
 
 > SynchronizeDemo.java
 
