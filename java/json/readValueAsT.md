@@ -1,6 +1,15 @@
 基于jackson
 ==
 
+## readStringAsList
+
+```java
+[List<T> list = (List<T>)new ObjectMapper().readValue(jsonStr,
+                    new TypeReference<List<T>>()
+                    {
+                    });
+```
+
 ## readValueAsList
 
 ```java
