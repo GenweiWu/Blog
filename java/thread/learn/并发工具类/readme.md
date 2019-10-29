@@ -47,3 +47,15 @@ finishLatch.countDown();
  //可以同时多个在等待
  finishLatch.await();
 ```
+
+## 4. `Exchanger`实现跨线程交互数据
+
+```java
+Exchanger<String> stringExchanger = new Exchanger<>();
+
+//
+String data="111";
+String exchange = stringExchanger.exchange(data);
+
+//
+```
