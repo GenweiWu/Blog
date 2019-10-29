@@ -49,13 +49,17 @@ finishLatch.countDown();
 ```
 
 ## 4. `Exchanger`实现跨线程交互数据
+两个线程分别调用`exchange`方法，先调用的线程需要等待，等另一个线程也调用exchange才完成交换  
+而且可以多次交换
 
 ```java
 Exchanger<String> stringExchanger = new Exchanger<>();
 
-//
+//线程1等待交换
 String data="111";
 String exchange = stringExchanger.exchange(data);
 
-//
+//线程2等待交换
+String data="111";
+String exchange = stringExchanger.exchange(data);
 ```
