@@ -31,3 +31,19 @@ cyclicBarrier.await();
  //集合点2等待
 cyclicBarrier.await();
 ```
+
+## 3. `CountDownLatch`类似倒计时计数器的功能
+可以让1个或多个线程，等待其他线程执行完毕再执行
+
+```java
+//初始值为5
+CountDownLatch finishLatch = new CountDownLatch(5);
+
+//将值-1
+finishLatch.countDown();
+
+//等待中，直到值减到0才继续向下执行
+ finishLatch.await();
+ //可以同时多个在等待
+ finishLatch.await();
+```
