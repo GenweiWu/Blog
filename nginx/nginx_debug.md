@@ -27,6 +27,11 @@ nginx调试技巧
 
 2. windows版本默认开启了debug编译配置，所以只需要在配置中设置debug级别
 ```nginx
+ log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+
  access_log  logs/access.log  main;
  error_log   logs/error.log  debug;
 ```
