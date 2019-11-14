@@ -18,18 +18,20 @@ Default:	—
 Context:	server, location
 ```
 
-```
-none
+
+#### > none
 the “Referer” field is missing in the request header;
-blocked
+禁止空referer，即不允许用户直接访问该资源，因为直接在浏览器的地址栏中输入一个资源的URL地址，请求是不会包含Referer字段的
+
+#### > blocked
 the “Referer” field is present in the request header, but its value has been deleted by a firewall or proxy server; such values are strings that do not start with “http://” or “https://”;
-server_names
+#### > server_names
 the “Referer” request header field contains one of the server names;
-arbitrary string
+#### > arbitrary string
 defines a server name and an optional URI prefix. A server name can have an “*” at the beginning or end. During the checking, the server’s port in the “Referer” field is ignored;
-regular expression
+#### > regular expression
 the first symbol should be a “~”. It should be noted that an expression will be matched against the text starting after the “http://” or “https://”.
-```
+
 
 ### 参考
 - http://nginx.org/en/docs/http/ngx_http_referer_module.html#valid_referers
