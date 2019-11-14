@@ -1,7 +1,7 @@
 
 ## nginx防盗链
 
-```conf
+```nginx
 valid_referers none blocked server_names
                *.example.com example.* www.example.org/galleries/
                ~\.google\.;
@@ -69,7 +69,7 @@ $ cat index.html
 
 
 ### 1) 只设置简单的none和blocked是不被允许的
-```
+```nginx
 ###### 测试nginx invalid_refer用
 
 > 只设置简单的none和blocked是不被允许的
@@ -98,7 +98,7 @@ nginx: [emerg] the "none" or "blocked" referers are specified in the "valid_refe
 127.0.0.1 nginx.test.com
 ```
 
-```
+```nginx
 ###### 测试nginx invalid_refer用
 server {
 	listen      5000;
@@ -116,7 +116,7 @@ server {
 ```
 
 相当于
-```
+```nginx
 ###### 测试nginx invalid_refer用
 server {
 	listen      5000;
@@ -132,7 +132,7 @@ server {
 ```
 
 ### 3) 自行设置的IP或域名
-```
+```nginx
 ###### 测试nginx invalid_refer用
 server {
 	listen      5000;
