@@ -49,11 +49,26 @@ $ ll
 total 2
 -rw-r--r-- 1 w00284248 1049089  24 Nov 14 17:21 111.js
 -rw-r--r-- 1 w00284248 1049089 188 Nov 14 17:20 index.html
+
+$ cat index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Hello</title>
+</head>
+<body>
+        <h2>Hello</h2>
+</body>
+<script type="text/javascript" src="111.js"/>
+</html>
 ```
 
+在index.html中会去请求111.js
 
 
-### 1) 不能设置太简单
+
+### 1) 只设置简单的none和blocked是不被允许的
 ```
 ###### 测试nginx invalid_refer用
 
@@ -74,3 +89,89 @@ server {
 ```
 nginx: [emerg] the "none" or "blocked" referers are specified in the "valid_referers" directive without any valid referer
 ```
+
+### 2) server_names的用法
+我的理解是配置了server_names就会去把server_name的当前域名加到valid_referers中一样
+
+注意：
+```
+127.0.0.1 nginx.test.com
+```
+
+```
+###### 测试nginx invalid_refer用
+server {
+	listen      5000;
+	
+	root D:/2222/nginxDemo;
+	
+	server_name nginx.test.com;
+	
+	valid_referers none blocked server_names;
+	if ($invalid_referer) {
+	  return 403;
+	}
+
+}
+```
+
+相当于
+```
+###### 测试nginx invalid_refer用
+server {
+	listen      5000;
+	
+	root D:/2222/nginxDemo;
+
+	valid_referers none blocked nginx.test.com;
+	if ($invalid_referer) {
+	  return 403;
+	}
+
+}
+```
+
+### 3) 自行设置的IP或域名
+```
+###### 测试nginx invalid_refer用
+server {
+	listen      5000;
+	
+	root D:/2222/nginxDemo;
+	
+	server_name nginx.test.com;
+	
+	valid_referers none blocked 127.0.0.1 localhost server_names;
+	if ($invalid_referer) {
+	  return 403;
+	}
+
+}
+```
+
+- none 允许直接请求
+  - http:/127.0.0.1:5000/index.html获取html本身 ok
+  - http:/127.0.0.1:5000/index.html中请求111.js failed
+  - http:/127.0.0.1:5000/index.js ok  只要是直接请求，无论请求IP还是域名都会ok
+
+- 127.0.0.1
+  - http:/127.0.0.1:5000/index.html获取html本身 ok
+  - http:/127.0.0.1:5000/index.html中请求111.js ok
+  - http:/127.0.0.1:5000/index.js ok
+  - http:/localhost:5000/index.html中请求111.js failed
+  - http:/nginx.test.com:5000/index.html中请求111.js failed
+
+- localhost
+  - http:/localhost:5000/index.html获取html本身 ok
+  - http:/localhost:5000/index.html中请求111.js ok
+  - http:/localhost:5000/index.js ok  
+  - http:/127.0.0.1:5000/index.html中请求111.js failed
+  - http:/nginx.test.com:5000/index.html中请求111.js failed
+  
+- server_names
+  - http:/nginx.test.com:5000/index.html获取html本身 ok
+  - http:/nginx.test.com:5000/index.html中请求111.js ok
+  - http:/nginx.test.com:5000/index.js ok 
+  - http:/127.0.0.1:5000/index.html中请求111.js failed
+  - http:/localhost:5000/index.html中请求111.js failed
+  
