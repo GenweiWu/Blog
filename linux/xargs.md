@@ -14,7 +14,7 @@
 #### xargs [command]将前面的输出，转换成当前命令的参数
 #### xargs -t [command] 打印出实际执行的命令
 
-```cmd
+```console
 [root@SZX1000538971 test]# echo '11hello111' > 1.txt
 [root@SZX1000538971 test]# echo '22hello222' > 2.txt
 [root@SZX1000538971 test]# echo '33HELLO333' > 3.txt
@@ -50,7 +50,8 @@ grep hello ./2.txt ./1.txt ./3.txt
 
 ## 3、find xargs遇到空格的问题
 
-有时候以空格进行分割有问题
+> xargs有时候以空格进行分割有问题;   
+> exec就没有这个问题!  
 ```console
 [root@SZX1000538971 test]# ll
 total 0
@@ -63,5 +64,8 @@ ls: cannot access 22.txt: No such file or directory
 [root@SZX1000538971 test]# find -type f -print0 |xargs -0 ls -l
 -rw-------. 1 root root 0 Nov 14 15:15 ./1.txt
 -rw-------. 1 root root 0 Nov 14 15:15 ./2 22.txt
+[root@SZX1000538971 test]# find -type f -exec  ls -l {} \;
+-rw-------. 1 root root 0 Nov 14 15:15 ./2 22.txt
+-rw-------. 1 root root 0 Nov 14 15:15 ./1.txt
 ```
 
