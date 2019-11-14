@@ -71,5 +71,31 @@ http://nassir.iteye.com/blog/1983667
 
 [另参见Issues](https://github.com/GenweiWu/Blog/issues/22)
 
+## 4. nginx的root用法
+本地静态资源转发，可以方便的用于测试nginx
+
+```conf
+server {
+	listen      5000;
+	
+	root D:/2222/nginxDemo;	
+}
+```
+
+> 目录信息如下
+```
+dave@PC MINGW64 /d/2222/nginxDemo
+$ ll
+total 2
+-rw-r--r-- 1 w00284248 1049089  24 Nov 14 17:21 111.js
+-rw-r--r-- 1 w00284248 1049089 188 Nov 14 17:20 index.html
+```
+
+则通过 `http://127.0.0.1:5000/index.html` 和 `http://127.0.0.1:5000/111.js` 就可以请求到目录下的文件了
+
+
+
+
+
 
 
