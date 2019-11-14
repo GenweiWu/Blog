@@ -47,3 +47,21 @@ grep hello ./2.txt ./1.txt ./3.txt
 
 0 directories, 3 files
 ```
+
+## 3、find xargs遇到空格的问题
+
+有时候以空格进行分割有问题
+```console
+[root@SZX1000538971 test]# ll
+total 0
+-rw-------. 1 root root 0 Nov 14 15:15 1.txt
+-rw-------. 1 root root 0 Nov 14 15:15 2 22.txt
+[root@SZX1000538971 test]# find -type f |xargs ls -l
+ls: cannot access ./2: No such file or directory
+ls: cannot access 22.txt: No such file or directory
+-rw-------. 1 root root 0 Nov 14 15:15 ./1.txt
+[root@SZX1000538971 test]# find -type f -print0 |xargs -0 ls -l
+-rw-------. 1 root root 0 Nov 14 15:15 ./1.txt
+-rw-------. 1 root root 0 Nov 14 15:15 ./2 22.txt
+```
+
