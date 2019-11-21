@@ -31,6 +31,20 @@ Device     Boot Start       End   Sectors Size Id Type
 其中`/dev/xvda`大小为40G，且已经分区为 `/dev/xvda1` 4G和 `/dev/xvda2` 36G  
 而`/dev/xvde`大小为100G,目前只有分区`/dev/xvde1`为60G,剩余40G没有分区  
 
+## 修改/etc/fstab永久挂载磁盘
+
+```
+/dev/VolGroup00/LogVol00 /                       ext3    defaults        1 1
+LABEL=/boot             /boot                   ext3    defaults        1 2
+tmpfs                   /dev/shm                tmpfs   defaults        0 0
+devpts                  /dev/pts                devpts  gid=5,mode=620  0 0
+sysfs                   /sys                    sysfs   defaults        0 0
+proc                    /proc                   proc    defaults        0 0
+/dev/VolGroup00/LogVol01 swap                    swap    defaults        0 0
+/dev/sdb1               /oracle                 ext2    defaults        0 0
+/dev/sdb6               /web                    ext3    defaults        0 0
+```
+
 
 ## fdisk /dev/xcde 进行分区操作
 http://man.linuxde.net/fdisk
