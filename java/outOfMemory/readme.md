@@ -10,3 +10,7 @@ XX:+PrintGC 输出GC日志
 
 -Xloggc:../logs/gc.log 日志文件的输出路径
 ```
+
+```console
+-Xms3g -Xmx3g -XX:+PrintGCDetails -Xloggc:gc.log -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=oom
+```
