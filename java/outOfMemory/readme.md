@@ -4,7 +4,7 @@
 ```
 
 ```
-XX:+PrintGC 输出GC日志
+-XX:+PrintGC 输出GC日志
 -XX:+PrintGCDetails 输出GC的详细日志
 -XX:+PrintGCTimeStamps 输出GC的时间戳（以基准时间的形式）
 
