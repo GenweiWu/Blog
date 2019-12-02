@@ -83,3 +83,42 @@ mvn source:jar install
 - https://blog.csdn.net/qiumengchen12/article/details/71688395
 - https://blog.csdn.net/lovingprince/article/details/5894459
 
+### 9.mvn deploy
+> https://www.jianshu.com/p/2ef1642b769b
+
+#### 第一步：在要上传的模块的pom.xml文件中添加如下代码
+> pom.xml
+```xml
+<distributionManagement>
+           <repository>
+              <id>releases</id>
+              <name>internal releases</name>
+              <url>http://192.168.1.221:8081/repository/maven-releases</url>
+          </repository>
+          <snapshotRepository>
+              <id>snapshots</id>
+              <name>internal snapshot</name>
+              <url>http://192.168.1.221:8081/repository/maven-snapshots</url>
+          </snapshotRepository>
+  </distributionManagement>
+```
+
+#### 第二步：在settings.xml中配置私服用户信息，要与上文的id相符合
+```xml
+<servers>
+      <server>
+        <id>releases</id>
+        <username>android-jinchuang</username>
+        <password>jinchuang</password>
+      </server>
+      <server>
+        <id>snapshots</id>
+        <username>android-jinchuang</username>
+        <password>jinchuang</password>
+      </server>
+  </servers>
+```
+
+
+
+
