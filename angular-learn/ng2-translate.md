@@ -79,6 +79,20 @@ this.translate.get('app.home-page.menu-article').subscribe(e => {
 leftTime:number = 5;
 ```
 
+### TS中使用参数
+> zh.json
+```json
+"articleToMain": "{{count}}s后跳转到首页"
+```
+
+> ts
+```ts
+var param = {count:"111"};
+this.leftTime = this.translate.instant("articleToMain",param);
+```
+
+
+
 
 
 
