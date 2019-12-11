@@ -21,6 +21,8 @@ nginx调试技巧
 ...
 ```
 
+- https://liguangming.com/nginx-return-tips
+
 ### 技巧二：nginx转发日志查看
 
 1. 完整配置方法可以参见[官方文档](http://nginx.org/en/docs/debugging_log.html),主要是linux版本nginx要开启debug的编译配置。
