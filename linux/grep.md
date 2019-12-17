@@ -17,6 +17,8 @@ grep [选项] [--color=auto] '搜寻字符串' filename
 > 样例1：搜索文件内容  
 ![image](https://user-images.githubusercontent.com/16630659/70960370-d141a400-20b9-11ea-8a46-a41dd89d4a76.png)
 
+> 样例2：搜索文件夹  
+![image](https://user-images.githubusercontent.com/16630659/70960655-968c3b80-20ba-11ea-8cf7-4f398ad6b451.png)
 
 
 ## 参考
