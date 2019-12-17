@@ -33,7 +33,10 @@ sudo firewall-cmd --zone=public --remove-port=12345/tcp --permanent
 ```CMD
 firewall-cmd --reload
 ```
-
+> `运行时规则集` 保存到 `持久规则集`
+```CMD
+firewall-cmd --runtime-to-permanent
+```
 
 ## 参考
 - https://www.cnblogs.com/yangxunwu1992/p/6091422.html
