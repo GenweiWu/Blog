@@ -11,3 +11,8 @@ jgit
 </dependency>
 ```
 
+其中，间接依赖了
+```
+[INFO] +- junit:junit:jar:4.12:compile
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:compile
+```
