@@ -6,7 +6,7 @@
 ```java
 Process process = Runtime.getRuntime().exec("git status", null, dir);
 ```
-> 这里是分开的
+> 这里是分开的：指令中有空格的需要用不同的字符串分开
 ```java
 ProcessBuilder builder = new ProcessBuilder("git","status");
 builder.directory(dir);
