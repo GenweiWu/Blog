@@ -31,3 +31,28 @@ curl -X POST \
 	
 }'
 ```
+
+### 可以结合JsonProperty来自定义映射的变量名
+
+```java
+@Data
+public class Hello
+{
+    @JsonProperty("name")
+    private String userName;
+    
+    private int age;
+}
+```
+
+> 此时请求的userName变成name了，但是还可以成功
+```
+curl -X POST \
+  http://127.0.0.1:21020/test-service/hello \
+  -d '{
+	
+	"name":"Dave",
+	"age":25
+	
+}'
+```
