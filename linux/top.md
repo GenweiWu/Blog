@@ -1,3 +1,5 @@
+
+## 说明
 >https://www.cnblogs.com/peida/archive/2012/12/24/2831353.html
 ```
 [root@TG1704 log]# top
@@ -15,17 +17,20 @@ Swap: 32764556k total,        0k used, 32764556k free,  3612636k cached
 
 ```
 
-### 按进程的CPU使用率排序
+- 纳入内核管理的内存不见得都在使用中，还包括过去使用过的现在可以被重复利用的内存，内核并不把这些可被重新使用的内存交还到free中去，因此在linux上free内存会越来越少，但不用为此担心
+
+
+## 按进程的CPU使用率排序
 
 ```
 运行top命令后，键入大写P
 ```
 
-### 按进程的内存使用率排序
+## 按进程的内存使用率排序
 ```
 运行top命令后，键入大写M
 ```
 
 
-### 参考
+## 参考
 - https://blog.csdn.net/daiyudong2020/article/details/52760846
