@@ -62,3 +62,8 @@ npm i node-sass --sass_binary_path=E:\software\npm\win32-x64-57_binding.node
 ```
 
 ##### (3)另参考:https://github.com/sass/node-sass/issues/1106
+```
+export SASS_BINARY_PATH should resolve this issue.
+You can download XXX_binding.node and export to SASS_BINARY_PATH.
+export SASS_BINARY_PATH=~/somepath/linux-x64-11_binding.node
+```
