@@ -1,5 +1,5 @@
 
-## 分区缩小
+## 分区扩大
 ```
 /dev/xvde1 20G改成40G
 mount信息: /dev/xvde1  /var/lib/docker
