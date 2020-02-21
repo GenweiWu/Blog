@@ -55,3 +55,11 @@ export interface SelectOption {
 
 export type SelectOptions = SelectOption[];
 ```
+
+## 泛型
+```ts
+export class BranchResult<T> {
+    responseCode: string;
+    responseBody: T[];
+}
+```
