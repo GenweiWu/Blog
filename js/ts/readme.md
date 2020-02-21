@@ -63,3 +63,15 @@ export class BranchResult<T> {
     responseBody: T[];
 }
 ```
+
+## 方法变量限制
+```ts
+public getInfo(param: any, callBack: ((x: (InfoResult<string>)) => any)): any {
+    var _callback = callBack || (() => { });
+    var url = "/rest/getInfo";
+
+    this.rsc.post(url, param, result => {
+      _callback(result.json());
+    });
+  }
+```
