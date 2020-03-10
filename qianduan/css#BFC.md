@@ -29,7 +29,7 @@ BFC即块格式化上下文，可以理解成一个封闭的大箱子(box)，内
 
 ![image](https://user-images.githubusercontent.com/16630659/52697143-c6a31380-2fab-11e9-87a4-5a1b6f86a876.png)
 
-### 4.2 [防止浮动高度坍塌](https://jsfiddle.net/GenweiWu/busa073v/)
+### 4.2 [防止浮动元素高度坍塌](https://jsfiddle.net/GenweiWu/busa073v/)
 ![image](https://user-images.githubusercontent.com/16630659/52697271-0ec23600-2fac-11e9-8ceb-9fb422a118e5.png)
 
 ### 4.3 [不与浮动元素重叠](https://jsfiddle.net/GenweiWu/d02fxago/)
