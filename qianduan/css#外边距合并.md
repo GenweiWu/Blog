@@ -4,7 +4,7 @@
 块级元素的上下外边距，有时会合并为一个外边距。
 
 两个条件：
-- 块级元素(不包括浮动和绝对定位元素，即float、postion:absolute)  
+- 块级元素(不包括浮动和绝对定位元素，即float、postion:absolute/fixed)  
 - 垂直方向
 
 ## 2、基本场景
