@@ -8,17 +8,17 @@
  - 只影响浮动元素后面的元素，前面的不影响
 
 1.2 float元素会脱离文档流，导致后面的元素顶替上去，但是会钻到浮动元素下面
-> https://jsitor.com/embed/_m84np43X
+> https://jsitor.com/_m84np43X
 ![image](https://user-images.githubusercontent.com/16630659/76529413-36384a80-64ad-11ea-96ea-737f9835e209.png)
 
 //https://jsfiddle.net/GenweiWu/0oesw3y9/
 
 
 - 行框元素和浮动元素的不可重叠性
-> 这里说的行框元素是div.animal中的span元素，它与div.father>img没有重叠
+> 这里说的行框元素是div.animal中的span元素，它与div.father>img没有重叠  
 > div.animal实际上是与div.father>img发生了重叠的
 
-> https://jsitor.com/embed/16ViDp_cC
+> https://jsitor.com/16ViDp_cC
 ![image](https://user-images.githubusercontent.com/16630659/76531592-63d2c300-64b0-11ea-8fd8-f2a78137fe27.png)
 
 
@@ -28,6 +28,10 @@
  
 > 下图中, div.box的宽度跟父元素一样
 > 但是div.float的宽度则是子元素的宽度撑开的
+
+> https://jsitor.com/hTYi3Z3nC
+![image](https://user-images.githubusercontent.com/16630659/76532251-523deb00-64b1-11ea-84c3-c9bf6364565f.png)
+
  //https://jsfiddle.net/GenweiWu/darx56jL/
 
 
