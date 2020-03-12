@@ -8,7 +8,12 @@
  - 只影响浮动元素后面的元素，前面的不影响
 
 1.2 float元素会脱离文档流，导致后面的元素顶替上去，但是会钻到浮动元素下面
+> https://jsitor.com/embed/_m84np43X
+![image](https://user-images.githubusercontent.com/16630659/76529413-36384a80-64ad-11ea-96ea-737f9835e209.png)
+
+
 //https://jsfiddle.net/GenweiWu/0oesw3y9/
+
 
 - 行框元素和浮动元素的不可重叠性
 > 这里说的行框元素是div.animal中的span元素，它与div.father>img没有重叠
