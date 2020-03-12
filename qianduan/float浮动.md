@@ -11,8 +11,6 @@
 > https://jsitor.com/embed/_m84np43X
 ![image](https://user-images.githubusercontent.com/16630659/76529413-36384a80-64ad-11ea-96ea-737f9835e209.png)
 
-![](./img/floatDemo1.png)
-
 //https://jsfiddle.net/GenweiWu/0oesw3y9/
 
 
