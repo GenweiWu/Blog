@@ -17,6 +17,11 @@
 - 行框元素和浮动元素的不可重叠性
 > 这里说的行框元素是div.animal中的span元素，它与div.father>img没有重叠
 > div.animal实际上是与div.father>img发生了重叠的
+
+> https://jsitor.com/embed/16ViDp_cC
+![image](https://user-images.githubusercontent.com/16630659/76531592-63d2c300-64b0-11ea-8fd8-f2a78137fe27.png)
+
+
 //https://jsfiddle.net/GenweiWu/aq7Lht5e/
  
 1.3 包裹性 
