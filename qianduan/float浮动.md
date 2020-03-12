@@ -8,11 +8,18 @@
  - 只影响浮动元素后面的元素，前面的不影响
 
 1.2 float元素会脱离文档流，导致后面的元素顶替上去，但是会钻到浮动元素下面
->  
- //https://jsfiddle.net/GenweiWu/0oesw3y9/
+//https://jsfiddle.net/GenweiWu/0oesw3y9/
+
+- 行框元素和浮动元素的不可重叠性
+> 这里说的行框元素是div.animal中的span元素，它与div.father>img没有重叠
+> div.animal实际上是与div.father>img发生了重叠的
+//https://jsfiddle.net/GenweiWu/aq7Lht5e/
  
+1.3 包裹性 
  
- 
+> 下图中, div.box的宽度跟父元素一样
+> 但是div.float的宽度则是子元素的宽度撑开的
+ //https://jsfiddle.net/GenweiWu/darx56jL/
 
 
 #### 2、当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到另外一个浮动的元素
