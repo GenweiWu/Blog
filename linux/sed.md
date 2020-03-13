@@ -148,6 +148,20 @@ ddd
 end
 ```
 
+## sed -e
+
+> 使用sed -e在命令行进行替换
+```shell
+[root@SZX1000538971 dave]# echo $a
+1.17.6
+[root@SZX1000538971 dave]# echo $a | sed -e 's/\./\\\./g'
+1\.17\.6
+[root@SZX1000538971 dave]# b=$(echo $a | sed -e 's/\./\\\./g')
+[root@SZX1000538971 dave]# echo $b
+1\.17\.6
+```
+
+
 ## couldn't open temporary file ./sedAbp74q: Permission denied
 
 ### 个人理解：
