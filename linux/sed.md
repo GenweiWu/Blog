@@ -150,21 +150,36 @@ end
 
 ## sed -e
 
-> 使用sed -e在命令行进行替换
-```shell
-[root@SZX1000538971 dave]# echo $a
-1.17.6
-[root@SZX1000538971 dave]# echo $a | sed -e 's/\./\\\./g'
-1\.17\.6
-[root@SZX1000538971 dave]# b=$(echo $a | sed -e 's/\./\\\./g')
-[root@SZX1000538971 dave]# echo $b
-1\.17\.6
+> sed -e可以多次指定替换命令
+```
+[root@SZX1000538971 ~]# echo '111222' | sed -e 's/1/a/g' -e 's/2/b/g'
+aaabbb
 ```
 
 
-## couldn't open temporary file ./sedAbp74q: Permission denied
+## FAQ
 
-### 个人理解：
+### 1）sed如何直接替换字符串
+```shell
+[root@SZX1000538971 ~]# sed 's/1/a/g' '111222'
+sed: can't read 111222: No such file or directory
+[root@SZX1000538971 ~]# echo '111222' | sed 's/1/a/g'
+aaa222
+```
+
+> 赋值
+```
+[root@SZX1000538971 ~]# echo '111222' | sed 's/1/a/g'
+aaa222
+[root@SZX1000538971 ~]# bb=$(echo '111222' | sed 's/1/a/g')
+[root@SZX1000538971 ~]# echo $bb
+aaa222
+```
+
+
+### 2）ERROR:couldn't open temporary file ./sedAbp74q: Permission denied
+
+#### 个人理解：
 - sed的过程是，先读取当前文件，然后在当前目录新建一个temp文件，将替换的内容写到temp文件,删除旧文件
 - 文件属主都会发生改变了
 - 即要求的权限是: 读取旧文件 + 创建新文件
