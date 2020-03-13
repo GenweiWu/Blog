@@ -1,5 +1,17 @@
-Linux Shell字符串操作（${}仅在bash上生效,sh上报错）
+Linux Shell字符串操作
 ===
+
+### 0. ${}仅在bash上生效,sh上报错
+> 通用方法是sed -e
+```
+[root@SZX1000538971 dave]# echo $a
+1.17.6
+[root@SZX1000538971 dave]# b=$(echo $a | sed -e 's/\./\\\./g')
+[root@SZX1000538971 dave]# echo $b
+1\.17\.6
+
+```
+
 
 ### 1. 判断读取字符串值
 `
