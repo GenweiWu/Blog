@@ -1,4 +1,4 @@
-Linux Shell字符串操作
+Linux Shell字符串操作（${}仅在bash上生效,sh上报错）
 ===
 
 ### 1. 判断读取字符串值
