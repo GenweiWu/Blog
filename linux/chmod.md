@@ -21,7 +21,7 @@ chmod +x is equal to chmod ugo+x (Based on umask value)
 chmod a+x is equal to chmod ugo+x (Without considering umask value)
 ```
 
-### 样例
+#### 样例
 ```console
 [root@SZX1000538971 test]# umask
 0077
