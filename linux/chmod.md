@@ -14,7 +14,8 @@ find /opt/lampp/htdocs -type f -exec chmod 644 {} \;
 
 ## `chmod +x ` VS `chmod a+x`
 
-> 一个会依赖umask值，一个不会
+> 一个会依赖umask值，一个不会  
+> https://askubuntu.com/a/1075089
 ```
 chmod +x is equal to chmod ugo+x (Based on umask value)
 chmod a+x is equal to chmod ugo+x (Without considering umask value)
