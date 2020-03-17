@@ -13,3 +13,7 @@ span{}
 .area>div{}
 .area>span{}
 ```
+
+
+## 参考
+- http://www.ruanyifeng.com/blog/2009/03/css_selectors.html
