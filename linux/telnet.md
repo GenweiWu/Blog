@@ -33,6 +33,11 @@ telnet localhsot 80
 ```
 netstat -anp|grep 3306
 ```
+或
+```
+lsof -i:3306
+```
+
 
 ## 退出telnet
 > https://superuser.com/a/486501
