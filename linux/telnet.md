@@ -33,3 +33,15 @@ telnet localhsot 80
 ```
 netstat -anp|grep 3306
 ```
+
+## 退出telnet
+> https://superuser.com/a/486501
+```
+It should have printed something along the lines of:
+
+Escape character is '^]'.
+Since ^X is CtrlX, try Ctrl] for ^].
+
+You should then enter the telnet console, where you can enter quit to leave telnet.
+```
+
