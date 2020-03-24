@@ -8,6 +8,19 @@
 扩展分区的容量＝各个逻辑分区的容量之和
 ```
 
+#### 参考
+> 主分区xvde1,xvde2,xvde3  
+> 扩展分区 xvde4  
+  -- 逻辑分区 xvde5  
+  -- 逻辑分区 xvde6  
+```
+Device Boot      Start         End      Blocks   Id  System
+/dev/xvde1            2048    52430847    26214400   83  Linux
+/dev/xvde2        52430848    62916607     5242880   83  Linux
+/dev/xvde3        62916608   104859647    20971520   83  Linux
+/dev/xvde4       104859648   209715199    52427776    5  Extended
+/dev/xvde5       104861696   157290495    26214400   83  Linux
+```
 
 
 
