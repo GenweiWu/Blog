@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>security test</title>
+
+<style type="text/css">
+html,body{
+	height: 100%;
+}
+
+.show-area{
+	float: left;
+	width: 20%;
+	height: 100%;
+	border-right: 1px solid orange;
+}	
+
+.panel-area{
+	float: right;
+	width: calc(80% - 1px);
+	height: 100%;
+}
+
+</style>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+
+
+
+<script>
+$(document).ready(function(){
+	let xssList = [
+		'<input onmouseover="alert(/xss1/);">',
+		'<img src=1 onerror=alert("xss2");>',
+		"<script>alert('XSS3');<\/script>",
+		'<input onfocus="alert(/xss4/);">',
+		'<details ontoggle="alert(/xss5/);">',
+		// '\"><svg/onload=alert(/XSS/)',
+		'<script src=data:,alert(1)><\/script>',
+		'<svg><x><script>alert(/xssSvg/)<\/script></x><\/svg>',
+		'<svg><x><script>alert(1)</x>',
+		'<iframe onload=alert("xss");></iframe>',
+		'<video><source onerror="alert(1)">',
+		'<audio src=x  onerror=alert("xss");>',
+		// '<body/onload=alert("xss");>'
+		'<a href="javascript:alert(`aaa`);">click me</a>',
+		'<iframe src=javascript:alert(/xss/);></iframe>',
+		'<form action="Javascript:alert(1)"><input type=submit>',
+		'<img/src="x"/onerror=alert("xss");>',
+		'<ImG sRc=x onerRor=alert("xss");>',
+		'<script>top["al"+"ert"](`xss`);<\/script>',
+		'<<script>alert("xss");//<<\/script>',
+		// '<svg/onload="window.onerror=eval;throw\'=alert\x281\x29\';">'
+	];
+
+	for (var i = 0; i < xssList.length; i++) {
+		let curXss = xssList[i];
+
+		let row = $(`<div>
+				<input type='radio' id='${i}' name='xssTest'>
+				<label for="${i}"></label>
+			</div>`);
+		row.find('label').text(curXss);
+		row.find('input:radio').click(function(_event){
+			let _val = $(_event.target).next("label").text()
+			$("#divId").html(_val);
+
+			try{
+				//$("#divId").html(_val);
+			}catch(e){
+				//ignore
+			}
+
+		});
+		row.appendTo($("#panelId"))
+
+	}
+
+})
+	
+</script>	
+</head>
+<body>
+	
+<pre id="divId" class="show-area">		
+</pre>
+<!-- <div id="divId" class="show-area">	
+</div> -->
+
+
+<div id="panelId" class="panel-area">
+	<!-- toFillUp -->
+</div>
+
+
+</body>
+</html>
