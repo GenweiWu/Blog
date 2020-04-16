@@ -46,6 +46,34 @@ bookList.stream().collect(Collectors.groupingBy(Book::getType));
 bookList.stream().collect(Collectors.partitioningBy(b -> b.getPrice() > 25));
 ```
 
+## computeIfAbsent
+> before
+```java
+Map<Integer, List<Person>> myHashMap = new HashMap();
+
+for (Person person : persons) {
+   int age = person.getAge();
+   List<Person> personsOfSameAge = myHashMap.get(age);
+   if (personsOfSameAge != null) {
+       personsOfSameAge.add(person);
+   } else {
+       personsOfSameAge = new ArrayList();
+       personsOfSameAge.add(person);
+       myHashMap.put(age, personsOfSameAge);
+   }
+}
+```
+
+> after
+```java
+Map<Integer, List<Person>> myHashMap = new HashMap();
+
+for (Person person : persons) {
+   myHashMap.computeIfAbsent(age,age->new ArrayList<Person>()).add(person);
+}
+```
+
+
 ---
 ## 参考
 - https://howtodoinjava.com/java-8/stream-max-min-examples/
