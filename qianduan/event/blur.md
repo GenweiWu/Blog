@@ -1,7 +1,18 @@
 
 ## 说明
+
+> 样例: https://jsitor.com/tB8lln23f
 ```
 当一个元素失去焦点的时候 blur 事件被触发。它和 focusout 事件的主要区别是 focusout 支持冒泡。
+
+focusout类似于mouseout，暂时没发现有mouseleave类似事件，所以只能针对子元素分别设置blur方法
+就算设置ul的focusout事件，li1移动到li2也会导致focusout被触发
+<ul>
+<li>111</li>
+<li>222</li>
+</ul>
+
+
 ```
 
 > 只对部分元素生效
