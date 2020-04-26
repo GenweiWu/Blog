@@ -51,6 +51,8 @@ http://nassir.iteye.com/blog/1983667
 ## 3. nginx中location的写法
 
 #### 匹配符号
+
+> https://cloud.tencent.com/developer/article/1119218
 ```
 1. 正则匹配 location ~ /abc { }
 2. 不区分大小写的正则匹配 location ~* /abc { }
