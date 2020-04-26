@@ -75,3 +75,10 @@ public getInfo(param: any, callBack: ((x: (InfoResult<string>)) => any)): any {
     });
   }
 ```
+
+## js类型判断
+```js
+ typeof _temp === 'string'
+ 
+ _temp instanceof Array
+```
