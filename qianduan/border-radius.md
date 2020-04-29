@@ -40,7 +40,12 @@ border-bottom-right-radius:60px;
 border-bottom-left-radius:10px;
 ```
 
-### 1.2 圆形(一个半径)/椭圆()
+### 1.2百分号表示法
+```css
+border-radius: 10% 30% 50% 70%;
+```
+
+### 1.3 圆形(一个半径)/椭圆()
 
 > 椭圆表示
 ```css
