@@ -17,3 +17,13 @@ for i in ${images[@]}; do
   docker rmi registry.aliyuncs.com/google_containers/$imageName
 done;
 ```
+
+> 免交互写入文件
+```bash
+cat <<EOF > /etc/docker/daemon.json
+{
+  "insecure-registries": ["10.93.171.57:8082"],  
+  "exec-opts": ["native.cgroupdriver=systemd"]
+}
+EOF
+```
