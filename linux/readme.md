@@ -22,7 +22,7 @@ done;
 ```bash
 cat <<EOF > /etc/docker/daemon.json
 {
-  "insecure-registries": ["10.93.171.57:8082"],  
+  "insecure-registries": ["10.11.12.13:8090"],  
   "exec-opts": ["native.cgroupdriver=systemd"]
 }
 EOF
