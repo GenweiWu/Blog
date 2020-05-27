@@ -35,6 +35,17 @@ $ sed 's/111/---/g' 3.txt
 abc---def222ghi---z
 ```
 
+> 例3：替换a=...到a=xxx
+```bash
+[root@SZX1000538971 test]# cat 1.txt
+a=1
+b=2
+[root@SZX1000538971 test]# sed 's/a=.*/a=xxx/g' 1.txt
+a=xxx
+b=2
+
+```
+
 ## 删除命令d
 
 > 准备:原始文件内容
