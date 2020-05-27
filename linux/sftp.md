@@ -75,7 +75,10 @@ cd 远程cd
 - 不是所有命令加l就是本地，sftp的命令是定好的
 
 #### 4.下载文件，可以批量下载
-```
+```bash
+sftp> get *02-01*runtime.gz
+
+## 文件夹的话
 sftp> get *02-01*runtime.gz
 ```
 
