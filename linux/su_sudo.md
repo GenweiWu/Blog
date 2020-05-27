@@ -14,6 +14,7 @@ su = Shift user  切换用户
 
 
 ### sudo配置
+文件`sudoers` 
 
 
 ### 参考
