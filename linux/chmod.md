@@ -13,7 +13,7 @@ find /opt/lampp/htdocs -type f -exec chmod 644 {} \;
 ```
 
 ### chmod -R /dir111 755
-不过这个效果是，目录下的所有目录和文件的权限都会被改成755
+不过这个效果是，目录下的所有目录和文件的权限都会被改成755(/dir111也被改成755)
 
 ## `chmod +x ` VS `chmod a+x`
 
