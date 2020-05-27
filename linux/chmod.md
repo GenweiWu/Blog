@@ -12,6 +12,9 @@ To change all the files to 644 (-rw-r--r--):
 find /opt/lampp/htdocs -type f -exec chmod 644 {} \;
 ```
 
+### chmod -R /dir111 755
+不过这个效果是，目录下的所有目录和文件的权限都会被改成755
+
 ## `chmod +x ` VS `chmod a+x`
 
 > 一个会依赖umask值，一个不会  
