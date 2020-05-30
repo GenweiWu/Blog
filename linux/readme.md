@@ -1,4 +1,23 @@
 > 数组遍历
+
+```console
+[root@SZX1000538971 ~]# aa=(
+> 1
+> 2
+> 3
+> )
+[root@SZX1000538971 ~]# echo $aa
+1
+[root@SZX1000538971 ~]# echo ${aa[0]}
+1
+[root@SZX1000538971 ~]# echo ${aa[1]}
+2
+[root@SZX1000538971 ~]# echo ${aa[2]}
+3
+[root@SZX1000538971 ~]# echo ${aa[@]}
+1 2 3
+```
+
 ```bash
 images=(
 k8s.gcr.io/kube-apiserver:v1.15.0
