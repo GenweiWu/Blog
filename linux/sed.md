@@ -59,6 +59,23 @@ b=2
 
 ```
 
+> 例5：增加行
+```bash
+[root@SZX1000538971 test]# cat 1.txt
+a=1
+b=2
+# 在匹配行之后增加
+[root@SZX1000538971 test]# sed '/a=.*/a aaa=changed' 1.txt
+a=1
+aaa=changed
+b=2
+# 在匹配行之前增加
+[root@SZX1000538971 test]# sed '/a=.*/i aaa=changed' 1.txt
+aaa=changed
+a=1
+b=2
+```
+
 ## 删除命令d
 
 > 准备:原始文件内容
