@@ -40,6 +40,19 @@ kube-controller-manager.service                                                 
 kube-scheduler.service 
 ```
 
+> https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
+```bash
+## 查看配置
+systemctl cat nginx.service
+
+## 修改配置
+## 打开空文件，配置项会进行覆盖
+systemctl edit nginx.service
+
+## 打开当前的配置文件，直接修改
+systemctl edit --full nginx.service
+
+```
 
 
 ## 参考
