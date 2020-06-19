@@ -74,6 +74,17 @@ b=2
 aaa=changed
 a=1
 b=2
+
+## 好像不用处理特殊字符/
+[root@SZX1000538971 test]# sed '/a=.*/a aaa=xx/xx' 1.txt
+a=1
+aaa=xx/xx
+b=2
+[root@SZX1000538971 test]# sed '/a=.*/i aaa=xx/xx' 1.txt
+aaa=xx/xx
+a=1
+b=2
+
 ```
 
 ## 删除命令d
