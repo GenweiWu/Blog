@@ -5,8 +5,10 @@ systemctl start docker
 systemctl stop docker 
 systemctl restart docker
 
-//查看服务的启动状态
+//查看服务的启动状态，会翻页需要手工输入q
 systemctl status docker
+## 不翻页
+systemctl status flanneld --no-pager
 //查看服务的配置信息
 systemctl show docker
 ```
