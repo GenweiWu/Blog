@@ -2,7 +2,7 @@
 
 ### systemd写法样例
 
-> EnvironmentFile 可以指定一个文件，文件中配置变量
+> EnvironmentFile 可以指定一个文件，文件中配置变量  
 > xxx.service中可以使用 EnvironmentFile 中的变量
 ```bash
 $ systemctl cat sshd.service
