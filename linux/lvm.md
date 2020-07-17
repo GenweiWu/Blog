@@ -48,7 +48,7 @@ File descriptor 3 (/etc/passwd) leaked on vgs invocation. Parent PID 51370: -bas
   vg1   1   0   0 wz--n- <90.00g <90.00g
 ```
 
-LV
+> LV
 ```
 [root@shap000109594 ~]# lvcreate -n lv_docker -L 30G vg1
 File descriptor 3 (/etc/passwd) leaked on lvcreate invocation. Parent PID 51370: -bash
@@ -61,6 +61,23 @@ File descriptor 3 (/etc/passwd) leaked on lvs invocation. Parent PID 51370: -bas
   lv_docker vg1 -wi-a----- 30.00g
 ```
 
+
+```bash
+## fdisk
+...
+Disk /dev/mapper/vg1-lv_docker: 32.2 GB, 32212254720 bytes, 62914560 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+## 格式化+挂载
+[root@shap000109594 ~]# mkdir -p /var/lib/docker
+[root@shap000109594 ~]# mkfs.ext3 /dev/mapper/vg1-lv_docker
+[root@shap000109594 ~]# mount /dev/mapper/vg1-lv_docker /var/lib/docker/
+
+## df -h
+/dev/mapper/vg1-lv_docker   30G   45M   28G   1% /var/lib/docker
+```
 
 ### 参考
 - https://blog.csdn.net/lenovouser/article/details/54233570
