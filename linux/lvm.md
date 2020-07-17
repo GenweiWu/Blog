@@ -22,6 +22,44 @@ VG= ( PV1 + PV2 + PV3 )
 
 ### 使用
 
+> PV
+```
+[root@shap000109594 ~]# pvs
+File descriptor 3 (/etc/passwd) leaked on pvs invocation. Parent PID 51370: -bash
+[root@shap000109594 ~]# pvcreate /dev/xvde
+File descriptor 3 (/etc/passwd) leaked on pvcreate invocation. Parent PID 51370: -bash
+WARNING: dos signature detected on /dev/xvde at offset 510. Wipe it? [y/n]: y
+  Wiping dos signature on /dev/xvde.
+  Physical volume "/dev/xvde" successfully created.
+[root@shap000109594 ~]# pvs
+File descriptor 3 (/etc/passwd) leaked on pvs invocation. Parent PID 51370: -bash
+  PV         VG Fmt  Attr PSize  PFree
+  /dev/xvde     lvm2 ---  90.00g 90.00g
+```
+
+> VG
+```
+[root@shap000109594 ~]# vgcreate vg1 /dev/xvde
+File descriptor 3 (/etc/passwd) leaked on vgcreate invocation. Parent PID 51370: -bash
+  Volume group "vg1" successfully created
+[root@shap000109594 ~]# vgs
+File descriptor 3 (/etc/passwd) leaked on vgs invocation. Parent PID 51370: -bash
+  VG  #PV #LV #SN Attr   VSize   VFree
+  vg1   1   0   0 wz--n- <90.00g <90.00g
+```
+
+LV
+```
+[root@shap000109594 ~]# lvcreate -n lv_docker -L 30G vg1
+File descriptor 3 (/etc/passwd) leaked on lvcreate invocation. Parent PID 51370: -bash
+WARNING: ext3 signature detected on /dev/vg1/lv_docker at offset 1080. Wipe it? [y/n]: y
+  Wiping ext3 signature on /dev/vg1/lv_docker.
+  Logical volume "lv_docker" created.
+[root@shap000109594 ~]# lvs
+File descriptor 3 (/etc/passwd) leaked on lvs invocation. Parent PID 51370: -bash
+  LV        VG  Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  lv_docker vg1 -wi-a----- 30.00g
+```
 
 
 ### 参考
