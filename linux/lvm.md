@@ -86,6 +86,7 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 ### 参考
 - https://blog.csdn.net/lenovouser/article/details/54233570
 - http://iamfangle.blogspot.com/2016/05/lvmssm.html
+- https://blog.51cto.com/13584122/2113585
 
 
 
