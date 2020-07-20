@@ -23,7 +23,7 @@ VG= ( PV1 + PV2 + PV3 )
 ### 使用
 
 > PV
-```
+```bash
 [root@shap000109594 ~]# pvs
 File descriptor 3 (/etc/passwd) leaked on pvs invocation. Parent PID 51370: -bash
 [root@shap000109594 ~]# pvcreate /dev/xvde
@@ -38,7 +38,7 @@ File descriptor 3 (/etc/passwd) leaked on pvs invocation. Parent PID 51370: -bas
 ```
 
 > VG
-```
+```bash
 [root@shap000109594 ~]# vgcreate vg1 /dev/xvde
 File descriptor 3 (/etc/passwd) leaked on vgcreate invocation. Parent PID 51370: -bash
   Volume group "vg1" successfully created
@@ -49,7 +49,7 @@ File descriptor 3 (/etc/passwd) leaked on vgs invocation. Parent PID 51370: -bas
 ```
 
 > LV
-```
+```bash
 [root@shap000109594 ~]# lvcreate -n lv_docker -L 30G vg1
 File descriptor 3 (/etc/passwd) leaked on lvcreate invocation. Parent PID 51370: -bash
 WARNING: ext3 signature detected on /dev/vg1/lv_docker at offset 1080. Wipe it? [y/n]: y
