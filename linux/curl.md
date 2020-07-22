@@ -37,8 +37,10 @@ curl -w "@curl-format.txt" -o NUL -s "http://wordpress.com/"
 [原始链接](https://stackoverflow.com/a/22625150)
 
 ### 3. 格式化json
-`curl xxxxx |python -m json.tool`
-`curl xxxxx |tac |tac|python -m json.tool`
+```bash
+curl http://sso-service:8080/sso-service/admin/env |python -m json.tool
+curl http://sso-service:8080/sso-service/admin/env |python -m json.tool|grep ssoserver
+```
 
 ---
 ### 参考
