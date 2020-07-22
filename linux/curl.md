@@ -36,6 +36,10 @@ curl -w "@curl-format.txt" -o NUL -s "http://wordpress.com/"
 
 [原始链接](https://stackoverflow.com/a/22625150)
 
+### 格式化json
+`curl xxxxx |python -m json.tool`
+`curl xxxxx |tac |tac|python -m json.tool`
+
 ---
 ### 参考
 [curl网站开发指南 阮一峰](http://www.ruanyifeng.com/blog/2011/09/curl.html)
