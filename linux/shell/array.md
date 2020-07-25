@@ -1,7 +1,7 @@
 
 
 
-### 读取
+## 读取
 
 ```
 # 单个读取
@@ -82,5 +82,37 @@ ${array[@]}
 -->555
 [root@SZX1000538971 shellT]# for i in "${names[*]}"; do echo "-->$i";done
 -->111 222 bbb 333 444 ccc 555
+
+```
+
+
+## 关联数组(用于模拟map)
+
+> 普通数组，模拟map失败
+```
+[root@SZX1000538971 shellT]# color['red']=red111
+[root@SZX1000538971 shellT]# color['green']=green222
+[root@SZX1000538971 shellT]# echo $color
+green222
+[root@SZX1000538971 shellT]# echo ${color[@]}
+green222
+[root@SZX1000538971 shellT]# echo ${color[*]}
+green222
+[root@SZX1000538971 shellT]# echo ${#color[@]}
+1
+
+```
+
+> 使用declare -A申明关联数组
+```
+[root@SZX1000538971 shellT]# declare -A hobby
+[root@SZX1000538971 shellT]# hobby['run']=run111
+[root@SZX1000538971 shellT]# hobby['swim']=swim222
+[root@SZX1000538971 shellT]# echo ${hobby[@]}
+run111 swim222
+[root@SZX1000538971 shellT]# echo ${hobby[*]}
+run111 swim222
+[root@SZX1000538971 shellT]# echo ${#hobby[@]}
+2
 
 ```
