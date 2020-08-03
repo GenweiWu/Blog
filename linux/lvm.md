@@ -83,6 +83,15 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 /dev/mapper/vg1-lv_docker   30G   45M   28G   1% /var/lib/docker
 ```
 
+### 备注
+- lv
+```bash
+## 可以指定使用功能100%或70%空间的方法
+lvcreate -n lv_nfs -l 100%free vg1
+## 或直接-L 指定大小
+lvcreate -L 2G -n lv_2 vg_1
+```
+
 ### 参考
 - https://blog.csdn.net/lenovouser/article/details/54233570
 - http://iamfangle.blogspot.com/2016/05/lvmssm.html
