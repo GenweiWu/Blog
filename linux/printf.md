@@ -156,6 +156,23 @@ sleep 0.1
 show_process 10 10
 ```
 
+- 进度条3
+```bash
+#!/bin/bash
+
+b=''
+for i in {1..100};do
+  b=${b}#
+  printf "[%-100s %s/%s]\r" $b $i 100
+  ## 中间不能出入其他输出
+  #echo $i
+  sleep 0.03
+done
+##换行
+echo
+
+```
+
 - 格式化打印
 ```bash
 # !/bin/bash
