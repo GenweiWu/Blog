@@ -139,8 +139,6 @@ function show_process()
   done
 
   printf "[%-${all}s] $current/$all \r" $aa
-
-
 }
 
 
