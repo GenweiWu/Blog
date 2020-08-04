@@ -57,9 +57,11 @@ hello
 
 ## %s显示字符串
 ## %-15s 表示一个左对齐、宽度为 15 个字符字符串格式
+## -居左，默认居右
 [root@SZX1000538971 shellT]# printf "%sAAA" 111
 111AAA[root@SZX1000538971 shellT]# printf "%-10sAAA" 111
-111       AAA[root@SZX1000538971 shellT]
+111       AAA[root@SZX1000538971 shellT]# printf "%10sAAA" 111
+       111AAA[root@SZX1000538971 shellT]#
 ```
 
 
