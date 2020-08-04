@@ -9,7 +9,7 @@ printf  format-string  [arguments...]
 
 - 输出进度条效果的简单shell脚本
 > https://blog.csdn.net/ITzhangdaopin/article/details/82965875
-```
+```bash
 #!/bin/bash
 b=''
 i=0
