@@ -1,3 +1,64 @@
+## 转义字符
+
+```bash
+## prinf默认是不换行显示的
+## \n 换行
+[root@SZX1000538971 shellT]# printf "hello"
+hello[root@SZX1000538971 shellT]# printf "hello\n"
+hello
+[root@SZX1000538971 shellT]#
+
+
+## \b后退删除一个字符
+[root@SZX1000538971 shellT]# printf "12345"
+12345[root@SZX1000538971 shellT]# printf "12345\b"
+1234[root@SZX1000538971 shellT]# printf "12345\b "
+1234 [root@SZX1000538971 shellT]# printf "12345\b\b\b*"
+12*[root@SZX1000538971 shellT]#
+
+
+## \r回车，感觉是删除了回车前面的所有字符
+[root@SZX1000538971 shellT]# printf "111\r666"
+666[root@SZX1000538971 shellT]# printf "111222\r666"
+666[root@SZX1000538971 shellT]#
+## 实际上左移光标后，如果有新字符就覆盖了之前的内容
+#### 实际效果是先展示 66122且光标在1上面，然后1s后显示66
+[root@SZX1000538971 shellT]# printf "111222\r66" && sleep 1s
+66[root@SZX1000538971 shellT]#
+
+
+## \t水平制表符  \v垂直制表符
+[root@SZX1000538971 shellT]# printf '111\t222'
+111     222[root@SZX1000538971 shellT]# printf '111\v222'
+111
+   222[root@SZX1000538971 shellT]#
+```
+
+-r 回车，内容没打印出来
+
+
+
+## 格式化
+
+```bash
+## %d打印数字
+## %5d 打印时5位数显示
+## %.5d 打印时5位数显示，不足时用0补齐
+[root@SZX1000538971 shellT]# printf "%d\n"  66
+66
+[root@SZX1000538971 shellT]# printf "%5d\n"  66
+   66
+[root@SZX1000538971 shellT]# printf "%.5d\n"  66
+00066
+
+
+## %s显示字符串
+## %-15s 表示一个左对齐、宽度为 15 个字符字符串格式
+[root@SZX1000538971 shellT]# printf "%sAAA" 111
+111AAA[root@SZX1000538971 shellT]# printf "%-10sAAA" 111
+111       AAA[root@SZX1000538971 shellT]
+```
+
 
 
 ## 命令格式
