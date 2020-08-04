@@ -125,6 +125,34 @@ done
 echo
 ```
 
+- 输出进度条2
+```bash 
+function show_process()
+{
+  current=$1
+  all=$2
+
+  aa=''
+  for((i=1;i<=$1;i++));
+  do
+    aa=${aa}'#'
+  done
+
+  printf "[%-${all}s] $current/$all \r" $aa
+
+
+}
+
+
+show_process 4 10
+sleep 0.1
+show_process 5 10
+sleep 0.2
+show_process 8 10
+sleep 0.1
+show_process 10 10
+```
+
 - 格式化打印
 ```bash
 # !/bin/bash
