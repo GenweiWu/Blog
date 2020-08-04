@@ -44,10 +44,13 @@ hello
 ## %d打印数字
 ## %5d 打印时5位数显示
 ## %.5d 打印时5位数显示，不足时用0补齐
+## -表示靠左展示，默认靠右展示
 [root@SZX1000538971 shellT]# printf "%d\n"  66
 66
 [root@SZX1000538971 shellT]# printf "%5d\n"  66
    66
+[root@SZX1000538971 ~]# printf "%-5d\n"  66
+66   
 [root@SZX1000538971 shellT]# printf "%.5d\n"  66
 00066
 
