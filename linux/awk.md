@@ -94,7 +94,25 @@ awk是一个行数据处理命令
 5:50
 ```
 
+## 条件-正则
+```bash
+[dave@SZX1000538971 shellT]# awk '/zhang/ {print $0}' 222.txt
+zhangsan
+zhangwei
+[dave@SZX1000538971 shellT]# awk '/zhang|Zhang/ {print $0}' 222.txt
+zhangsan
+daveZhang
+daveZhang22
+zhangwei
 
+## 忽略大小写
+[dave@SZX1000538971 shellT]# awk 'BEGIN{IGNORECASE=1} /ZHANG/ {print $0}' 222.txt
+zhangsan
+daveZhang
+daveZhang22
+zhangwei
+
+```
 
 ## if
 
