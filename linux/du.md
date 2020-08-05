@@ -8,8 +8,16 @@ du用于查看磁盘使用空间
   
 - `du -h`  
   使用M或G等便于识别的大小
-- `du --max-depth=1`
-  只展示当前目录的子目录  
+- `du -h --max-depth=1`  
+  等同于  `du -h -d 1`
+  ```
+  -d, --max-depth=N     print the total for a directory (or file, with --all)
+                          only if it is N or fewer levels below the command
+                          line argument;  --max-depth=0 is the same as
+                          --summarize
+  ``` 
+  只展示当前目录的子目录
+  
 - `du -h --max-depth=1 |sort -h`  
   根据大小排序(`du -h |sort -n`是错误的,因为它无法正确识别1G大于255M,[参见](https://serverfault.com/questions/62411/how-can-i-sort-du-h-output-by-size))
 
