@@ -167,6 +167,7 @@ export class OuterletDemoComponent implements OnInit {
 ```    
 Where proxy route component is simply
 
+> proxy-route.component.ts
 ```
 import { Component } from '@angular/core';
 
