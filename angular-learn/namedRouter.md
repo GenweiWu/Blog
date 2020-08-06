@@ -109,12 +109,12 @@ export class OuterletDemoComponent implements OnInit {
     this.router.navigate(['/outerlet', {outlets: {'inner':['innerMargin']}}],{queryParams:param,skipLocationChange:true});
 ```
 
-## 效果
+### 效果
 - 点击hello是覆盖了整个页面，而inner则只覆盖的下半部分
 - 点击时可以看到浏览器中的url变化，对应的ts中实现就是对应的url
 ![](./img/namedRouter.gif)
 
-## 个人总结
+### 个人总结
 1. 内部路由，需要在配置路由时，设置为children，且需要设置outlet属性
 2. 路由链接(无论是html方式还是ts方式)则需要制定对应的outlet名称
 3. forChild写法中，我测试的结果是只能写在`path`非空的下面,为空的我没试成功
