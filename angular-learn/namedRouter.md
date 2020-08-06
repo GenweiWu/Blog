@@ -347,6 +347,12 @@ RouterModule.forChild([
 ...
 ```
 
+- 对应的url直接访问方式
+```
+http://localhost:4201/module-test/xx/(inner:innerPreview)?id=1
+http://localhost:4201/module-test/xx/(inner:innerPreview)?id=2
+```
+
 
 ## 参考
 - https://stackoverflow.com/a/38038733
