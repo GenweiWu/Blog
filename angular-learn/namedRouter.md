@@ -255,7 +255,97 @@ export class XxxModule { }
 
 ```
 
+## 如何传递参数queryParams
 
+- html中的写法
+> hello-route.component.html
+```html
+<div>
+  <span>html router</span>
+  <ul>
+    <li [routerLink]="['/hello']">hello</li>
+    <li [routerLink]="['/module-test/xx', {outlets: {'inner':['innerPreview']}}]" [queryParams]="{id: 1}">inner innerPreview111</li>
+    <li [routerLink]="['/module-test/xx', {outlets: {'inner':['innerPreview']}}]" [queryParams]="{id: 2}">inner innerPreview222</li>
+  </ul>
+</div>
+
+<div>
+  <span>ts router</span>
+  <ul>
+    <li (click)="gotoHello()">hello</li>
+    <li (click)="gotoInnerPreview111()">inner gotoInnerPreview111</li>
+    <li (click)="gotoInnerPreview222()">inner gotoInnerPreview222</li>
+  </ul>
+</div>
+
+<router-outlet name="inner"></router-outlet>
+```
+
+- ts中的写法
+
+> hello-route.component.ts
+```ts
+...
+ gotoHello() {
+    this.router.navigateByUrl('/hello');
+  }
+
+  gotoInnerPreview111() {
+    this.router.navigate(
+      [
+        '/module-test/xx',
+        {outlets: {'inner': ['innerPreview']}}
+      ],
+      {
+        queryParams: {id: 1},
+        // skipLocationChange: false
+      }
+    );
+  }
+
+  gotoInnerPreview222() {
+    this.router.navigate(
+      [
+        '/module-test/xx',
+        {outlets: {'inner': ['innerPreview']}}
+      ],
+      {
+        queryParams: {id: 2},
+        // skipLocationChange: false
+      }
+    );
+  }
+...
+```
+
+> hello-route.module.ts
+```ts
+...
+RouterModule.forChild([
+      {
+        path: 'xx',
+        component: HelloRouteComponent,
+        children: [
+          {
+            path: 'innerPreview',
+            outlet: 'inner',
+            component: ProxyRouteComponent,   //<==这里直接使用component
+            children: [
+              {
+                path: '',
+                loadChildren: '../hello/hello.module#HelloModule'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        path: 'hello',
+        component: HelloComponent
+      }
+    ])
+...
+```
 
 
 ## 参考
