@@ -240,7 +240,7 @@ import { ProxyRouteModule } from '../common/proxy-route.module';
             children:[
               {
                 path:'',
-                loadChildren: '..hello#HelloModule'
+                loadChildren: '../hello.module#HelloModule'
               }
             ]
           }
