@@ -353,6 +353,60 @@ http://localhost:4201/module-test/xx/(inner:innerPreview)?id=1
 http://localhost:4201/module-test/xx/(inner:innerPreview)?id=2
 ```
 
+### 进一步的bug(个人经验)
+
+```bash
+## 背景
+添加了自动监控queryParams的变化，然后自动去刷新nameRoute的功能
+
+## 但是发现个bug：
+一开始输入下面的url回车，可以展示
+http://localhost:4201/#/module-test/xx?id=1&age=99
+然后复制下面的url后回车，展示空白！(再次F5刷新展示却又正常)
+http://localhost:4201/#/module-test/xx?id=1&age=100
+
+## 定位思路
+怀疑是url修改后，再次this.router.navigate时，url上的参数没变化，导致angular内部判断逻辑出现问题
+
+## 规避方法
+添加参数t进行规避，即实现url上的queryParams和this.router.navigate中的queryParams不一致就行
+
+```
+
+> hello-route.component.ts
+```ts
+  ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(x=>{
+      this.goInnerPreviewDynamic(x);
+      // window.location.reload();
+      console.log(x);
+
+    })
+  }
+
+  goInnerPreviewDynamic(_queryParam){
+    debugger;
+    this.router.navigate(
+      [
+        '/module-test/xx',
+        {outlets: {'inner': ['innerPreview']}}
+      ],
+      {
+        queryParams: {
+          id: _queryParam.id,
+          age:_queryParam.age,
+          ## 这个t变量是规避空白问题的
+          t: 1
+        },
+        skipLocationChange: true,
+        relativeTo:this.activatedRoute,
+        queryParamsHandling:"merge"
+      }
+    );
+  }
+```
+
+
 
 ## 参考
 - https://stackoverflow.com/a/38038733
