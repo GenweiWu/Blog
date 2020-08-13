@@ -58,3 +58,9 @@ tcp        0      0 10.21.253.119:6379      172.17.0.3:54944        ESTABLISHED 
 tcp        0      0 172.17.0.1:49914        172.17.0.2:6379         ESTABLISHED 45294/docker-proxy
 ```
 
+## 扩展
+
+> windows下查看端口占用
+```
+netstat -aon|findstr "21020"
+```
