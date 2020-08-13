@@ -14,6 +14,24 @@ span{}
 .area>span{}
 ```
 
+## not选择器
+```css
+.card-content:not(.empty):hover {
+  box-shadow: 0 4px 10px 2px rgba(0, 0, 0, .2);
+}
+```
+
+```html
+<div class="card-content empty">
+    这个不符合
+</div>
+
+<div class="card-content">
+    这个符合
+</div>
+
+```
+
 
 ## 参考
 - http://www.ruanyifeng.com/blog/2009/03/css_selectors.html
