@@ -35,6 +35,35 @@ TypeEnum = TypeEnum;
 <div *ngIf="thisType === TypeEnum.two">two</div>
 ```
 
+### @input中使用enum枚举
+
+> 定义枚举
+```
+export enum Mode {
+  new_button = 'new_button',
+  new = 'new',
+  edit = 'edit'
+}
+```
+
+> 父组件中写法
+```
+<permission-card mode="new_button"></permission-card>
+```
+
+> 子组件.component.ts中
+```
+  @Input() mode: Mode;
+  Mode = Mode;
+```
+
+> 子组件.component.html中
+```html
+<div class="card" *ngIf="mode==Mode.new_button">
+    ...
+```
+
+
 ## ts中的对象类型 interface VS class
 ```
 interface用于进行类型检查，但是它无法创建对象(使用new的方式)
