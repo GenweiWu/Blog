@@ -40,15 +40,22 @@ TypeEnum = TypeEnum;
 > 定义枚举
 ```
 export enum Mode {
-  new_button = 'new_button',
-  new = 'new',
-  edit = 'edit'
+  new_button,
+  edit ,
+  view
 }
 ```
 
-> 父组件中写法
+> 父组件.component.html
 ```
-<permission-card mode="new_button"></permission-card>
+<permission-card [mode]="Mode.new_button"></permission-card>
+```
+
+> 父组件.component.ts
+```ts
+  Mode = Mode;
+  constructor(
+  ) { }
 ```
 
 > 子组件.component.ts中
