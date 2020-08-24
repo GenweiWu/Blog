@@ -1,5 +1,5 @@
 
-## 区别 Event.target, Event.toElement and Event.srcElement
+## Event.target, Event.toElement and Event.srcElement的区别 
 
 > https://stackoverflow.com/a/31866151
 - `$event.target || $event.srcElement`是指原始触发元素
@@ -16,3 +16,11 @@ let target = $event.target || $event.srcElement || $event.currentTarget
   </div>
 </div>
 ```
+
+## event.preventDefault()、event.stopPropagation()和return false区别
+
+- event.preventDefault()阻止默认动作
+- event.stopPropagation() 阻止事件冒泡
+- return false 阻止默认和冒泡事件
+
+> https://blog.csdn.net/chelen_jak/article/details/78831522
