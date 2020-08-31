@@ -4,5 +4,6 @@
 |&|位与|
 |&#124;|位或|
 |^|位异或|
+|~|位取反|
 
 > https://www.cnblogs.com/xuchunlin/p/6235391.html
