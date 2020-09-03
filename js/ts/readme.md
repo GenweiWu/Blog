@@ -84,6 +84,12 @@ class也可用于类型检查，而且可以用于创建对象
 
 ## 类型定义`type`
 ```ts
+export type SavePermissionResult = 'SUCCESS' | 'FAILED' | 'NAME_DUPLICATE'
+
+```
+
+
+```ts
 export interface SelectOption {
   label: string;
   value: string;
