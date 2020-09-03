@@ -86,6 +86,7 @@ class也可用于类型检查，而且可以用于创建对象
 ```ts
 export type SavePermissionResult = 'SUCCESS' | 'FAILED' | 'NAME_DUPLICATE'
 
+let a as SavePermissionResult = "SUCCESS"
 ```
 
 
