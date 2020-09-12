@@ -41,6 +41,14 @@
 
 ![image](https://user-images.githubusercontent.com/16630659/43237903-75513926-90be-11e8-8347-055d646712f4.png)
 
+## 何时会触发GC
+1. 老年代空间不足
+2. 持久代/方法区空间不足
+3. 上几次晋升对象的平均大小超过年老代空闲大小
+  - Minor GC后进入老年代的平均大小>老年代的可用内存大小
+  - 由Eden区、From Space区向To Space区复制时，对象大小大于To Space可用内存，则把该对象转存到老年代，且老年代的可用内存小于该对象大小
+4. 人为触发System.gc，但是不是必然执行
+5. MaxDirectMemeorySize超过，堆外内存不足导致的Full GC
 
 
 
