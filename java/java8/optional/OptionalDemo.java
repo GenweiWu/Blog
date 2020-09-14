@@ -72,6 +72,10 @@ public class OptionalDemo
         
         //java.util.NoSuchElementException: No value present
         //actual = Optional.ofNullable(nullValue).get();
+                
+        Optional.ofNullable(nullValue).ifPresent(x -> {
+            System.out.println("this is:" + x);
+        });
     }
     
     @Test
