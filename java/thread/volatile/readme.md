@@ -8,6 +8,37 @@ volatile变量前面和后面的语句的顺序不能互换
 
 - 无法保证原子性
 
+## code
+
+### code1
+
+
+```java
+/*
+ * 1.如果print先执行，则是-1--2
+ * 2.如果change先执行，则是666-666
+ * 但是也会出现-1-666的情况
+ */
+class Data
+{
+    private int a = -1;
+    
+    private int b = -2;
+    
+    public void change()
+    {
+        a = 666;
+        b = a;
+    }
+    
+    public void print()
+    {
+        System.out.println(a + "-" + b);
+    }
+}
+```
+
+
 ## 常见用法
 
 #### 1.状态标记
