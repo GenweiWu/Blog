@@ -130,6 +130,61 @@ Tue Mar 19 15:09:38 CST 2019--> force exit
 Process finished with exit code 0
 ```
 
+### 样例3
+
+> Thread.interrupted()会判断后，重置interrupt状态  
+> 而Thread.currentThread().isInterrupted()不会重置状态  
+```java
+package com.njust.test.thread;
+
+import java.util.Date;
+
+/**
+ * Thu Sep 17 17:12:32 CST 2020--> Thread is Going...
+ * Thu Sep 17 17:12:32 CST 2020--> Someone interrupted me.  //<--只出现一次了
+ * Thu Sep 17 17:12:32 CST 2020--> Thread is Going...
+ * ...
+ * Thu Sep 17 17:12:32 CST 2020--> Thread is Going...
+ * Thu Sep 17 17:12:32 CST 2020--> force exit
+ */
+public class InterruptThread3 extends Thread
+{
+    public void run()
+    {
+        while (true)
+        {
+            //Thread.interrupted()会判断后，重置interrupt状态
+            //而Thread.currentThread().isInterrupted()不会重置状态
+            if (Thread.interrupted())
+            {
+                System.out.println(new Date() + "--> Someone interrupted me.");
+            }
+            else
+            {
+                System.out.println(new Date() + "--> Thread is Going...");
+            }
+        }
+    }
+    
+    public static void main(String[] args)
+        throws InterruptedException
+    {
+        InterruptThread3 t = new InterruptThread3();
+        t.start();
+        Thread.sleep(10);
+        //效果是将isInterrupted设置为true了，并不会因此结束
+        t.interrupt();
+        
+        Thread.sleep(10);
+        System.out.println(new Date() + "--> force exit");
+        System.exit(0);
+    }
+    
+}
+
+```
+
+
 ## 参考
 - http://www.cnblogs.com/skywang12345/p/3479949.html
 - https://blog.csdn.net/canot/article/details/51087772
