@@ -1,5 +1,7 @@
 package com.njust.test.java8;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Assert;
@@ -72,12 +74,15 @@ public class OptionalDemo
         
         //java.util.NoSuchElementException: No value present
         //actual = Optional.ofNullable(nullValue).get();
-                
+        
         Optional.ofNullable(nullValue).ifPresent(x -> {
             System.out.println("this is:" + x);
         });
     }
     
+    /**
+     * 4.orElseGet实现懒加载
+     */
     @Test
     public void test03_b()
     {
@@ -93,6 +98,19 @@ public class OptionalDemo
         //        -------- heavy:default111
         //        -------- heavy:default222
         //        -------- heavy:default333
+    }
+    
+    /**
+     * optional可以放集合
+     */
+    @Test
+    public void test04()
+    {
+        List<String> list = new ArrayList<>();
+        
+        Optional<List<String>> optionalList = Optional.of(list);
+        System.out.println(optionalList.isPresent());
+        
     }
 }
 
