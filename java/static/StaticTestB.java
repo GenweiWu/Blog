@@ -4,16 +4,17 @@ class StaticTestB
 {
     public static void main(String[] args)
     {
+        //i am a const
         System.out.println(Const.NAME);
     }
 }
 
 class Const
 {
-    public static final String NAME = "i am a const";
-    
     static
     {
         System.out.println("init Const class");
     }
+    
+    public static final String NAME = "i am a const";
 }
