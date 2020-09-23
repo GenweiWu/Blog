@@ -11,11 +11,6 @@ class RTest
     private String field3;
 }
 
-/**
- * test1
- * test2
- * Exception in thread "main" java.lang.IllegalAccessException
- */
 public class ReflectionTest2
 {
     public static void main(String[] args)
@@ -33,7 +28,8 @@ public class ReflectionTest2
         
         field = RTest.class.getDeclaredField("field3");
         //java.lang.IllegalAccessException
-        field.set(rTest, "test3");
-        System.out.println(field.get(rTest));
+        //System.out.println(field.get(rTest));
+        //java.lang.IllegalAccessException
+        //field.set(rTest, "test3");
     }
 }
