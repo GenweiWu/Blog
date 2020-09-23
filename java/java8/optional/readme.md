@@ -26,3 +26,11 @@ optional
             System.out.println("this is:" + x);
         });
 ```
+
+### 四、可以放集合
+```java
+List<String> list = new ArrayList<>();
+        
+        Optional<List<String>> optionalList = Optional.of(list);
+        System.out.println(optionalList.isPresent());
+```
