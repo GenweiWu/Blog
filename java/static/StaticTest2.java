@@ -40,5 +40,6 @@ class Child extends Father
         System.out.println("init child");
     }
     
+    //注意这里的顺序
     public static int m = 36;
 }
