@@ -79,7 +79,7 @@ cd 远程cd
 sftp> get *02-01*runtime.gz
 
 ## 文件夹的话
-sftp> get *02-01*runtime.gz
+sftp> get -r *02-01*runtime.gz
 ```
 
 #### 5.上传文件
