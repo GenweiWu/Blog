@@ -36,6 +36,8 @@ Filesystem                 Size  Used Avail Use% Mounted on
 [root@SZX1000538971 ~]# lvextend -L 25G /dev/mapper/vg1-lv_docker
   Size of logical volume vg1/lv_docker changed from 20.00 GiB (5120 extents) to 25.00 GiB (6400 extents).
   Logical volume vg1/lv_docker successfully resized.
+## 扩容100%的话
+## lvextend -l +100%FREE /dev/vg_groupname/lv_name  
 [root@SZX1000538971 ~]# lvs
   LV        VG  Attr       LSize  Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
   lv_docker vg1 -wi-ao---- 25.00g
