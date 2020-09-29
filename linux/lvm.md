@@ -86,7 +86,7 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 
 ### 备注
 
-- pv  
+- vg  
 ```bash
 pvcreate /dev/xvdf
 vgextend vg1 /dev/xvdf
