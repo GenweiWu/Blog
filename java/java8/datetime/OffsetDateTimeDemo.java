@@ -117,4 +117,26 @@ public class OffsetDateTimeDemo
         OffsetTime offsetTime = offsetDateTime.toOffsetTime();
         System.out.println(offsetTime);
     }
+    
+    /**
+     * OffsetDateTime转换时区
+     * <pre>
+     * 2020-03-19T01:50:16.394Z
+     * 2020-03-19T09:50:16.394+08:00
+     * 2020-03-19T01:50:16.394+08:00
+     * </pre>
+     */
+    @Test
+    public void timezoneConvert()
+    {
+        OffsetDateTime offsetDateTime = OffsetDateTime.parse("2020-03-19T01:50:16.394Z");
+        System.out.println(offsetDateTime);
+        
+        //1.保持instant不变，即将时间转换成目标时区的时间(一般用这个)
+        OffsetDateTime offsetDateTimeInChina = offsetDateTime.withOffsetSameInstant(ZoneOffset.of("+8"));
+        //2.保持localDateTime不变，只改变时区，此时两者已经不表示同一个instant了
+        OffsetDateTime offsetDateTimeInChina2 = offsetDateTime.withOffsetSameLocal(ZoneOffset.of("+8"));
+        System.out.println(offsetDateTimeInChina);
+        System.out.println(offsetDateTimeInChina2);
+    }
 }
