@@ -58,3 +58,23 @@
 112.\/df22
 
 ```
+
+## 2、sed变量
+```bash
+# target='A'
+
+## 可以使用'$a'来替换变量a
+# echo '111222333' | sed 's/1/'$target'/g'
+AAA222333
+# echo '111222333' | sed 's/1/'$target'_O/g'
+A_OA_OA_O222333
+
+## 也可以直接用双引号，不过要注意最好用${}避免前后的字符混淆
+# echo '111222333' | sed "s/1/$target_O/g"
+222333
+# echo '111222333' | sed "s/1/$target/g"
+AAA222333
+# echo '111222333' | sed "s/1/${target}_O/g"
+A_OA_OA_O222333
+
+```
