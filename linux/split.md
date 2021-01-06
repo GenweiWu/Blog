@@ -17,6 +17,14 @@ split -b 500m nginx.tar.gz -d nginx
 
 ```
 
+```bash
+# split -b 500m nginx.tar.gz -d nginx.
+# ll -h
+-rw-------. 1 root root 500M Jan  6 10:46 nginx.00
+-rw-------. 1 root root 148M Jan  6 10:46 nginx.01
+
+```
+
 ## 合并+md5校验
 
 ```bash
