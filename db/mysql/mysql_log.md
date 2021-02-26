@@ -1,5 +1,5 @@
 
-## general log显示所有执行的log
+## general log显示所有执行的sql 
 
 > https://www.jianshu.com/p/db19a1d384bc
 ```
