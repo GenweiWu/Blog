@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * notify需要退出同步代码块再释放锁
+ * notify退出同步代码块才会释放锁，而不是调用notify就释放
  * -------------------------------
  * <pre>
  * [14:14:03] waitTest ==> begin wait
