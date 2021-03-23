@@ -4,6 +4,12 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * 两个线程轮流数数
+ * 线程1，从1数数到10
+ * 线程2，从1数数到50
+ * 两个线程轮流数
+ */
 public class LockConditionDemo
 {
     private static final int COUNT = 50;
