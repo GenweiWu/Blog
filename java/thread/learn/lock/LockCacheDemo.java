@@ -52,15 +52,14 @@ public class LockCacheDemo
             
             if (data == null)
             {
+                //2.要获取写锁，必须先释放读锁
+                readWriteLock.readLock().unlock();
+                readWriteLock.writeLock().lock();
+                
                 try
                 {
                     //1.double check:因为可能两个读者同时进来了，一个先获得写锁，另一个后获得写锁，可能重新readFromDB
                     data = cacheMap.get(key);
-                    
-                    //2.要获取写锁，必须先释放读锁
-                    readWriteLock.readLock().unlock();
-                    readWriteLock.writeLock().lock();
-                    
                     if (data == null)
                     {
                         data = readFromDB(key); //模拟从数据库加载
