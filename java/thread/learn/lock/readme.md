@@ -10,6 +10,27 @@ lock.lock();
 lock.unlock();
 ```
 
+```java
+//ReentrantLock 可重入锁
+private Lock lock = new ReentrantLock();
+
+public void print(String name)
+{
+    //锁
+    lock.lock();
+
+    try
+    {
+        System.out.println("do something");
+    }
+    finally
+    {
+        //解锁
+        lock.unlock();
+    }
+}
+```
+
 > LockDemo.java
 
 
