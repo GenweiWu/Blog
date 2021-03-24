@@ -16,10 +16,13 @@ class RTest
 }
 
 /**
- * read1:test1
- * read2:test2
- * read3:default3
- * read3:test3
+ * console:
+ * <pre>
+ * test111
+ * test222
+ * default3
+ * test333
+ * </pre>
  */
 public class ReflectionTest2
 {
@@ -28,25 +31,25 @@ public class ReflectionTest2
     {
         RTest rTest = new RTest();
         
-        Field field = RTest.class.getField("field1");
-        field.set(rTest, "test1");
-        System.out.println("read1:" + field.get(rTest));
+        Field field1 = RTest.class.getDeclaredField("field1");
+        field1.set(rTest, "test111");
+        System.out.println(field1.get(rTest));
         
-        field = RTest.class.getDeclaredField("field2");
-        field.set(rTest, "test2");
-        System.out.println("read2:" + field.get(rTest));
+        Field field2 = RTest.class.getDeclaredField("field2");
+        field2.set(rTest, "test222");
+        System.out.println(field2.get(rTest));
         
-        field = RTest.class.getDeclaredField("field3");
+        Field field3 = RTest.class.getDeclaredField("field3");
         //不可以直接访问
         //java.lang.IllegalAccessException
         //System.out.println(field.get(rTest));
         //java.lang.IllegalAccessException
-        //field.set(rTest, "test3");
+        //field.set(rTest, "test333");
         
         //setAccessible后可以访问
-        field.setAccessible(true);
-        System.out.println("read3:" + field.get(rTest));
-        field.set(rTest, "test3");
-        System.out.println("read3:" + field.get(rTest));
+        field3.setAccessible(true);
+        System.out.println(field3.get(rTest));
+        field3.set(rTest, "test333");
+        System.out.println(field3.get(rTest));
     }
 }
