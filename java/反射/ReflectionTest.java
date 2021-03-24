@@ -45,6 +45,17 @@ class ReflectData
 public class ReflectionTest
 {
     @Test
+    public void testType()
+    {
+        Object reflectData = new ReflectData();
+        
+        Class<?> aClass = reflectData.getClass();
+        System.out.println(aClass);
+        
+        //class com.njust.test.kemu2.ReflectData
+    }
+    
+    @Test
     public void testConstructor()
     {
         //1、获取public构造函数
