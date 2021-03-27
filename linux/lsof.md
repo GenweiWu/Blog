@@ -83,21 +83,21 @@ java    118468 root  mem       REG              202,2 69874457     318888 /home/
 java    118468 root    4r      REG              202,2 69874457     318888 /home/jenkins/jenkins.war
 ```
 
-#### 2. 查找端口22的连接信息 `lsof -i :22`
+#### 2. 查找端口22的连接信息 `lsof -i:22`
 ```console
-[root@SZX1000538990 ~]# lsof -i :22
+[root@SZX1000538990 ~]# lsof -i:22
 COMMAND   PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
 sshd     1340 root    3u  IPv4    18012      0t0  TCP *:ssh (LISTEN)
 sshd     1340 root    4u  IPv6    18014      0t0  TCP *:ssh (LISTEN)
 sshd    55797 root    3u  IPv4 50722423      0t0  TCP SZX1000538990:ssh->10.11.12.13:futrix (ESTABLISHED)
 sshd    57463 root    3u  IPv4 50727746      0t0  TCP SZX1000538990:ssh->10.11.12.13:mcs-calypsoicf (ESTABLISHED)
-[root@SZX1000538990 ~]# lsof -i :22 -n
+[root@SZX1000538990 ~]# lsof -i:22 -n
 COMMAND   PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
 sshd     1340 root    3u  IPv4    18012      0t0  TCP *:ssh (LISTEN)
 sshd     1340 root    4u  IPv6    18014      0t0  TCP *:ssh (LISTEN)
 sshd    55797 root    3u  IPv4 50722423      0t0  TCP 10.21.253.119:ssh->10.11.12.13:futrix (ESTABLISHED)
 sshd    57463 root    3u  IPv4 50727746      0t0  TCP 10.21.253.119:ssh->10.11.12.13:mcs-calypsoicf (ESTABLISHED)
-[root@SZX1000538990 ~]# lsof -i :22 -nP
+[root@SZX1000538990 ~]# lsof -i:22 -nP
 COMMAND   PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
 sshd     1340 root    3u  IPv4    18012      0t0  TCP *:22 (LISTEN)
 sshd     1340 root    4u  IPv6    18014      0t0  TCP *:22 (LISTEN)
