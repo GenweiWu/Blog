@@ -42,7 +42,7 @@ Heap
 
 
 另参考，另一段gc日志
-
+> gc时间都好几秒了，要优化了
 ```
 13388.482: [GC (Allocation Failure) [PSYoungGen: 1305579K->92139K(1059840K)] 2223678K->1107624K(3856384K), 20.1559754 secs] [Times: user=117.64 sys=6.11, real=20.15 secs]
 13492.499: [GC (Allocation Failure) [PSYoungGen: 1059819K->143927K(1112064K)] 2075304K->1334784K(3908608K), 16.4424211 secs] [Times: user=79.08 sys=5.90, real=16.45 secs]
