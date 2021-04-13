@@ -41,7 +41,7 @@ Heap
 
 
 
-另参考，另一端gc日志
+另参考，另一段gc日志
 
 ```
 13388.482: [GC (Allocation Failure) [PSYoungGen: 1305579K->92139K(1059840K)] 2223678K->1107624K(3856384K), 20.1559754 secs] [Times: user=117.64 sys=6.11, real=20.15 secs]
