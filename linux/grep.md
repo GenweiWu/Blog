@@ -20,6 +20,18 @@ grep [选项] [--color=auto] '搜寻字符串' filename
 > 样例2：搜索文件夹  
 ![image](https://user-images.githubusercontent.com/16630659/70960655-968c3b80-20ba-11ea-8cf7-4f398ad6b451.png)
 
+> 样例3：判断文件是否包含指定字符串 `grep -c hello 1.txt`
+```bash
+FIND_FILE="/home/linduo/test/Test.txt"
+FIND_STR="Hello Linduo"
+# 判断匹配函数，匹配函数不为0，则包含给定字符
+if [ `grep -c "$FIND_STR" $FIND_FILE` -ne '0' ];then
+    echo "The File Has Hello Linduo!"
+    exit 0
+fi
+```
+
+
 
 ## 参考
 - https://www.cnblogs.com/ggjucheng/archive/2013/01/13/2856896.html
