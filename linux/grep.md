@@ -22,11 +22,11 @@ grep [选项] [--color=auto] '搜寻字符串' filename
 
 > 样例3：判断文件是否包含指定字符串 `grep -c hello 1.txt`
 ```bash
-FIND_FILE="/home/linduo/test/Test.txt"
-FIND_STR="Hello Linduo"
+FIND_FILE="./Test.txt"
+FIND_STR="Hello Dave"
 # 判断匹配函数，匹配函数不为0，则包含给定字符
 if [ `grep -c "$FIND_STR" $FIND_FILE` -ne '0' ];then
-    echo "The File Has Hello Linduo!"
+    echo "The File Has $FIND_STR!"
     exit 0
 fi
 ```
