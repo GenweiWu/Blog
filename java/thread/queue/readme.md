@@ -61,4 +61,51 @@ public E element() {
 
 
 
-## :cow: Deque
+## :cow: Deque双端队列
+
+[API参考](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html)
+
+### Deque的主要方法
+
+The twelve methods described above are summarized in the following table:
+
+> 抛异常：指操作失败抛出异常
+> 特殊值：指操作失败，返回null或者false(添加是返回false，移除和读取是null)
+>
+> |                 | **First Element (Head)**                                     | **Last Element (Tail)**                                      |                                                              |                                                              |
+> | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+> |                 | *抛异常*                                                     | *特殊值*                                                     | *抛异常*                                                     | *特殊值*                                                     |
+> | **Insert**      | [`addFirst(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#addFirst-E-) | [`offerFirst(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#offerFirst-E-) | [`addLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#addLast-E-) | [`offerLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#offerLast-E-) |
+> | **Remove**      | [`removeFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#removeFirst--) | [`pollFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#pollFirst--) | [`removeLast()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#removeLast--) | [`pollLast()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#pollLast--) |
+> | **Examine**读取 | [`getFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#getFirst--) | [`peekFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peekFirst--) | [`getLast()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#getLast--) | [`peekLast()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peekLast--) |
+
+
+
+### Deque可以当做Queue(先进先出)用
+
+interface are precisely equivalent to `Deque` methods as indicated in the following table:
+
+
+> public interface Deque<E> extends Queue<E>  
+> Deque可以当做普通的Queue(先进先出)使用，方法的对应关系如下：
+>     
+| **`Queue` Method**                                           | **Equivalent `Deque` Method**                                |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`add(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#add-E-) | [`addLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#addLast-E-) |
+| [`offer(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#offer-E-) | [`offerLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#offerLast-E-) |
+| [`remove()`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#remove--) | [`removeFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#removeFirst--) |
+| [`poll()`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#poll--) | [`pollFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#pollFirst--) |
+| [`element()`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#element--) | [`getFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#getFirst--) |
+| [`peek()`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#peek--) | [`peekFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peek--) |
+
+### Deque也可以当做Stack(后进先出)用
+
+> push, pop ,peedk都从头部操作即可
+> LinkedList就实现了Deque接口，所以一般 Stack<T> stack = new LinkedList<T>();
+
+| **Stack Method**                                             | **Equivalent `Deque` Method**                                |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`push(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#push-E-) | [`addFirst(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#addFirst-E-) |
+| [`pop()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#pop--) | [`removeFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#removeFirst--) |
+| [`peek()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peek--) | [`peekFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peekFirst--) |
+
