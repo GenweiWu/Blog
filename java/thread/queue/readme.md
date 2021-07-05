@@ -109,3 +109,65 @@ interface are precisely equivalent to `Deque` methods as indicated in the follow
 | [`pop()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#pop--) | [`removeFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#removeFirst--) |
 | [`peek()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peek--) | [`peekFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peekFirst--) |
 
+
+    
+
+## :cow: BlockingDeque
+
+`BlockingDeque`在`Deque`的基础上，增加了会阻塞的`put`和`take`方法（当然还有一定时间内阻塞的方法offer(e,time,unit)和poll(time,unit)）
+
+
+
+### BlockingDeque主要方法
+
+[API](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html)    
+    
+对应操作失败场景，对应四种方法：
+
+1. `Throws exception`抛异常
+2.  `Special value`返回特殊值，如返回false或null
+3.  `Blocks`阻塞住，如put和take方法
+4.  `Times out`在指定时间内没操作成功，则认为失败
+
+
+
+> First Element (Head)  
+    
+|                          | *Throws exception*                                           | *Special value*                                              | *Blocks*                                                     | *Times out*                                                  |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Insert**               | [`addFirst(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#addFirst-E-) | [`offerFirst(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#offerFirst-E-) | [`putFirst(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#putFirst-E-) | [`offerFirst(e, time, unit)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#offerFirst-E-long-java.util.concurrent.TimeUnit-) |
+| **Remove**               | [`removeFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#removeFirst--) | [`pollFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#pollFirst-long-java.util.concurrent.TimeUnit-) | [`takeFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#takeFirst--) | [`pollFirst(time, unit)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#pollFirst-long-java.util.concurrent.TimeUnit-) |
+| **Examine**              | [`getFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#getFirst--) | [`peekFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peekFirst--) | *not applicable*                                             | *not applicable*                                             |
+
+>  Last Element (Tail)
+    
+|                          | *Throws exception*                                           | *Special value*                                              | *Blocks*                                                     | *Times out*                                                  |
+| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Insert**               | [`addLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#addLast-E-) | [`offerLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#offerLast-E-) | [`putLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#putLast-E-) | [`offerLast(e, time, unit)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#offerLast-E-long-java.util.concurrent.TimeUnit-) |
+| **Remove**               | [`removeLast()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#removeLast--) | [`pollLast()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#pollLast--) | [`takeLast()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#takeLast--) | [`pollLast(time, unit)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#pollLast-long-java.util.concurrent.TimeUnit-) |
+| **Examine**              | [`getLast()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#getLast--) | [`peekLast()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peekLast--) | *not applicable*                                             | *not applicable*                                             |
+
+
+
+### BlockingDeque可以被当做BlockingQueue使用
+
+`public interface BlockingDeque<E> extends BlockingQueue<E>, Deque<E>`
+
+
+| **`BlockingQueue` Method**                                   | **Equivalent `BlockingDeque` Method**                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Insert**                                                   |                                                              |
+| [`add(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#add-E-) | [`addLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#addLast-E-) |
+| [`offer(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#offer-E-) | [`offerLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#offerLast-E-) |
+| [`put(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#put-E-) | [`putLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#putLast-E-) |
+| [`offer(e, time, unit)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#offer-E-long-java.util.concurrent.TimeUnit-) | [`offerLast(e, time, unit)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#offerLast-E-long-java.util.concurrent.TimeUnit-) |
+| **Remove**                                                   |                                                              |
+| [`remove()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#remove--) | [`removeFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#removeFirst--) |
+| [`poll()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#poll--) | [`pollFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#pollFirst--) |
+| [`take()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#take--) | [`takeFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#takeFirst--) |
+| [`poll(time, unit)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#poll-long-java.util.concurrent.TimeUnit-) | [`pollFirst(time, unit)`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#pollFirst-long-java.util.concurrent.TimeUnit-) |
+| **Examine**                                                  |                                                              |
+| [`element()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#element--) | [`getFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#getFirst--) |
+| [`peek()`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/BlockingDeque.html#peek--) | [`peekFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peekFirst--) |
+
+
