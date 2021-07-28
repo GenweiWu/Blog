@@ -143,6 +143,26 @@ ee:50
 ifconfig eth0 | grep "inet addr" | awk -F ":" '{print $2}' | awk '{print $1}'
 ```
 
+```bash
+## ,表示元素之间空一格；不写反而表示挨着；
+[root@SZX1000538971 test]# echo '1,2,3,4,5' |awk -F, '{print $1,$2,$3,$4,$5}'
+1 2 3 4 5
+[root@SZX1000538971 test]# echo '1,2,3,4,5' |awk -F, '{print $1 $2 $3 $4 $5}'
+12345
+## 要打印逗号，则要""包裹
+[root@SZX1000538971 test]# echo '1,2,3,4,5' |awk -F, '{print $1","$2 $3 $4 $5}'
+1,2345
+
+
+## 分割后的拼接
+[root@SZX1000538971 test]# echo '1,2,3,4,5' |awk -F, '{print $1"*"$2"*"$3 $4 $5}'
+1*2*345
+
+## 为了读取5，两次分割
+[root@SZX1000538971 test]# echo '1 2/3/4:5' | awk -F/ '{print $NF}' | awk -F: '{print $NF}'
+5
+```
+
 ## 参考
 - https://www.ruanyifeng.com/blog/2018/11/awk.html
 
