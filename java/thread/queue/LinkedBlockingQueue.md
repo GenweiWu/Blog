@@ -1,3 +1,7 @@
+
+
+
+
 ## LinkedBlockingQueue源码学习
 
 ### 参考
@@ -35,6 +39,13 @@ static class Node<E> {
 
 ```java
 //head头指针，last尾指针
+## head是一个空节点(守护节点)，即head.item=null
+## last节点的特点是last.next=null
+
+/**
+ * Head of linked list.
+ * Invariant: head.item == null
+ */
 transient Node<E> head;
 /**
  * Tail of linked list.
@@ -64,6 +75,8 @@ private final Condition notFull = putLock.newCondition();
 
 ```java
 // 将节点加到链表尾部
+## 只需要更新last节点，改变last节点的指向
+
 private void enqueue(Node<E> node) {
         // assert putLock.isHeldByCurrentThread();
         // assert last.next == null;
@@ -79,6 +92,36 @@ private void enqueue(Node<E> node) {
 //一开始：  Node(null), head=last=Node(null)
 //插入1后： Node(null)--> Node(1)
 ```
+
+```java
+//删除头节点，并返回头结点的值
+## 只需要更新head节点，修改head指针后将原先的Node.item=null为空节点
+
+private E dequeue() {
+	// assert takeLock.isHeldByCurrentThread();
+	// assert head.item == null;
+	Node<E> h = head;
+	Node<E> first = h.next;
+    //将之前的节点自己指向自己，帮助gc掉
+	h.next = h; // help GC
+    
+    //head指向新的head节点，不过是通过将head.item置为null
+	head = first;
+	E x = first.item;
+	first.item = null;
+	return x;
+    
+    // Node(null) --> Node(x) --> null
+    //取第一个元素，得到  Node(null) --> null，只需要更新head节点
+}
+```
+
+
+
+
+
+
+
 
 ### 遗留 
 - [ ] 为什么LinkedBlockingQueue有两把锁，添加和删除元素不会有问题吗?
