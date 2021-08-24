@@ -72,7 +72,7 @@ The twelve methods described above are summarized in the following table:
 > 抛异常：指操作失败抛出异常
 > 特殊值：指操作失败，返回null或者false(添加是返回false，移除和读取是null)
 >
-> |                 | **First Element (Head)**                                     | **Last Element (Tail)**                                      |                                                              |                                                              |
+> |                 | **First Element (Head)**                                     |                                   |  **Last Element (Tail)**                                                                |                                                              |
 > | --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 > |                 | *抛异常*                                                     | *特殊值*                                                     | *抛异常*                                                     | *特殊值*                                                     |
 > | **Insert**      | [`addFirst(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#addFirst-E-) | [`offerFirst(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#offerFirst-E-) | [`addLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#addLast-E-) | [`offerLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#offerLast-E-) |
