@@ -125,6 +125,7 @@ private E dequeue() {
 
 ### 遗留 
 - [ ] 为什么LinkedBlockingQueue有两把锁，添加和删除元素不会有问题吗?
+   个人看法是，插入和删除元素时，不会同时更新head和last(有一部分原因是head是守护节点)，所以可以考虑分开
 
 
 
