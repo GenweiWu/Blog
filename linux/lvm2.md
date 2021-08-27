@@ -57,3 +57,11 @@ Filesystem                 Size  Used Avail Use% Mounted on
 /dev/mapper/vg1-lv_docker   25G  274M   24G   2% /var/lib/docker  //<---已变成25G
 
 ```
+
+## lv重命名
+
+```bash
+lvrename vg02 lvold lvnew
+
+## 修改/etc/fstab
+```
