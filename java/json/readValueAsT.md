@@ -4,10 +4,16 @@
 ## readStringAsList
 
 ```java
-[List<T> list = (List<T>)new ObjectMapper().readValue(jsonStr,
-                    new TypeReference<List<T>>()
-                    {
-                    });
+    public static <T> List<T> readStringAsList(String jsonStr, Class<T> valueType) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        TypeFactory typeFactory = objectMapper.getTypeFactory();
+        try {
+            return objectMapper.readValue(jsonStr, typeFactory.constructCollectionType(List.class, valueType));
+        } catch (Exception e) {
+            //log.error("readStringAsList failed with str:{}", jsonStr, e);
+            return Collections.emptyList();
+        }
+    }
 ```
 
 ## readValueAsList
