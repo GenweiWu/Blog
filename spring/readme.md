@@ -54,6 +54,10 @@ class Foo{
 }
 ```
 
+## 自定义EnableXX如何实现:ImportBeanDefinitionRegistrar的作用
+
+https://segmentfault.com/a/1190000040585229
+
 
 
 
