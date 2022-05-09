@@ -27,7 +27,16 @@ optional
         });
 ```
 
-### 四、可以放集合
+### 四、常用方法
+> 参考 OptionalTest.java
+```
+filter用来过滤
+map用来转换，需要直接返回对象时使用
+flatmap也用来转换，需要返回Optional时使用
+
+```
+
+### 五、可以放集合
 ```java
 List<String> list = new ArrayList<>();
         
