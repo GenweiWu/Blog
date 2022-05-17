@@ -43,5 +43,6 @@ pm.environment.get("variable_key");      获取环境变量
 pm.sendRequest("https://postman-echo.com/get", function (err, response) {
     console.log(response.json());
 });  发送一个请求
-pm.globals.set("variable_key", "variable_value");  设置环境变量
+pm.globals.set("variable_key", "variable_value");   设置全局变量
+pm.environment.set("variable_key", "variable_value"); 设置环境变量
 ```
