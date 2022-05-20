@@ -46,3 +46,14 @@ pm.sendRequest("https://postman-echo.com/get", function (err, response) {
 pm.globals.set("variable_key", "variable_value");   设置全局变量
 pm.environment.set("variable_key", "variable_value"); 设置环境变量
 ```
+
+### 样例
+```
+let _cookie = pm.environment.get("cookie");
+if(_cookie){
+  let _index=  _cookie.lastIndexOf("=");
+  let _csrf = _cookie.substring(_index+1);
+  pm.environment.set("csrf", _csrf);
+  console.log("cookie:"+_cookie+" ==> csrf:"+_csrf)
+}
+```
