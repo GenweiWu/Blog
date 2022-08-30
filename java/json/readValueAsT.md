@@ -60,3 +60,25 @@ public static <T> T readValueAsType(Object srcData, Class<T> valueType)
         }
     }
 ```    
+
+## readValueWithType
+> https://stackoverflow.com/a/6852184    
+```java
+public class MyWrapper<T> {
+
+    private MyRequest<T> request;
+
+    public MyRequest<T> getRequest() {
+        return request;
+    }
+
+    public void setRequest(MyRequest<T> request) {
+        this.request = request;
+    }
+}
+```
+
+```java
+ JavaType topMost = mapper.getTypeFactory().constructParametricType(MyWrapper.class, ActualClassRuntime.class);
+ mapper.readValue(new File("input.json"), type);
+```
