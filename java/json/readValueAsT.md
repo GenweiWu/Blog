@@ -82,3 +82,17 @@ public class MyWrapper<T> {
  JavaType topMost = mapper.getTypeFactory().constructParametricType(MyWrapper.class, ActualClassRuntime.class);
  mapper.readValue(new File("input.json"), type);
 ```
+
+```java
+    private static <T> MyWrapper<T> jsonToBean(String jsonStr, Class<T> clazz) {
+        ObjectMapper mapper = JsonUtil.mapper;
+        try {
+            JavaType javaType = mapper.getTypeFactory().constructParametricType(MyWrapper.class, clazz);
+            MyWrapper<T> xxx = mapper.readValue(jsonStr, javaType);
+            return xxx;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+```
