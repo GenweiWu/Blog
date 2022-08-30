@@ -78,6 +78,7 @@ public class MyWrapper<T> {
 }
 ```
 
+- 读取方法 
 ```java
  JavaType topMost = mapper.getTypeFactory().constructParametricType(MyWrapper.class, ActualClassRuntime.class);
  mapper.readValue(new File("input.json"), type);
