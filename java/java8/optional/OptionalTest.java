@@ -1,4 +1,4 @@
-import com.zte.iot.domain.StudentEntity;
+import com.njust.iot.domain.StudentEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
