@@ -1,4 +1,4 @@
-package com.zte.forkjoin;
+package com.njust.forkjoin;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
