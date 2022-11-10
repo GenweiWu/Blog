@@ -1,8 +1,6 @@
 ### 不同的stage可以指定不同的agent
 
 ```
-package learn
-
 pipeline {
     agent none   //<--配置none则要求stage配置自己的agent
 
