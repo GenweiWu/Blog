@@ -1,4 +1,5 @@
 
+### 定义参数
 ```
 pipeline {
     agent any
@@ -30,3 +31,34 @@ pipeline {
     }
 }
 ```
+
+
+
+
+
+
+### 防止参数注入
+
+> 使用单引号，避免使用双引号
+
+```
+pipeline {
+  agent any
+  parameters {
+    string(name: 'STATEMENT', defaultValue: 'hello; ls /', description: 'What should I say?')   
+  }
+  stages {
+    stage('Example') {
+      steps {
+        /* WRONG! */
+        sh("echo ${STATEMENT}")
+        // 正确方式，不会注入
+        sh('echo ${STATEMENT}')
+      }
+    }
+  }
+}
+```
+
+
+
