@@ -7,6 +7,7 @@ parallel用来实现并发执行
 
 ### 并发执行
 
+> 1
 ```
 pipeline {
     agent any
@@ -43,10 +44,58 @@ pipeline {
 }
 ```
 
+> 2
+![image](https://user-images.githubusercontent.com/16630659/201258656-a8c6f160-0ca6-4e29-9323-8de604a7d951.png)
+
+```
+pipeline {
+    agent any
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage('Non-Parallel Stage') {
+            steps {
+                echo 'This stage will be executed first.'
+            }
+        }
+        stage('Parallel Stage') {
+            parallel {
+                stage("111_AA") {
+                    steps {
+                        echo '-->stage111'
+                    }
+                }
+                stage("222_AA") {
+                    steps {
+                        echo '-->stage222'
+                    }
+                }
+            }
+        }
+        stage('Parallel Stage222') {
+            parallel {
+                stage("111_BB") {
+                    steps {
+                        echo '-->stage111'
+                    }
+                }
+                stage("222_BB") {
+                    steps {
+                        echo '-->stage222'
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
 
 ### 动态的并发执行
 
+> 1
 ```
 pipeline {
     agent any
@@ -85,7 +134,8 @@ pipeline {
 ```
 
 
-> 并发2
+> 2
+![image](https://user-images.githubusercontent.com/16630659/201255443-a121a1a9-d6ea-4924-8609-4086ae6abd47.png)
 ```
 pipeline {
     agent any
@@ -136,7 +186,7 @@ pipeline {
 }
 ```
 
-![image](https://user-images.githubusercontent.com/16630659/201255443-a121a1a9-d6ea-4924-8609-4086ae6abd47.png)
+
 
 
 
