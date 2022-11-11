@@ -85,6 +85,59 @@ pipeline {
 ```
 
 
+> 并发2
+```
+pipeline {
+    agent any
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage('Non-Parallel Stage') {
+            steps {
+                echo 'This stage will be executed first.'
+            }
+        }
+        stage('Parallel Stage') {
+            steps {
+                script {
+                    def arr = [11, 22]
+
+                    //
+                    def tests = [:]
+                    for (i in arr) {
+                        tests["${i}_AA"] = {
+                            node {
+                                stage("stage_${i}") {
+                                    echo "-->stage${i}"
+                                }
+                            }
+                        }
+                    }
+                    parallel tests
+
+
+                    tests = [:]
+                    for (i in arr) {
+                        tests["${i}_BB"] = {
+                            node {
+                                stage("stage_${i}") {
+                                    echo "-->stage${i}"
+                                }
+                            }
+                        }
+                    }
+                    parallel tests
+                }
+            }
+        }
+    }
+}
+```
+
+![image](https://user-images.githubusercontent.com/16630659/201255443-a121a1a9-d6ea-4924-8609-4086ae6abd47.png)
+
 
 
 
