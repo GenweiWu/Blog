@@ -33,7 +33,38 @@ pipeline {
 ```
 
 
+### 参数映射
 
+```
+pipeline {
+    agent any
+
+    parameters {
+        choice(name: 'deployEnv', choices: ['环境1', '环境2'], description: '选择环境进行部署')
+    }
+
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage("Build") {
+            steps {
+                script {
+                    def map = [:]
+                    map['环境1'] = [name: '环境名称11', timeout: 1]
+                    map['环境2'] = [name: '环境名称22', timeout: 2]
+
+                    def deployEnv = map[params.deployEnv]
+
+                    echo "name ==> ${deployEnv['name']}"
+                    echo "timeout ==> ${deployEnv['timeout']}"
+                }
+            }
+        }
+    }
+}
+```
 
 
 
