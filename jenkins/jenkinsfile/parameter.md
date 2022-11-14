@@ -32,6 +32,31 @@ pipeline {
 }
 ```
 
+### 动态设置变量
+```
+pipeline {
+    agent any
+
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage("Build") {
+            steps {
+                script {
+                    def now = """${sh(
+                            returnStdout: true,
+                            script: 'date'
+                    )}"""
+                    echo "${now}"
+                }
+            }
+        }
+    }
+}
+```
+
 
 ### 参数映射
 
