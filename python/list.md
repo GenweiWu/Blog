@@ -45,3 +45,14 @@ print(b)
 > [1, 2, 3, 4, 5]
 [4, 5]
 
+## remove all
+```py
+def test_remove_all():
+    arr1 = [1, 2, 4]
+    arr2 = [4, 1, 3]
+    xx = [i for i in arr1 if i in arr2]
+    print(xx)
+    xx = [i for i in arr1 if i not in arr2]
+    print(xx)
+    pass
+```
