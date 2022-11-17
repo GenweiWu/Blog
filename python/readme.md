@@ -59,6 +59,6 @@ https://pypi.org/project/PrettyTable/
   print(tb)
   ```
 
----
 ## 参考
-[python3-cookbook](http://python3-cookbook.readthedocs.io/zh_CN/latest/c02/p15_interpolating_variables_in_strings.html)
+- [python3-cookbook](http://python3-cookbook.readthedocs.io/zh_CN/latest/c02/p15_interpolating_variables_in_strings.html)
+- https://docs.python.org/3.10/library/functions.html#sorted
