@@ -1,4 +1,5 @@
 from operator import itemgetter, attrgetter
+import functools
 
 
 def read():
@@ -150,29 +151,43 @@ def sort_complex():
     print("after sort3", sorted(ll8c, key=lambda x: (-x[0], x[1])))  # [(3, 'c'), (1, 'a'), (1, 'd')]
 
     # 升序|降序
-    # print(sorted(sorted(ll8c, key=lambda x: x[0]), key=lambda x: x[1], reverse=True))  #  FIXME:这个方案不行
+    # 方案1不行 # [(1, 'd'), (3, 'c'), (1, 'a')]
+    print("sort_complex0", sorted(sorted(ll8c, key=lambda x: x[0]), key=lambda x: x[1], reverse=True))
+
+    # 方案2可以 
     def multi_sort_item(_self, specs):
         for key, reverse in reversed(specs):
             _self.sort(key=itemgetter(key), reverse=reverse)
         return _self
 
-    print("sort_complex1:", multi_sort_item(ll8c, ((0, False), (1, False))))  # [(1, 'a'), (1, 'd'), (3, 'c')]
+    print("sort_complex1:", multi_sort_item(ll8c, ((0, False), (1, True))))  # [(1, 'd'), (1, 'a'), (3, 'c')]
+
+    # 方案3可以，类似comparator比较器
+    def compare(x1, x2):
+        if x1[0] != x2[0]:
+            return 1 if x1[0] > x2[0] else -1
+        if x1[1] == x2[1]:
+            return 0
+        else:
+            return 1 if x2[1] > x1[1] else -1
+        pass
+
+    print("sort_complex2:", sorted(ll8c, key=functools.cmp_to_key(compare)))  # [(1, 'd'), (1, 'a'), (3, 'c')]
 
     # ========================== 对象排序
 
     class Student:
-        def __init__(self, name, grade, age):
-            self.name = name
+        def __init__(self, grade, age):
             self.grade = grade
             self.age = age
 
         def __repr__(self):
-            return repr((self.name, self.grade, self.age))
+            return repr((self.grade, self.age))
 
     student_objects = [
-        Student('john', 'A', 7),
-        Student('jane', 'B', 12),
-        Student('dave', 'B', 10),
+        Student('B', 10),
+        Student('A', 8),
+        Student('B', 7),
     ]
 
     def multi_sort_obj(_self, specs):
@@ -181,7 +196,7 @@ def sort_complex():
         return _self
 
     print(multi_sort_obj(list(student_objects), (('grade', True), ('age', False))))
-    # [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 7)]
+    # [('B', 7), ('B', 10), ('A', 8)]
     pass
 
 
