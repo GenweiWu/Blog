@@ -186,6 +186,56 @@ pipeline {
 }
 ```
 
+> 3.在2的基础上指定agent
+```
+pipeline {
+    agent any
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage('Non-Parallel Stage') {
+            steps {
+                echo 'This stage will be executed first.'
+            }
+        }
+        stage('Parallel Stage') {
+            steps {
+                script {
+                    def arr = [11, 22]
+
+                    //
+                    def tests = [:]
+                    for (i in arr) {
+                        tests["${i}_AA"] = {
+                            node {
+                                stage("stage_${i}") {
+                                    echo "-->stage${i}"
+                                }
+                            }
+                        }
+                    }
+                    parallel tests
+
+
+                    tests = [:]
+                    for (i in arr) {
+                        tests["${i}_BB"] = {
+                            node("build") {  //如果要执行agent，则在这里指定
+                                stage("stage_${i}") {
+                                    echo "-->stage${i}"
+                                }
+                            }
+                        }
+                    }
+                    parallel tests
+                }
+            }
+        }
+    }
+}
+```
 
 
 
