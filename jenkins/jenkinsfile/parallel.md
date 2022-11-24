@@ -237,7 +237,74 @@ pipeline {
 }
 ```
 
+### 一次下载代码，并发执行命令
+> https://stackoverflow.com/a/64114377 
+```
+pipeline {
+    agent any
 
+    options {
+        skipDefaultCheckout true
+    }
+
+    environment {
+        BRANCH_NAME = 'master'
+    }
+
+    stages {
+        stage('Checkout source') {
+            steps {
+                //1.这里有个代码下载B
+                checkout([
+                        $class                           : 'GitSCM',
+                        branches                         : [[name: "${env.BRANCH_NAME}"]],
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions                       : [],
+                        submoduleCfg                     : [],
+                        userRemoteConfigs                : [[
+                                                                    credentialsId: '...xx...',
+                                                                    url          : 'git@gitserver.io:acme/acme-repo.git'
+                                                            ]]
+                ])
+            }
+        }
+
+        //2.这里需要pipeline from scm上的文件，对应下载A；所以不设置skipDefaultCheckout
+        stage('init') {
+            steps {
+                sh 'cp shell/test.sh'
+            }
+        }
+
+        stage('Publish') {
+            //3.这里需要的下载B对应的目录，需要设置skipDefaultCheckout
+            options {
+                skipDefaultCheckout()
+            }
+            parallel {
+                stage('[Publish] Mac') {
+                    steps {
+                        sh 'yarn publish-mac'
+                    }
+                }
+
+                stage('[Publish] Linux') {
+                    steps {
+                        sh './node_modules/.bin/yarn publish-linux'
+                    }
+                }
+
+                stage('[Publish] Windows') {
+                    steps {
+                        bat 'yarn publish-win'
+                    }
+                }
+            }
+        }
+
+    }
+}
+```
 
 
 
