@@ -1,4 +1,13 @@
 
+## 文件扫描
+```java
+//src/main/resource/test文件夹下的所有xml文件
+ File dir = ResourceUtils.getFile("classpath:test");
+            FilenameFilter filenameFilter = new SuffixFileFilter(".xml");
+            File[] files = dir.listFiles(filenameFilter);
+```
+
+
 ## classpath
 ```java
  Resource resource = new ClassPathResource("/config/111.json");
