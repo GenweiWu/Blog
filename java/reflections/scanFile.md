@@ -1,0 +1,31 @@
+扫描文件
+==
+
+
+### eg1
+> src/main/resource下(实际上是所有java class下都可以)所有文件名符合-process.xml的文件
+> 比如  a-process.xml
+```java
+try {
+    ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+    Collection<URL> urls = ClasspathHelper.forJavaClassPath();
+    configurationBuilder.addUrls(urls);
+    configurationBuilder.setScanners(new ResourcesScanner());
+    Reflections reflections = new Reflections(configurationBuilder);
+    Set<String> resources = reflections.getResources(Pattern.compile(".*?-process\\.xml"));
+
+    if (resources == null || resources.isEmpty()) {
+        log.warn("cannot found step files");
+        return;
+    }
+
+    ClassLoader classLoader = this.getClass().getClassLoader();
+    for (String resource : resources) {
+        try (InputStream inputStream = classLoader.getResourceAsStream(resource)) {
+           //TODO
+        }
+    }
+} catch (IOException e) {
+    log.error("read step file failed", e);
+}
+```
