@@ -1,13 +1,13 @@
 
 ## 文件扫描
 
-### ~~方法1：部署后读取失败~~
+### 方法1：使用PathMatchingResourcePatternResolver
 
-> src/main/resource/test文件夹下的所有xml文件
+> src/main/resource/process文件夹下的所有xml文件
 ```java
- File dir = ResourceUtils.getFile("classpath:test");
-            FilenameFilter filenameFilter = new SuffixFileFilter(".xml");
-            File[] files = dir.listFiles(filenameFilter);
+ClassLoader cl = this.getClass().getClassLoader();
+ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver(cl);
+Resource[] resources = resolver.getResources("classpath:process/*.xml") ;
 ```
 
 ### 方法2：使用org.reflection开源包
