@@ -45,10 +45,28 @@ def set_read():
 	# print(s['ABC'])
 	pass
 
+def set_merge():
+	s1 = set('spam')
+	s2 = set(['h','a','m'])
+	print(f's1:{s1}, s2:{s2}')
+
+	# 交集
+	print(f'- {s1&s2}')
+
+	# 并集
+	print(f'-- {s1|s2}')
+
+	# 差集
+	print(f'--- {s1-s2}')
+	print(f'--- {s2-s1}')
+
+
+	pass
 
 if __name__ == '__main__':
 	# set_create()
 	# set_add()
 	# set_delete()
-	set_read()
+	# set_read()
+	set_merge()
 	
