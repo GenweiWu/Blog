@@ -68,7 +68,7 @@ File descriptor 3 (/etc/passwd) leaked on lvs invocation. Parent PID 51370: -bas
 
 
 ```bash
-## fdisk
+## fdisk -l
 ...
 Disk /dev/mapper/vg1-lv_docker: 32.2 GB, 32212254720 bytes, 62914560 sectors
 Units = sectors of 1 * 512 = 512 bytes
