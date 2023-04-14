@@ -189,3 +189,16 @@ pipeline {
 
 ```
 
+> 变量也可以动态计算出来
+```
+ready = """${sh(
+                            returnStatus: true,
+                            script: '''
+                                if [ -d /home/test ]; then
+                                    exit 0
+                                else
+                                    exit 1
+                                fi    
+                                '''
+                    )}"""
+```
