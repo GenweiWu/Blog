@@ -92,3 +92,31 @@ pipeline {
     }
 }
 ```
+
+> 判断文件夹是否存在
+```
+pipeline {
+    options { timestamps() }
+
+    stages {
+        stage('debug') {
+            environment {  //<--动态设置环境变量
+                bbb = """${sh(
+                        returnStatus: true,
+                        script:'''  //<--复杂脚本
+                                if [ -d /home/xxx ]; then
+                                    exit 0
+                                else
+                                    exit 1
+                                fi    
+                                '''
+                )}"""
+            }
+            steps {
+                echo "--> ${env.bbb}"
+            }
+        }
+    }
+}
+
+```
