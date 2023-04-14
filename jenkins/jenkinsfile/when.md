@@ -17,3 +17,15 @@ pipeline {
     }
 }
 ```
+
+> 利用env判断
+```
+stage('plan') {
+  when {
+     environment name: 'ExecuteAction', value: 'plan'
+  }
+  steps {
+     sh 'cd $dir && $tf plan'
+  }
+}
+```
