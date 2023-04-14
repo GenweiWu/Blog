@@ -18,6 +18,7 @@ pipeline {
 
 ### 设置环境变量
 
+> 无法跨stage改变变量
 ```
 pipeline {
     agent any
@@ -40,6 +41,36 @@ pipeline {
         }
     }
 }
+```
+
+> 无法跨stage改变变量2
+```
+pipeline {
+    agent any
+    options { timestamps() }
+    environment { //<--全局的环境变量
+        ready = '1'
+    }
+    stages {
+        stage('test') {
+            environment {  //<--动态设置环境变量，只是在当前stage有效
+                ready = '0'
+            }
+            steps {
+                echo "--> ${env.ready}"   //0
+            }
+        }
+        stage('check'){
+            when {
+                environment name: 'ready', value: '1'
+            }
+            steps{
+                echo "--> ${env.ready}"   //1 <--注意这里还是1
+            }
+        }
+    }
+}
+
 ```
 
 
