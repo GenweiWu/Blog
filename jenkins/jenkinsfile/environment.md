@@ -151,3 +151,41 @@ pipeline {
 }
 
 ```
+
+## 跨stage改变变量和读取(不使用env,使用全局变量)
+
+```
+def ready = '1'
+
+pipeline {
+    agent any
+    options { timestamps() }
+    stages {
+        stage('test') {
+            steps {
+                echo "1.1 --> ${ready}"
+                script { ready = '0' }
+                echo "1.2 --> ${ready}"
+            }
+        }
+        stage('check_when0') {
+            when {
+                expression { ready == '0' }
+            }
+            steps {
+                echo "2.1 --> ${ready}"
+            }
+        }
+        stage('check_when1') {
+            when {
+                expression { ready == '1' }
+            }
+            steps {
+                echo "2.2 --> ${ready}"
+            }
+        }
+    }
+}
+
+```
+
