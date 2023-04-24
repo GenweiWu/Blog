@@ -44,6 +44,9 @@ total 0
 -rw-------. 1 1000 1000 0 Sep 29  2020 test.txt
 ```
 
+## windows上通过安装`mobaxterm`软件也可以用
+![image](https://user-images.githubusercontent.com/16630659/233879507-b4598ccd-08a1-4d60-b9f4-2198f2fa1f6f.png)
+
 
 ## 参考
 - https://www.ruanyifeng.com/blog/2020/08/rsync.html
