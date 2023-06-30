@@ -1,3 +1,20 @@
+```
+Supplier       ()    -> x
+Consumer       x     -> ()
+BiConsumer     x, y  -> ()
+
+Callable       ()    -> x throws ex
+Runnable       ()    -> ()
+
+Function       x     -> y
+BiFunction     x,y   -> z
+UnaryOperator  x1    -> x2
+BinaryOperator x1,x2 -> x3
+
+Predicate      x     -> boolean
+BiPredicate    x,y   -> boolean 
+```
+
 
 ### 消费者consumer和生产者supplier
 | 我的理解             | 分类                                     |                                                              | 样例                |
