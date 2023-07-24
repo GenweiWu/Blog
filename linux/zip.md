@@ -2,6 +2,7 @@
 
 ## 压缩
 
+> zip test.zip *.txt 
 ### - 压缩文件
 ```bash
 # ll
@@ -15,6 +16,7 @@ total 0
 ```
 
 ### - 压缩文件夹
+> zip -r ddd.zip ./ddd 
 ```bash
 # ll ddd
 total 0
