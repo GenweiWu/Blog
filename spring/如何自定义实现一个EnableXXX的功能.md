@@ -60,7 +60,7 @@ public class ImportCustomBeanDefinitionRegistrar implements ImportBeanDefinition
 
 
     @Override
-    public void registerBeanDefinitions(AnnotationMetadata im  portingClassMetadata, BeanDefinitionRegistry registry) {
+    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
         //获取EnableCustomBean注解的参数
         Map<String, Object> attributes = importingClassMetadata.getAnnotationAttributes(EnableCustomBean.class.getName());
 
