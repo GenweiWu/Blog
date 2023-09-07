@@ -21,7 +21,7 @@ public @interface EnableCustomBean {
 
 ```java
 @SpringBootApplication
-@EnableCustomBean
+@EnableCustomBean(name="daveName")
 public class BootApplication {
 
     public static void main(String[] args) {
