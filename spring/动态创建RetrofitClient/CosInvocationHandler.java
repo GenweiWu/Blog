@@ -1,7 +1,4 @@
-package com.zte.iot.snapshot.rpc.config;
 
-import com.zte.iot.common.util.EmptyJudge;
-import com.zte.iot.model.retrofit.RetrofitClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 import retrofit2.Retrofit;
