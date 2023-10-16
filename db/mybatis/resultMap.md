@@ -62,6 +62,23 @@ public class User {
 </resultMap>
 ```
 
+### `List<String>`的写法
+
+```sql
+select stu_name from ...
+```
+
+```
+private Integer id;
+private List<String> names;
+```
+
+```xml
+<collection property="names" ofType="java.lang.String">
+    <result column="stu_name"/>
+</collection>
+```
+
 
 
 ## 参考
