@@ -10,9 +10,10 @@ ssh -l root 1.2.3.4
 ```
 
 ## 执行命令
+`ssh d@1.2.3.4 [command]`
 
-### 注意单引号和双引号
-```
+### ✈️ 注意单引号和双引号
+```console 
 # 这里hostname是在本地执行的
 [root@paas-controller-1 pict]# ssh -t ubuntu@minion-4 "sudo echo $(hostname)"
 All activities performed on this system will be monitored.
