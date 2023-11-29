@@ -1,6 +1,6 @@
 > jackson
 
-## @JsonProperty只适用序列化，不适用反序列化  
+## @JsonProperty指定顺序只适用序列化，不适用反序列化  
 
 1.`JsonProperty("id","name")`  
 只能用于序列化，即将对象转换为json字符串返回给前台时
