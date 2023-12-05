@@ -5,6 +5,19 @@
 ### 😄使用建议
 
 1. `JsonIgnore`加到字段上或get方法上或set方法上，效果都一样：会导致序列化和反序列化都失效！
+
+    > 源码学习得知原因：`com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder#anyIgnorals`
+    ```java
+    public boolean anyIgnorals() {
+            return _anyIgnorals(_fields)
+                || _anyIgnorals(_getters)
+                || _anyIgnorals(_setters)
+                || _anyIgnorals(_ctorParameters)
+            ;
+        }
+    ```
+
+
 2. 字段上添加JsonProerty，此时在get方法添加JsonIgnore不会生效
 3. 使用建议：
 
