@@ -64,3 +64,20 @@ select current_timestamp - interval '3 day';
 select current_timestamp - 3 * interval '1 day';
 ```
 
+### 6) 给timestamp且not null设置默认值
+```sql
+drop table if exists t_test;
+
+create table t_test(
+ create_time timestamp with time zone default '-infinity' not null
+);
+
+select
+	*
+from
+	t_test
+where
+	create_time != '-infinity'
+```
+
+
