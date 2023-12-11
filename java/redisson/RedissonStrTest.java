@@ -5,6 +5,9 @@ import org.junit.Test;
 import org.redisson.Redisson;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
+import org.redisson.client.codec.IntegerCodec;
+import org.redisson.client.codec.LongCodec;
+import org.redisson.client.codec.StringCodec;
 
 /**
  * 测试字符串类型
@@ -16,7 +19,7 @@ public class RedissonStrTest {
         String key = "test:string:text";
 
         RedissonClient redissonClient = Redisson.create();
-        RBucket<String> bucket = redissonClient.getBucket(key);
+        RBucket<String> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
         Assert.assertFalse(bucket.isExists());
 
         //对应的key不存在则true
@@ -36,7 +39,7 @@ public class RedissonStrTest {
         String key = "test:string:int";
 
         RedissonClient redissonClient = Redisson.create();
-        RBucket<Integer> bucket = redissonClient.getBucket(key);
+        RBucket<Integer> bucket = redissonClient.getBucket(key, IntegerCodec.INSTANCE);
 
         bucket.set(6666);
         int actual = bucket.getAndDelete();
@@ -44,7 +47,7 @@ public class RedissonStrTest {
     }
 
     /**
-     * 能用，但是在连接工具中看到的是hex类型
+     * 不指定codec也能用，但是在连接工具中看到的是hex类型
      * <p>\x09\xc8\x01</p>
      */
     @Test
@@ -52,7 +55,7 @@ public class RedissonStrTest {
         String key = "test:string:long";
 
         RedissonClient redissonClient = Redisson.create();
-        RBucket<Long> bucket = redissonClient.getBucket(key);
+        RBucket<Long> bucket = redissonClient.getBucket(key, LongCodec.INSTANCE);
 
         bucket.set(100L);
         long actual = bucket.getAndDelete();
