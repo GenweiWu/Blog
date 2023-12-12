@@ -7,6 +7,8 @@ import org.redisson.api.RDeque;
 import org.redisson.api.RList;
 import org.redisson.api.RQueue;
 import org.redisson.api.RedissonClient;
+import org.redisson.api.listener.ListAddListener;
+import org.redisson.api.listener.ListRemoveListener;
 import org.redisson.client.codec.DoubleCodec;
 import org.redisson.client.codec.IntegerCodec;
 import org.redisson.client.codec.StringCodec;
@@ -44,6 +46,39 @@ public class RedissonListTest {
         range = list.range(1, 2);
         expect = Stream.of("L2", "L3").toArray(String[]::new);
         Assert.assertArrayEquals(expect, range.toArray(new String[0]));
+    }
+
+    /**
+     * 如果想支持listener，则需要修改redis.conf
+     * <pre>
+     *     {@code
+     *     notify-keyspace-events "KEA"
+     *     }
+     * </pre>
+     */
+    @Test
+    public void testListListener() {
+        RedissonClient redissonClient = Redisson.create();
+        RList<String> list = redissonClient.getList("test:list:list", StringCodec.INSTANCE);
+        list.clear();
+
+        list.addListener(new ListAddListener() {
+            @Override
+            public void onListAdd(String name) {
+                System.out.println("add:" + name);
+            }
+        });
+        //没触发，感觉水太深，暂不建议使用
+        list.addListener(new ListRemoveListener() {
+            @Override
+            public void onListRemove(String name) {
+                System.out.println("remove:" + name);
+            }
+        });
+
+        list.add("aaa");
+        list.remove("aaa");
+        list.remove("bbb");
     }
 
     /**
@@ -94,5 +129,22 @@ public class RedissonListTest {
         Double[] array = deque.toArray(new Double[0]);
         Double[] expect = {2.0, 1.0, 4.0};
         Assert.assertArrayEquals(expect, array);
+    }
+
+    @Test
+    public void testDequeExist() {
+        RedissonClient redissonClient = Redisson.create();
+        RDeque<Double> deque = redissonClient.getDeque("test:list:deque", DoubleCodec.INSTANCE);
+        deque.delete();
+
+        //不存在则不添加=LPUSHX
+        int len = deque.addFirstIfExists(12.2);
+        Assert.assertEquals(0, len);
+
+        //RPUSH
+        deque.add(0.0);
+        //LPUSHX
+        len = deque.addFirstIfExists(12.2);
+        Assert.assertEquals(2, len);
     }
 }
