@@ -1,4 +1,7 @@
 
+## 入门
+> http://www.postgres.cn/docs/9.3/arrays.html
+
 
 ```sql
 drop table if exists t_array_test;
@@ -44,5 +47,11 @@ select
 from
 	t_array_test
 where
-	belong_tenant && ARRAY['cccc','dddd','No']; 
+	belong_tenant && ARRAY['cccc','dddd','No'];
+```
+
+### 可能涉及到类型转换
+```sql
+-- 可能涉及到类型转换
+	belong_tenant && ARRAY['111']::varchar[]
 ```
