@@ -2,7 +2,9 @@
 ## 数组类型
 > http://www.postgres.cn/docs/9.3/arrays.html
 
-### SQL测试 
+## 一、SQL测试 
+
+### 测试例子
 ```sql
 drop table if exists t_array_test;
 create table t_array_test(
@@ -56,8 +58,9 @@ where
 	belong_tenant && ARRAY['111']::varchar[]
 ```
 
-### 搭配ibatis使用
+## 二、搭配ibatis使用
 
+#### 传参: List<T> + foreach(ARRAY[])
 > 注意:参考以前foreach写法,但是open="ARRAY[", close="]"
 ```xml
 <select id="findByArray" parameterClass="MyObject">
