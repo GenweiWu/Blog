@@ -71,4 +71,26 @@ where
 </select>
 ```
 
+#### 查询: 数组+ArrayTypeHandler
+
+> 映射包装类型
+```java
+class PgFolder {
+  long id;
+  Integer[] ids;
+  // getter / setter
+}
+```
+
+```xml
+<resultMap id="xxx" type="...">
+...
+    <result column="ids" property="ids" typeHandler="org.apache.ibatis.type.ArrayTypeHandler"/>
+</resultMap>
+```
+
+
+
+
+
 
