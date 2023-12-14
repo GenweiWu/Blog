@@ -1,8 +1,8 @@
 
-## 入门
+## 数组类型
 > http://www.postgres.cn/docs/9.3/arrays.html
 
-
+### SQL测试 
 ```sql
 drop table if exists t_array_test;
 create table t_array_test(
@@ -55,3 +55,17 @@ where
 -- 可能涉及到类型转换
 	belong_tenant && ARRAY['111']::varchar[]
 ```
+
+### 搭配ibatis使用
+
+> 注意:参考以前foreach写法,但是open="ARRAY[", close="]"
+```xml
+<select id="findByArray" parameterClass="MyObject">
+    SELECT * FROM my_table WHERE my_array @>
+    <foreach item="item" index="index" collection="list" open="ARRAY[" separator="," close="]">
+        #{item}
+    </foreach>
+</select>
+```
+
+
