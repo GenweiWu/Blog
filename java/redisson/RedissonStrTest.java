@@ -1,6 +1,8 @@
 package com.njust.redisson;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.redisson.Redisson;
 import org.redisson.api.RBucket;
@@ -14,11 +16,22 @@ import org.redisson.client.codec.StringCodec;
  */
 public class RedissonStrTest {
 
+    private static RedissonClient redissonClient;
+
+    @BeforeClass
+    public static void init() {
+        redissonClient = Redisson.create();
+    }
+
+    @AfterClass
+    public static void teardown() {
+        redissonClient.shutdown();
+    }
+
     @Test
     public void strTest() {
         String key = "test:string:text";
 
-        RedissonClient redissonClient = Redisson.create();
         RBucket<String> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
         Assert.assertFalse(bucket.isExists());
 
@@ -38,7 +51,6 @@ public class RedissonStrTest {
     public void intTest() {
         String key = "test:string:int";
 
-        RedissonClient redissonClient = Redisson.create();
         RBucket<Integer> bucket = redissonClient.getBucket(key, IntegerCodec.INSTANCE);
 
         bucket.set(6666);
@@ -54,11 +66,53 @@ public class RedissonStrTest {
     public void longTest() {
         String key = "test:string:long";
 
-        RedissonClient redissonClient = Redisson.create();
         RBucket<Long> bucket = redissonClient.getBucket(key, LongCodec.INSTANCE);
 
         bucket.set(100L);
         long actual = bucket.getAndDelete();
         Assert.assertEquals(100L, actual);
+    }
+
+    /**
+     * setIfAbsent=SETNX
+     */
+    @Test
+    public void testSetIfAbsent() {
+        String key = "test:string:absent";
+
+        RBucket<Object> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
+        bucket.delete();
+
+        Assert.assertFalse(bucket.isExists());
+        //t1
+        Assert.assertTrue(bucket.setIfAbsent("oldValue"));
+        Assert.assertEquals("oldValue", bucket.get());
+        //t2
+        Assert.assertFalse(bucket.setIfAbsent("newValue"));
+        Assert.assertEquals("oldValue", bucket.get());
+    }
+
+    /**
+     * setIfExists=
+     */
+    @Test
+    public void testSetIfPresent() {
+        String key = "test:string:present";
+
+        RBucket<String> bucket = redissonClient.getBucket(key, StringCodec.INSTANCE);
+        bucket.delete();
+
+        //t1-prepare
+        Assert.assertFalse(bucket.isExists());
+        //t1-
+        Assert.assertFalse(bucket.setIfExists("oldValue"));
+        Assert.assertNull(bucket.get());
+
+        //t2-prepare
+        bucket.set("middleValue");
+        Assert.assertTrue(bucket.isExists());
+        //t2
+        Assert.assertTrue(bucket.setIfExists("newValue"));
+        Assert.assertEquals("newValue", bucket.get());
     }
 }
