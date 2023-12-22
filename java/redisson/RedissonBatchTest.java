@@ -90,7 +90,7 @@ public class RedissonBatchTest {
     }
 
     /**
-     * 给以奇数结尾的字符串，添加+++
+     * 给以奇数结尾的字符串，添加+++  ==> 失败
      * <p>
      * batch的原理所有命令一起发送给redis，所以无法在一个batch中先判断，再修改
      */
@@ -125,7 +125,9 @@ public class RedissonBatchTest {
     }
 
     /**
-     * 判断key不存在则插入，存在的不处理
+     * 判断key不存在则插入，存在的不处理  ==> 成功
+     * <p>
+     * --看起来可以实现，使用setIfAbsentAsync
      */
     @Test
     public void testAbsentThenModify() {
@@ -155,6 +157,42 @@ public class RedissonBatchTest {
         for (int i = SIZE; i < SIZE * 2; i++) {
             RBucket<String> actual = redissonClient.getBucket(KEY_PREFIX + i, StringCodec.INSTANCE);
             Assert.assertEquals("newValue:" + i, actual.get());
+        }
+    }
+
+    /**
+     * 判断key存在则更新，不存在的不处理 ==> 成功
+     * <p>
+     * --看起来可以实现，使用setIfExistsAsync
+     */
+    @Test
+    public void testExistThenModify() {
+        //prepare
+        redissonClient.getKeys().deleteByPattern(KEY_PREFIX + "*");
+        //init
+        testBatchWrite();
+
+        //beginTest
+        RBatch batch = redissonClient.createBatch();
+        for (int i = 0; i < SIZE * 2; i++) {
+            RBucketAsync<String> bucket = batch.getBucket(KEY_PREFIX + i, StringCodec.INSTANCE);
+            //修改生效
+            bucket.setIfExistsAsync(VALUE_PREFIX + i + "-newValue");
+        }
+
+        BatchResult<?> batchResult = batch.execute();
+        List<?> responses = batchResult.getResponses();
+
+        Assert.assertEquals(SIZE * 2, responses.size());
+
+        //check
+        for (int i = 0; i < SIZE; i++) {
+            RBucket<String> actual = redissonClient.getBucket(KEY_PREFIX + i, StringCodec.INSTANCE);
+            Assert.assertEquals(VALUE_PREFIX + i + "-newValue", actual.get());
+        }
+        for (int i = SIZE; i < SIZE * 2; i++) {
+            RBucket<String> actual = redissonClient.getBucket(KEY_PREFIX + i, StringCodec.INSTANCE);
+            Assert.assertNull(actual.get());
         }
     }
 }
