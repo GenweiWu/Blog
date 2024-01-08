@@ -53,6 +53,11 @@ File descriptor 3 (/etc/passwd) leaked on vgs invocation. Parent PID 51370: -bas
   vg1   1   0   0 wz--n- <90.00g <90.00g
 ```
 
+```bash
+# vg扩容pv进来  
+vgextend vg_sys /dev/vda7
+```
+
 > LV
 ```bash
 [root@shap000109594 ~]# lvcreate -n lv_docker -L 30G vg1
