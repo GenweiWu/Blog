@@ -60,6 +60,22 @@ where
 
 ## 二、搭配ibatis使用
 
+#### 注意，java中对象要定义成数组而不是list
+```java
+private Integer[] points
+```
+
+#### 插入参考
+```xml
+VALUES (
+  #{obj.name},
+  <foreach collection="obj.points" item="item" open="ARRAY[" close="]" separator=",">
+      #{item}
+   </foreach>,
+  #{obj.desc}
+)
+```
+
 #### 传参: List<T> + foreach(ARRAY[])
 > 注意:参考以前foreach写法,但是open="ARRAY[", close="]"
 ```xml
