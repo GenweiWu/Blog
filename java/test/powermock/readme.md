@@ -94,7 +94,8 @@ Both approaches behave differently if you use a spied object (annotated with `@S
 
 
 
-- `PowerMockito` or `Mockito`: 如果遇到奇怪的错误，试试把`Mockito`替换为`PowerMockito`
+### - `PowerMockito` or `Mockito`: 如果要模拟private或static或final方法，要将`Mockito`替换为`PowerMockito`
+> PowerMock is an extension to Mockito that allows mocking of static methods, constructors, final classes and methods, private methods, removal of static initializers and more.  
 
 ```java
 public class Hello {
