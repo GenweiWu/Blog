@@ -89,3 +89,59 @@ Both approaches behave differently if you use a spied object (annotated with `@S
 
 
 
+
+## FAQ
+
+
+
+- `PowerMockito` or `Mockito`: 如果遇到奇怪的错误，试试把`Mockito`替换为`PowerMockito`
+
+```java
+public class Hello {
+
+    public static String readResponse(ResponseBody responseBody) {
+        try {
+            return responseBody.string();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+}
+```
+
+
+
+```java
+import okhttp3.ResponseBody;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+
+import java.io.IOException;
+
+
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(ResponseBody.class)
+public class HelloTest {
+
+    @Test
+    public void hello1() throws IOException {
+        //此时用Mockito会报错，用PowerMockito可以成功了
+        //try (ResponseBody responseBody = Mockito.mock(ResponseBody.class)) {
+        try (ResponseBody responseBody = PowerMockito.mock(ResponseBody.class)) {
+            Mockito.doReturn("xxx").when(responseBody).string();
+            String s = Hello.readResponse(responseBody);
+            Assert.assertEquals(s, "xxx");
+        }
+    }
+
+}
+```
+
+
+
