@@ -8,4 +8,8 @@ public class Static {
         return String.valueOf(result);
     }
 
+    public static void hello() {
+        throw new RuntimeException();
+    }
+
 }
