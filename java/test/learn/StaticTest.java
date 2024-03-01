@@ -63,4 +63,27 @@ public class StaticTest {
         //3.2 这里也变成-2了
         assertEquals("-2", Static.add("14", "13"));
     }
+
+    /**
+     * 测试没有返回值的静态方法
+     */
+    @Test(expected = RuntimeException.class)
+    public void hello() throws Exception {
+        //mock
+        PowerMockito.mockStatic(Static.class);
+        PowerMockito.doCallRealMethod().when(Static.class, "hello");
+
+        //test
+        Static.hello();
+    }
+
+    @Test
+    public void hello2() throws Exception {
+        //mock
+        PowerMockito.mockStatic(Static.class);
+        PowerMockito.doNothing().when(Static.class, "hello");
+
+        //test
+        Static.hello();
+    }
 }
