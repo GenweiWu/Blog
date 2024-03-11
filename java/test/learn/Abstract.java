@@ -1,24 +1,29 @@
 package com.njust.learn;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * 测试抽象类的模拟
  */
 public abstract class Abstract {
 
-    public int add(int a, int b) {
-        System.out.println("add:" + a + "," + b);
-        return a + b;
+    public String helloThere() {
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyyMMdd_hhmmss");
+        String timeStr = LocalDateTime.now().format(pattern);
+        System.out.println("helloThere:" + timeStr);
+
+        return normalMethod(timeStr);
     }
 
-    public static String staticMethod(String msg) {
-        return "Static:" + msg;
-    }
+    public abstract String normalMethod(String msg);
 
-    public final String finalMethod(String msg) {
-        return "Final:" + msg;
-    }
+    //abstract不能是static的
+    //    public abstract static String staticMethod(String msg);
 
-    private String privateMethod(String msg) {
-        return "private:" + msg;
-    }
+    //abstract方法不能是final的
+    //    public abstract final String finalMethod(String msg);
+
+    //abstract方法不能是private的
+    //    private abstract String privateMethod(String msg);
 }
