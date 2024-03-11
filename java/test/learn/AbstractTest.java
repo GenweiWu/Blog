@@ -4,13 +4,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import org.powermock.reflect.Whitebox;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(Abstract.class)
+@PrepareForTest({Abstract.class, LocalDateTime.class})
 public class AbstractTest {
 
     private Abstract anAbstract;
@@ -21,41 +28,40 @@ public class AbstractTest {
     }
 
     /**
-     * mock抽象类的普通方法
+     * mock抽象方法，返回固定值
      */
     @Test
     public void add() {
-        PowerMockito.when(anAbstract.add(1, 2)).thenReturn(-33);
+        PowerMockito.doCallRealMethod().when(anAbstract).helloThere();
+        //mock abstract method
+        PowerMockito.when(anAbstract.normalMethod(anyString())).thenReturn("xxx");
 
-        int add = anAbstract.add(1, 2);
-        Assert.assertEquals(-33, anAbstract.add(1, 2));
-    }
-
-    /**
-     * mock抽象类的静态方法
-     */
-    @Test
-    public void staticMethod() {
-        PowerMockito.mockStatic(Abstract.class);
-        PowerMockito.when(Abstract.staticMethod("hello")).thenReturn("beYourself");
-
-        String result = Abstract.staticMethod("hello");
-        Assert.assertEquals("beYourself", result);
+        Assert.assertEquals("xxx", anAbstract.helloThere());
     }
 
     @Test
-    public void finalMethod() {
-        PowerMockito.when(anAbstract.finalMethod("finalHello")).thenReturn("onYourOwn");
+    public void add_returnCalculate() {
+        PowerMockito.mockStatic(LocalDateTime.class);
 
-        String result = anAbstract.finalMethod("finalHello");
-        Assert.assertEquals("onYourOwn", result);
+        LocalDateTime localDateTime = PowerMockito.mock(LocalDateTime.class);
+        final String expect = "20240311_172700";
+        PowerMockito.when(localDateTime.format(any(DateTimeFormatter.class))).thenReturn(expect);
+        PowerMockito.when(LocalDateTime.now()).thenReturn(localDateTime);
+
+        //mock
+        PowerMockito.doCallRealMethod().when(anAbstract).helloThere();
+        //mock abstract method
+        PowerMockito.when(anAbstract.normalMethod(anyString())).thenAnswer(new Answer<String>() {
+            @Override
+            public String answer(InvocationOnMock invocation) throws Throwable {
+                String msg = invocation.getArgument(0);
+                return msg;
+            }
+        });
+
+        Assert.assertEquals(anAbstract.helloThere(), expect);
+
     }
 
-    @Test
-    public void privateMethod() throws Exception {
-        PowerMockito.doReturn("struggle").when(anAbstract, "privateMethod", "privateHello");
 
-        String result = Whitebox.invokeMethod(anAbstract, "privateMethod", "privateHello");
-        Assert.assertEquals("struggle", result);
-    }
 }
