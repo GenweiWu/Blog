@@ -34,6 +34,44 @@ public class User {
 </resultMap>
 ```
 
+### 支持嵌套resultMap
+
+```java 
+@Data
+public class Room{
+   private String roomName;
+    private User user;
+}
+
+@Data
+public class User {
+    //省略用户属性...
+	
+    //角色信息
+    private Role role;
+}
+```
+
+```xml
+<resultMap id="roomMap" type="Room">
+   <result property="roomName" column="room_name"/>
+   <association property="user" resultMap="userMap"/>
+</resultMap>
+
+<resultMap id="userMap" type="User">
+	<id property="id" column="id"></id>
+	<result property="username" column="username"></result>
+	<result property="password" column="password"></result>
+	<result property="address" column="address"></result>
+	<result property="email" column="email"></result>
+	
+	<association property="role" javaType="Role">
+		<id property="id" column="role_id"></id>
+		<result property="name" column="role_name"></result>
+	</association>
+</resultMap>
+```
+
 ## collection: 关联多个对象
 
 ```java
