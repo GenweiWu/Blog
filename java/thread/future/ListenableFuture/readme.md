@@ -3,7 +3,6 @@
 
 - [添加监听（addListener）](ListenableFutureDemo.java)
 - [添加回调（Futures.addCallBack）](ListenableFutureDemo2.java)
-
 - [future合并>相同的返回](ListenableFutureAllDemo.java)
 - [future合并>不同的返回](ListenableFutureAllDemo2.java)
 
