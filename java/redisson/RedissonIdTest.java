@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.redisson.Redisson;
 import org.redisson.api.RIdGenerator;
 import org.redisson.api.RedissonClient;
+import org.redisson.client.RedisException;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
@@ -197,6 +198,24 @@ public class RedissonIdTest {
             System.out.println(prefix + "_" + idGenerator.nextId());
         }
 
+    }
+
+    /**
+     * 如果达到最大值，脚本会报错的
+     * <p>
+     * 这个单元测试会一直跑没结束!
+     * <pre>
+     *      @user_script:1: ERR increment or decrement would overflow .
+     * </pre>
+     */
+    @Test(expected = RedisException.class)
+    public void max() {
+        RIdGenerator idGenerator = redissonClient.getIdGenerator("max");
+        idGenerator.tryInit(Long.MAX_VALUE - 1, 10);
+
+        System.out.println("maxValue:" + Long.MAX_VALUE);
+
+        System.out.println("max test:" + idGenerator.nextId());
     }
 
 }
