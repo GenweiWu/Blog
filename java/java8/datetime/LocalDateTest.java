@@ -3,9 +3,7 @@ package com.njust.test.java8;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.Month;
+import java.time.*;
 import java.time.temporal.TemporalAdjusters;
 
 public class LocalDateTest {
@@ -80,5 +78,22 @@ public class LocalDateTest {
         LocalDate endDate = today.minusDays(1);
         Assert.assertEquals(LocalDate.parse("2023-09-07"), startDate);
         Assert.assertEquals(LocalDate.parse("2023-09-13"), endDate);
+    }
+
+    @Test
+    public void toEpochSeconds() {
+        LocalDate today = LocalDate.parse("2024-10-09");
+        LocalDateTime localDateTime = today.atStartOfDay();
+
+        //对应0时区的2024-10-09 00:00:00
+        long epochSecond = localDateTime.toEpochSecond(ZoneOffset.UTC);
+        System.out.println("epochSeconds:" + epochSecond);
+
+        //0时区
+        long toCompareEpochSecond = OffsetDateTime.parse("2024-10-09T00:00:00.000Z").toEpochSecond();
+        Assert.assertEquals(epochSecond, toCompareEpochSecond);
+
+        long toCompareEpochSecond1 = OffsetDateTime.parse("2024-10-09T08:00:00.000+08:00").toEpochSecond();
+        Assert.assertEquals(epochSecond, toCompareEpochSecond1);
     }
 }
