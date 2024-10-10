@@ -57,3 +57,16 @@ if(_cookie){
   console.log("cookie:"+_cookie+" ==> csrf:"+_csrf)
 }
 ```
+
+## post-response script
+
+> eg1 
+```js
+var resp = pm.response.json();
+//将返回值设置为变量
+if(resp.code == 0){
+    var modelNo = resp.data.modelNo;
+    pm.collectionVariables.set("modelNo", modelNo);
+}
+```
+
