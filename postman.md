@@ -70,3 +70,13 @@ if(resp.code == 0){
 }
 ```
 
+> eg2
+```js
+var resp = pm.response.json();
+if(resp.resultCode == 0){
+    //读取返回的响应头header的内容，设置为变量 
+    var cookie = pm.response.headers.get("Set-Cookie");;
+    pm.environment.set("cookie", cookie);
+}
+```
+
