@@ -12,3 +12,4 @@
 
 - [入门](LoadingCacheTest.java)
 - [maxSize限制](LoadingCacheMaxSizeTest.java)
+- [load方法不要返回null](LoadingCacheNullValueTest.java)
