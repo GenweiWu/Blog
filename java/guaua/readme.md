@@ -1,5 +1,5 @@
 
-
+## 依赖 
 ```pom.xml
 <dependency>
     <groupId>com.google.guava</groupId>
@@ -7,3 +7,6 @@
     <version>23.0</version>
 </dependency>
 ```
+
+## 样例
+
