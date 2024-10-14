@@ -10,5 +10,5 @@
 
 ## 样例
 
-[入门](LoadingCacheTest.java)
-[maxSize限制]()
+- [入门](LoadingCacheTest.java)
+- [maxSize限制](LoadingCacheMaxSizeTest.java)
