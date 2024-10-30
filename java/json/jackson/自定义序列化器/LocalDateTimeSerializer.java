@@ -1,7 +1,7 @@
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.fasterxml.jackson.databind.BeanProperty;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
@@ -25,9 +25,16 @@ public class LocalDateTimeSerializer extends StdSerializer<LocalDateTime> implem
     }
 
     @Override
-    public JsonSerializer<?> createContextual(SerializerProvider prov, BeanProperty property) throws JsonMappingException {
-        JsonFormat jsonFormat = property.getAnnotation(JsonFormat.class);
-        String pattern = jsonFormat.pattern();
+    public JsonSerializer<?> createContextual(SerializerProvider prov, BeanProperty property) {
+        //读取自定义的注解，用这些方法
+//        JsonFormat jsonFormat = property.getAnnotation(JsonFormat.class);
+//        String pattern = jsonFormat.pattern();
+
+        //读取jackson自身的注解用下面的方法
+        AnnotationIntrospector introspector = prov.getAnnotationIntrospector();
+        JsonFormat.Value format = introspector.findFormat(property.getMember());
+        String pattern = format.getPattern();
+
         return new LocalDateTimeSerializer(pattern);
     }
 
