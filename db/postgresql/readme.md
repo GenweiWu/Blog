@@ -1,6 +1,6 @@
 
 ## 基本命令
-```
+```bash
 \l   //展示所有database
 \l+   //显示更多列
 \c postgres   //进入database "postgres"
