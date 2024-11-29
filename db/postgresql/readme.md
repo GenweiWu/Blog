@@ -1,12 +1,13 @@
 
 ## 基本命令
 ```
-\l :展示所有database
-\l+ :显示更多列
-\c postgres :进入database "postgres"
-\d :列出当前数据库的所有表格。
-\d [table_name] :列出某一张表格的结构。
-\q + enter :退出 
+\l   //展示所有database
+\l+   //显示更多列
+\c postgres   //进入database "postgres"
+\d   //列出当前数据库的所有表格。
+\d [table_name]   //列出某一张表格的结构。
+\q + enter   //退出
+select * from tale1;  //注意末尾要加分号
 ```
 
 ```
