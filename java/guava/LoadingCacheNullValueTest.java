@@ -4,11 +4,11 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Optional;
-import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -27,7 +27,7 @@ public class LoadingCacheNullValueTest {
         this.loadingCache = CacheBuilder.newBuilder().build(new CacheLoader<Integer, Integer>() {
             @Override
             public Integer load(Integer key) throws Exception {
-                //1.有时候我们生成的逻辑比较负责，仅有key是不行，我们会单独调用put方法去设置，此时就想返回null
+                //1.有时候我们生成的逻辑比较复杂(仅有key是不够的)，我们会单独调用put方法去设置value，此处就想返回null
                 if (key < 0) {
                     return null;
                 }
@@ -49,43 +49,31 @@ public class LoadingCacheNullValueTest {
     @Test
     public void testNonNullValue() throws ExecutionException {
         int key = 111;
-        Integer value = loadingCache.get(key);
-        log.info("get value:{} by key:{}", value, key);
+        int value = loadingCache.get(key);
+        Assert.assertEquals(112, value);
+
+        Optional<Integer> optionalInteger = loadingCacheFixed.get(key);
+        Assert.assertTrue(optionalInteger.isPresent());
+        Assert.assertEquals(112, (int) optionalInteger.get());
     }
 
+    /**
+     * load方法返回null会报错
+     */
     @Test(expected = CacheLoader.InvalidCacheLoadException.class)
     public void testNullValue() throws ExecutionException {
-        int key = -1;
-        //2.此时会跑异常
+        //此时会抛出异常
         //com.google.common.cache.CacheLoader$InvalidCacheLoadException: CacheLoader returned null for key -1.
-        int value = loadingCache.get(key);
-        log.info("get value:{} by key:{}", value, key);
+        loadingCache.get(-1);
     }
 
+    /**
+     * 规避方法是返回Optional.empty来代替null
+     */
     @Test
-    public void testFixed() throws ExecutionException {
-        int key = 111;
-        Optional<Integer> value = loadingCacheFixed.get(key);
-        log.info("get value:{} by key:{}", value, key);
-
-        //null
-        key = -1;
-        value = loadingCacheFixed.get(key);
-        log.info("get value:{} by key:{}", value, key);
-    }
-
-    @Test
-    public void testFixedFlow() throws ExecutionException {
-        int key = -1;
-        Optional<Integer> optionalValue = loadingCacheFixed.get(key);
-        log.info("get value:{} by key:{}", optionalValue, key);
-        if (!optionalValue.isPresent()) {
-            int newValue = key + new Random().nextInt();
-            loadingCacheFixed.put(key, Optional.of(newValue));
-        }
-
-        optionalValue = loadingCacheFixed.get(key);
-        log.info("get value:{} by key:{}", optionalValue, key);
+    public void testNullValueAfterFixed() throws ExecutionException {
+        Optional<Integer> optionalValue = loadingCacheFixed.get(-1);
+        Assert.assertFalse(optionalValue.isPresent());
     }
 
 }
