@@ -85,14 +85,21 @@ public class LoadingCacheGetTest {
         Assert.assertEquals("AAA", value);
 
         //[2] using custom loader
-        key = "bbb";
-        value = loadingCache.get(key, new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                return "bbbNew_fromCall";
-            }
-        });
-        Assert.assertEquals("bbbNew_fromCall", value);
+        value = loadingCache.get(key, new CustomerLoader());
+        //此时加载的缓存，没有调用CustomerLoader
+        Assert.assertNotEquals("aaaNew_fromCall", value);
+
+        loadingCache.invalidate(key);
+        value = loadingCache.get(key, new CustomerLoader());
+        Assert.assertEquals("aaaNew_fromCall", value);
+    }
+
+    private static class CustomerLoader implements Callable<String> {
+
+        @Override
+        public String call() throws Exception {
+            return "aaaNew_fromCall";
+        }
     }
 
 }
