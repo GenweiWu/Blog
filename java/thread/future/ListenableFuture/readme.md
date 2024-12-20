@@ -5,7 +5,7 @@
 - [添加回调（Futures.addCallBack）](ListenableFutureDemo2.java)
 - [future扇入>相同的结果返回](ListenableFutureAllDemo.java)
 - [future扇入>不同的结果返回](ListenableFutureAllDemo2.java)
-- [两种写过期策略](LoadingCacheExpireTest.java)
+
 
 
 ## 参考
