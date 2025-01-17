@@ -1,10 +1,15 @@
 
 ## 基本命令
-```bash
+```console
 \l   //展示所有database
 \l+   //显示更多列
+
 \c postgres   //进入database "postgres"
-\d   //列出当前数据库的所有表格。
+
+\d   //列出当前数据库的所有表格(包括索引)。
+\dt //查询当前库的所有Table
+\dt *test*  //搜索当前库下的Table(支持前后用*模糊搜索)
+
 \d [table_name]   //列出某一张表格的结构。
 \q + enter   //退出
 select * from tale1;  //注意末尾要加分号
