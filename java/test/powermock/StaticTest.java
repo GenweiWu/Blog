@@ -2,11 +2,17 @@ package com.njust.learn;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import java.io.PrintStream;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.powermock.api.mockito.PowerMockito.verifyStatic;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(Static.class) //因为这个类有静态方法
@@ -78,12 +84,46 @@ public class StaticTest {
     }
 
     @Test
-    public void hello2() throws Exception {
+    public void mockHello() throws Exception {
         //mock
         PowerMockito.mockStatic(Static.class);
         PowerMockito.doNothing().when(Static.class, "hello");
 
         //test
         Static.hello();
+    }
+
+    @Test
+    public void helloWithParameter() throws Exception {
+        //mock
+        PrintStream outMock = Mockito.mock(PrintStream.class);
+        System.setOut(outMock);
+
+        //test
+        Static.helloWithParameter("aaa", "bbb");
+
+        //verify
+        verify(outMock).printf("a:%s, b:%s", "aaa", "bbb");
+    }
+
+    @Test
+    public void mockHelloWithParameter() throws Exception {
+        //mock
+        PowerMockito.mockStatic(Static.class);
+        // //模拟void static方法
+        PowerMockito.doNothing().when(Static.class, "helloWithParameter", "ccc", "ddd");
+
+        // mock-2:
+        PrintStream outMock = Mockito.mock(PrintStream.class);
+        System.setOut(outMock);
+
+        //test
+        Static.helloWithParameter("ccc", "ddd");
+
+        //verify
+        verifyStatic(Static.class);
+        Static.helloWithParameter("ccc", "ddd");
+
+        verify(outMock, never()).printf("a:%s, b:%s", "ccc", "ddd");
     }
 }
