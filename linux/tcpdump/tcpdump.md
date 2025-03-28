@@ -29,6 +29,15 @@ tcpdump src host 127.0.0.1 and dst host 10.10.10.120 and port 443  -c 60 -w ./ta
 #### 5.直接用tcpdump读取文件
 `tcpdump -A -r test.dump`
 
+#### 6.推荐写法(-i any -s 0)
+```bash
+tcpdump -i any -s 0 port 2480 
+//不指定 -s 时，tcpdump 默认捕获每个包的 前96字节（包括包头）
+//不指定 -i 时，tcpdump 默认会选择一个网口比如eth0
+
+## 使用-i之前，可以先查看下系统有哪些网络接口
+tcpdump -D
+```
 
 ## 总结
 TODO
