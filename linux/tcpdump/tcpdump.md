@@ -39,8 +39,15 @@ tcpdump -i any -s 0 port 2480
 tcpdump -D
 ```
 
-## 总结
-TODO
+## 给docker容器抓包
+
+```
+# 查找目标容器的进程ID(PID)
+docker inspect <docker容器名或id> | grep Pid
+
+# 使用 nsenter 进入容器的网络命名空间
+nsenter -n -t $CONTAINER_PID tcpdump -i any -s 0 -w 111.pcap
+```
 
 
 ## 参考
