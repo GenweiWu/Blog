@@ -144,6 +144,21 @@ possible, and this method should always be used in a loop:
 
 > WaitNotifyDemo.java
 
+### 6)wait会释放当前所在的锁，而且被唤醒后需要再次获取锁才能继续执行
+> https://stackoverflow.com/a/13664082/6182927  
+```java
+public synchronized guardedJoy() {
+    // must get lock before entering here
+    while(!joy) {
+        try {
+            wait(); // releases lock here
+            // must regain the lock to reentering here
+        } catch (InterruptedException e) {}
+    }
+    System.out.println("Joy and efficiency have been achieved!");
+}
+```
+
 ## 5、线程范围内变量共享ThreadLocal
 
 指的是同一个线程，但涉及多个步骤(经常是不同类的方法)，如何共享数据;  
