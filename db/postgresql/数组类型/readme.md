@@ -60,23 +60,21 @@ where
 
 ## 二、搭配ibatis使用
 
-#### 注意，java中对象要定义成数组而不是list
+#### 0、注意，java中对象要定义成数组而不是list
 ```java
 private Integer[] points
 ```
 
-#### 插入参考
+#### 1、插入参考  【同时支持非空+空数组的插入】
 ```xml
-VALUES (
-  #{obj.name},
-  <foreach collection="obj.points" item="item" open="ARRAY[" close="]" separator=",">
-      #{item}
-   </foreach>,
-  #{obj.desc}
+insert into 
+    t_xxx 
+values (
+    #{obj.points, jdbcType=ARRAY, "org.apache.ibatis.type.ArrayTypeHandler"}
 )
 ```
 
-#### 传参: List<T> + foreach(ARRAY[])
+#### ~~传参: List<T> + foreach(ARRAY[])~~ 【对空数组支持不好，不推荐】
 > 注意:参考以前foreach写法,但是open="ARRAY[", close="]"
 ```xml
 <select id="findByArray" parameterClass="MyObject">
@@ -87,7 +85,7 @@ VALUES (
 </select>
 ```
 
-#### 查询: 数组+ArrayTypeHandler
+#### 2、查询: 数组+ArrayTypeHandler
 
 > 映射包装类型
 ```java
