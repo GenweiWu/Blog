@@ -70,7 +70,7 @@ private Integer[] points
 insert into 
     t_xxx 
 values (
-    #{obj.points, jdbcType=ARRAY, "org.apache.ibatis.type.ArrayTypeHandler"}
+    #{obj.points, jdbcType=ARRAY, typeHandler=org.apache.ibatis.type.ArrayTypeHandler}
 )
 ```
 
