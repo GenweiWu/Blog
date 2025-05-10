@@ -1,13 +1,13 @@
 
 
-## result: 简单字段名映射
+## 一、result: 简单字段名映射
 ```xml
 <resultMap id="getUserByIdMap" type="User">
 	<result property="id" column="uid"></result>
 </resultMap>
 ```
 
-## association: 关联一个对象
+## 二、association: 关联一个对象
 
 ```java
 @Data
@@ -34,7 +34,7 @@ public class User {
 </resultMap>
 ```
 
-### 支持嵌套resultMap
+#### 支持嵌套resultMap
 
 ```java 
 @Data
@@ -72,7 +72,7 @@ public class User {
 </resultMap>
 ```
 
-## collection: 关联多个对象
+## 三、collection: 关联多个对象
 
 ```java
 @Data
