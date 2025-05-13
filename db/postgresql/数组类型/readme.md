@@ -104,26 +104,7 @@ class PgFolder {
 ```
 
 #### 2b、简单查询：比如只是直接查询 `List<String>`
-> 此时不需要用resultMap进行映射 
-
-```java
-@Mapper
-public interface TestMapper {
-
-    String[] queryTenants(@Param("id") int userName);
-
-    //直接写List好像也可以
-    List<String> queryTenants(@Param("id") int userName);
-}
-```
-
-```sql
-select
-	belong_tenant
-from
-	t_array_test
-where id =1 
-```
+> 经过测试，目前只能人为包一层，参考上面2的处理方式
 
 
 
