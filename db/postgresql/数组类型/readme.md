@@ -111,6 +111,9 @@ class PgFolder {
 public interface TestMapper {
 
     String[] queryTenants(@Param("id") int userName);
+
+    //直接写List好像也可以
+    List<String> queryTenants(@Param("id") int userName);
 }
 ```
 
