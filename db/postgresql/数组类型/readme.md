@@ -103,6 +103,25 @@ class PgFolder {
 </resultMap>
 ```
 
+#### 2b、简单查询：比如只是直接查询 `List<String>`
+> 此时不需要用resultMap进行映射 
+
+```java
+@Mapper
+public interface TestMapper {
+
+    String[] queryTenants(@Param("id") int userName);
+}
+```
+
+```sql
+select
+	belong_tenant
+from
+	t_array_test
+where id =1 
+```
+
 
 
 
