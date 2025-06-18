@@ -1,5 +1,31 @@
 nginx配置https遇到的问题
 ==
+
+## 参考
+```nginx
+server {
+	listen 443 ssl;
+	server_name localhost;
+
+	access_log logs/access.log;
+	error_log logs/error.log;
+
+	ssl_certificate ssl\\zzweb.crt;
+	ssl_certificate_key ssl\\zzweb.key;
+
+	ssl_session_cache shared:SSL:1m;
+	ssl_session_timeout 5m;
+
+	ssl_ciphers HIGH:!aNULL:!MD5;
+	ssl_prefer_server_ciphers on;
+
+	location / {
+		proxy_pass https://102.9.2:28004$request_uri;
+	}
+}
+```
+
+
 ## 问题1. `ssl3_check_cert_and_algorithm:dh key too small`
 这个问题是由于客户端使用的OpenSSL的版本较高（因为产品要修复openssl的一些漏洞），但服务器端的OpenSSL版本较低。
 *个人理解：浏览器使用的Openssl版本高了，但是nginx作为服务器的ssl版本低。*
