@@ -13,6 +13,11 @@ find用于查找文件或目录
 
 #### 在指定文件夹下
 ```bash
+find dir1/src -name *.sh
+```
+
+
+```bash
 $ find -name config -path '*/.git/config'
 ./adc_test_service/.git/config
 ```
