@@ -170,6 +170,15 @@ ddd
 end
 ```
 
+> 例5b：删除不包含test的行
+```
+$ sed '/test/!d' testD.txt
+testAAA
+AAAtestAAA
+AAAtest
+```
+
+
 > 例6：删除以test开头的行
 ```
 $ sed '/^test/d' testD.txt
