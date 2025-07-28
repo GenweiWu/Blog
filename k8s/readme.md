@@ -20,6 +20,13 @@ kubectl get pods -A|grep coc
 kubectl cp isv/dn-api-manage-api-manage-ms-1-5h9gt:api-manage/api-manage.jar ./api-manage.jar
 ```
 
+> 如果报错tar not found
+```
+kubectl exec -n <namespace> <pod> -- cat <filename with path>  > <filename>
+比如 kubectl exec -n test xxxx-pod -- cat /home/test/111.zip > 111.zip 
+```
+
+
 ## 看日志
 ```
 kubectl logs -f $(echo `kubectl get pods -n isv -o wide |grep dn-api`|cut -d' ' -f1) -n isv
