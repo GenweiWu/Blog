@@ -56,6 +56,12 @@ bbb
 aabb
 ```
 
+#### 5. grep 多个文件
+```
+grep 'aaa' vs-test*.log
+```
+
+
 
 
 ## 参考
