@@ -23,6 +23,11 @@ default <R> R query(TemporalQuery<R> query) {
 default ValueRange range(TemporalField field) 
 ```
 
+### java.time.temporal.Temporal#until 
+```java
+long until(Temporal endExclusive, TemporalUnit unit);
+```
+
 
 <img width="1020" height="550" alt="image" src="https://github.com/user-attachments/assets/720a6c92-8bc4-4d93-b259-c6564d9fa2b4" />
 
