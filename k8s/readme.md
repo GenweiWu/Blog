@@ -14,6 +14,12 @@ kubectl get pods -A|grep coc
 ## 拷贝进去
 `kubectl cp /paasdata/dave2/tcptransfer -n isv manager-k2rjx:/`
 
+> 如果报错tar not found
+```
+cat [local file path] | kubectl exec -i -n [namespace] [pod] -c [container] "--" sh -c "cat > [remote file path]"
+比如 cat 111.zip | kubectl exec -i -n test xxx-pod "--" sh -c "cat > /tmp/111.zip"
+```
+
 ## 拷贝出来
 ```
 这个不行  kubectl cp isv/dn-api-manage-api-manage-ms-1-5h9gt:/home/dexcloud/api-manage/api-manage.jar ./aa.jar
