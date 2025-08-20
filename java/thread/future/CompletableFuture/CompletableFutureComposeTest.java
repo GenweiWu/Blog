@@ -5,10 +5,14 @@ import org.junit.Test;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 若需保证顺序执行，应使用 thenCompose 链式调用
+ * （如 future1.thenCompose(s -> future2) 并确保 future2 在 future1 完成后才提交）
+ */
 public class CompletableFutureComposeTest {
 
     /**
-     * 任务1,2都没有返回值
+     * 此时future1和future2是并行执行的
      * <br>
      * future1.thenCompose(s -> future2) 意味着
      * <ul>
@@ -17,11 +21,11 @@ public class CompletableFutureComposeTest {
      * </ul>
      */
     @Test
-    public void compose_void() {
+    public void compose_test() {
         StringBuilder sb = new StringBuilder();
 
         CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
-            sleep(10);
+            sleep(1);
             sb.append("111-");
         });
 
@@ -30,7 +34,9 @@ public class CompletableFutureComposeTest {
         });
 
         future1.thenCompose(s -> future2).thenAccept(x -> {
+            //不可控
             //result=222-111-
+            //result=111-222-
             System.out.println("result=" + sb);
         });
 
@@ -38,46 +44,37 @@ public class CompletableFutureComposeTest {
     }
 
     /**
-     * 任务1,2有返回值
+     * 此时是顺序执行的
      * <p>
-     * 没有保存返回的 Future
-     * </p>
+     * thenCompose适用返回CompletableFuture的方法
      */
     @Test
-    public void compose_void_002() {
+    public void compose_test_02() {
+        StringBuilder sb = new StringBuilder();
 
-        CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
-            return "111"; // 异步任务，最终会完成并返回 "111"
+        CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
+            sleep(10);
+            sb.append("111-");
         });
 
-        // 这里创建了一个新的 CompletableFuture，但没有赋值给任何变量
-        future1.thenApply(x -> {
-            return x + "222"; // 这个转换的结果被丢弃了！
+        CompletableFuture<Void> future2 = future1.thenCompose(ignore -> {
+            return CompletableFuture.runAsync(() -> {
+                sb.append("222-");
+            });
         });
 
-        // 这里又创建了一个新的 CompletableFuture，同样没有保存
-        future1.thenAccept(x -> {
-            System.out.println("x=" + x); // 这里会打印 "x=111"
-        });
-    }
-
-    /**
-     * 复用之前的Future才能串行执行
-     */
-    @Test
-    public void compose_void_002b() {
-
-        CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
-            return "111"; // 步骤1：异步产生结果 "111"
+        CompletableFuture<Void> future3 = future2.thenCompose(ignore -> {
+            return CompletableFuture.runAsync(() -> {
+                sb.append("333-");
+            });
         });
 
-        // 链式调用：每个方法都返回一个新的 CompletableFuture
-        future1.thenApply(x -> {          // 步骤2：接收 "111"，返回 "111222"
-            return x + "222";
-        }).thenAccept(x -> {              // 步骤3：接收 "111222"，进行打印
-            System.out.println("x=" + x);
+        //result=111-222-333-
+        future3.thenAccept(ignore -> {
+            System.out.println("result=" + sb);
         });
 
+        sleep(30);
     }
 
 
