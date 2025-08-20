@@ -2,6 +2,7 @@
 
 ## 学习
 
+- [ComplatebleFuture.compose适用并行执行](CompletableFutureComposeTest.java)
 
 
 ## 练习
