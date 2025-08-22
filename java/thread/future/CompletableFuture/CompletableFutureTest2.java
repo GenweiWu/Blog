@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * CompletableFuture的串行和并行执行
+ */
 public class CompletableFutureTest2 {
 
     /**
