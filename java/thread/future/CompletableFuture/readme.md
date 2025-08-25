@@ -14,7 +14,7 @@
 
 |                 --            |         |
 | -------------------------------- | ------- |
-| future返回值没接收，则结果被丢失 | future1.thenApply //这个结果被丢弃<br>future1.thenAccept //并发执行<br> |
-| 串行执行 | future1.thenApply.thenAccept //串行执行 |
-| 并行执行 | future1.thenApply<br/>future1.thenAccept<br/> |
+| future返回值没接收，则结果被丢失 | `future1.thenApply` //这个结果被丢弃<br>`future1.thenAccept` //并发执行<br> |
+| 串行执行 | `future1.thenApply.thenAccept` //串行执行 |
+| 并行执行 | `future1.thenApply`<br/>`future1.thenAccept`<br/> |
 
