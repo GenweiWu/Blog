@@ -1,5 +1,5 @@
 
-### [创建completableFuture的几种方式](CompletableFutureTest.java)
+## [创建completableFuture的几种方式](CompletableFutureTest.java)
 
 | --               |            |
 | ---------------------------------------------- | ---------- |
@@ -9,7 +9,7 @@
 | `allOf `所有任务都执行完成，才进行下一步任务   |            |
 
 
-### [CompletableFuture的串行和并行执行](CompletableFutureTest2.java)
+## [CompletableFuture的串行和并行执行](CompletableFutureTest2.java)
 
 |                 --            |         |
 | -------------------------------- | ------- |
@@ -17,7 +17,7 @@
 | 串行执行 | `future1.thenApply.thenAccept` //串行执行 |
 | 并行执行 | `future1.thenApply`<br/>`future1.thenAccept`<br/> |
 
-### [CompletableFuture的业务代码和回调分别由哪个线程执行](CompletableFutureThreadTest.java)
+## [CompletableFuture的业务代码和回调分别由哪个线程执行](CompletableFutureThreadTest.java)
 
 | --                    |                                                              |
 | --------------------- | ------------------------------------------------------------ |
@@ -25,14 +25,14 @@
 | 异步方法(即带Async)   | - `CompletableFuture.supplyAsync`可以指定线程池；<br>- 不指定时使用默认的`ForkJoinPool`线程池 |
 
 
-### [将方法转化为CompletableFuture形式](CompletableFutureConvertTest.java)
+## [将方法转化为CompletableFuture形式](CompletableFutureConvertTest.java)
 | --                              |
 | ------------------------------- |
 | 正常结束:complete(T)            |
 | 报错时:completeExceptionally(E) |
 
 
-### CompletableFuture.thenCompose
+## CompletableFuture.thenCompose
 #### - [CompletableFuture.thenCompose的串行和并行](CompletableFutureComposeTest.java)
 
 | --                    |                                                              |
