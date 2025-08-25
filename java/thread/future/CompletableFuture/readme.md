@@ -32,10 +32,15 @@
 | 报错时:completeExceptionally(E) |
 
 
-### [CompletableFuture.thenCompose的串行和并行](CompletableFutureComposeTest.java)
+### CompletableFuture.thenCompose
+#### - [CompletableFuture.thenCompose的串行和并行](CompletableFutureComposeTest.java)
 
 | --                    |                                                              |
 | --------------------- | ------------------------------------------------------------ |
 | `thenCompose`串行执行 | thenCompose(ignore -> {<br/>    return CompletableFuture.*runAsync*(() -> {<br/>        //do something<br/>    });<br/>}); |
 | `thenCompose`并行执行 | future1 = CompletableFuture.*runAsync*<br />future2 = CompletableFuture.*runAsync*<br />future1.thenCompose(s -> future2)  只是说future1执行完成后会等future2执行完(但是其实2可能已经执行完了) |
+
+#### - [CompletableFuture.thenCompose需要future1正常结束](CompletableFutureComposeTest2.java)
+
+✈️✈️✈️
 
