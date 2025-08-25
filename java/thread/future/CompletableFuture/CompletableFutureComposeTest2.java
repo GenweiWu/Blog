@@ -18,20 +18,20 @@ public class CompletableFutureComposeTest2 {
         StringBuilder sb = new StringBuilder();
 
         CompletableFuture<Void> future1 = CompletableFuture.runAsync(() -> {
-            sb.append("111-");
-            int a = 3 / 0;  //1.这里会抛出异常
+            sb.append("111-");  // ✅ 正常执行，sb = "111-"
+            int a = 3 / 0;      // ❌ 抛出 ArithmeticException
         });
 
         //2.只有前面正常执行，才会执行后面
         CompletableFuture<Void> future2 = future1.thenCompose(ignore -> {
             return CompletableFuture.runAsync(() -> {
-                sb.append("222-");
+                sb.append("222-");   // ❌ 不会执行
             });
         });
 
         //3.这里更跟不会执行了
         future2.thenAccept(ignore -> {
-            System.out.println("result=" + sb);
+            System.out.println("result=" + sb);  // ❌ 不会执行
         });
     }
 
