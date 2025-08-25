@@ -24,3 +24,10 @@
 | 同步方法(即不带Async) | `thenAccept`执行时，<br>- 如果CompletableFuture任务还在执行则由前述的线程执行；<br>- 否则则由调用的线程执行 |
 | 异步方法(即带Async)   | - `CompletableFuture.supplyAsync`可以指定线程池；<br>- 不指定时使用默认的`ForkJoinPool`线程池 |
 
+
+### [将方法转化为CompletableFuture形式](CompletableFutureConvertTest.java)
+| --                              |
+| ------------------------------- |
+| 正常结束:complete(T)            |
+| 报错时:completeExceptionally(E) |
+
