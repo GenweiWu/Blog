@@ -19,7 +19,7 @@
 | *thenRun*    | `()->void` | 上一阶段正常结束 |
 
 
-### [CompletableFuture的三种异常处理](./error/)
+### [CompletableFuture的三种异常处理](CompletableFutureErrorTest.java)
 
 |                |                      | 什么时候调用      | 是否修复future到正常状态 |
 | -------------- | -------------------- | ----------------- | ------------------------ |
@@ -27,6 +27,7 @@
 | *handle*        | `(result, ex) -> T`  | 成功或失败都会 ✅❌ | ✅ 通过返回新值           |
 | *whenComplete* | `(result, ex) -> void` | 成功或失败都会 ✅❌ | ❌仅观察，状态不变        |
 
+## 🏍️多个任务组合
 
 ### [用于**组合两个独立的 CompletableFuture** ，且两个阶段都成功才会执行](CompletableFutureBothTest.java)
 
