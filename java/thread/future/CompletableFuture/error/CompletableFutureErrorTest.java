@@ -1,4 +1,4 @@
-package com.njust.future;
+package com.njust.future.error;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,6 +6,14 @@ import org.junit.Test;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * 学习对比三种处理error的不同方式
+ * <ol>
+ *     <li>exceptionally</li>
+ *     <li>handle</li>
+ *     <li>whenComplete</li>
+ * </ol>
+ */
 public class CompletableFutureErrorTest {
 
 
