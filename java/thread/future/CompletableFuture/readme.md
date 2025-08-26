@@ -10,13 +10,21 @@
 | `allOf `所有任务都执行完成，才进行下一步任务   |            |
 
 
-### [CompletableFuture处理正常结果](CompletableFutureThenTest.java)
+### CompletableFuture单个阶段的then处理方法
 
+#### > [CompletableFuture处理正常结果](CompletableFutureThenTest.java)
 |              |            | 什么情况下执行   |
 | ------------ | ---------- | ---------------- |
 | *thenApply*  | ` T->U`    | 上一阶段正常结束 |
 | *thenAccept* | `T->void`  | 上一阶段正常结束 |
 | *thenRun*    | `()->void` | 上一阶段正常结束 |
+
+#### > [依赖型组合方法中的异常](CompletableFutureThenErrorTest.java)
+
+|                                       | 上一阶段异常完成后，方法是否会执行 | 是否会异常传递 |
+| ------------------------------------- | ---------------------------------- | -------------- |
+| `thenApply` / `thenAccept` /`thenRun` | ❌不会执行                          | ✅会传递异常    |
+| `thenCompose`                         | ❌不会执行                          | ✅会传递异常    |
 
 
 ### [CompletableFuture的三种异常处理](CompletableFutureErrorTest.java)
@@ -27,23 +35,24 @@
 | *handle*        | `(result, ex) -> T`  | 成功或失败都会 ✅❌ | ✅ 通过返回新值           |
 | *whenComplete* | `(result, ex) -> void` | 成功或失败都会 ✅❌ | ❌仅观察，状态不变        |
 
-### [依赖型组合方法中的异常](CompletableFutureThenErrorTest.java)
-
-|                                       | 上一阶段异常完成后，方法是否会执行 | 是否会异常传递 |
-| ------------------------------------- | ---------------------------------- | -------------- |
-| `thenApply` / `thenAccept` /`thenRun` | ❌不会执行                          | ✅会传递异常    |
-| `thenCompose`                         | ❌不会执行                          | ✅会传递异常    |
 
 
-## 🏍️多个任务组合
 
-### [用于**组合两个独立的 CompletableFuture** ，且两个阶段都成功才会执行](CompletableFutureBothTest.java)
+## 🏍️[用于**组合两个独立的 CompletableFuture** ，且两个阶段都成功才会执行](CompletableFutureBothTest.java)
 
+### > 两个阶段都成功才会执行
 | 方法             | 核心接口        | 适用场景                   |
 | :--------------- | :-------------- | :------------------------- |
 | *thenCombine*    | `(T,U) -> V`    | 合并两个结果，生成新值     |
 | *thenAcceptBoth* | `(T,U) -> void` | 消费两个结果，无返回值     |
 | *runAfterBoth*   | `() -> void`    | 不关心结果，只关心完成状态 |
+
+### > 异常时
+|    方法          | **任何一个** Future 异常完成，组合操作是否会执行 | 是否会异常传递 |
+| ---------------- | ------------------------------------------------ | -------------- |
+| thenCombine      | ❌不会执行                                        | ✅会传递异常    |
+| *runAfterBoth*   | ❌不会执行                                        | ✅会传递异常    |
+| *thenAcceptBoth* | ❌不会执行                                        | ✅会传递异常    |
 
 
 ## 🚀进阶
