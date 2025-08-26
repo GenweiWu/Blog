@@ -9,6 +9,14 @@
 | `allOf `所有任务都执行完成，才进行下一步任务   |            |
 
 
+## [completableFuture处理正常结果](CompletableFutureThenTest.java)
+
+|              |            | 什么情况下执行   |
+| ------------ | ---------- | ---------------- |
+| *thenApply*  | ` T->U`    | 上一阶段正常结束 |
+| *thenAccept* | `T->void`  | 上一阶段正常结束 |
+| *thenRun*    | `()->void` | 上一阶段正常结束 |
+
 ## [CompletableFuture的串行和并行执行](CompletableFutureTest2.java)
 
 |                 --            |         |
