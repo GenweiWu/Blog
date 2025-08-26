@@ -1,6 +1,6 @@
 ## 🏍️基础
 
-### [创建completableFuture的几种方式](CompletableFutureTest.java)
+### [创建CompletableFuture的几种方式](CompletableFutureTest.java)
 
 | --               |            |
 | ---------------------------------------------- | ---------- |
@@ -10,13 +10,22 @@
 | `allOf `所有任务都执行完成，才进行下一步任务   |            |
 
 
-### [completableFuture处理正常结果](CompletableFutureThenTest.java)
+### [CompletableFuture处理正常结果](CompletableFutureThenTest.java)
 
 |              |            | 什么情况下执行   |
 | ------------ | ---------- | ---------------- |
 | *thenApply*  | ` T->U`    | 上一阶段正常结束 |
 | *thenAccept* | `T->void`  | 上一阶段正常结束 |
 | *thenRun*    | `()->void` | 上一阶段正常结束 |
+
+
+### [CompletableFuture的三种异常处理](./error/)
+
+|                |                      | 什么时候调用      | 是否修复future到正常状态 |
+| -------------- | -------------------- | ----------------- | ------------------------ |
+| *exceptionally*  | `exception -> T`     | 仅失败时 ❌        | ✅ 通过返回新值           |
+| *handle*        | `(result, ex) -> T`  | 成功或失败都会 ✅❌ | ✅ 通过返回新值           |
+| *whenComplete* | `(result, ex) -> void` | 成功或失败都会 ✅❌ | ❌仅观察，状态不变        |
 
 ## 🚀进阶
 ### [CompletableFuture的串行和并行执行](CompletableFutureTest2.java)
