@@ -27,6 +27,14 @@
 | *handle*        | `(result, ex) -> T`  | 成功或失败都会 ✅❌ | ✅ 通过返回新值           |
 | *whenComplete* | `(result, ex) -> void` | 成功或失败都会 ✅❌ | ❌仅观察，状态不变        |
 
+### [依赖型组合方法中的异常](CompletableFutureThenErrorTest.java)
+
+|                                       | 上一阶段异常完成后，方法是否会执行 | 是否会异常传递 |
+| ------------------------------------- | ---------------------------------- | -------------- |
+| `thenApply` / `thenAccept` /`thenRun` | ❌不会执行                          | ✅会传递异常    |
+| `thenCompose`                         | ❌不会执行                          | ✅会传递异常    |
+
+
 ## 🏍️多个任务组合
 
 ### [用于**组合两个独立的 CompletableFuture** ，且两个阶段都成功才会执行](CompletableFutureBothTest.java)
