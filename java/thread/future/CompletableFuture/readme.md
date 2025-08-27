@@ -1,4 +1,4 @@
-## 🏍️基础
+## 🏍️1. 基础
 
 ### [创建CompletableFuture的几种方式](CompletableFutureTest.java)
 
@@ -35,10 +35,20 @@
 | *handle*        | `(result, ex) -> T`  | 成功或失败都会 ✅❌ | ✅ 通过返回新值           |
 | *whenComplete* | `(result, ex) -> void` | 成功或失败都会 ✅❌ | ❌仅观察，状态不变        |
 
+## ✈️2. CompletableFuture.thenCompose 扁平化CompletableFuture
+### - [CompletableFuture.thenCompose的串行和并行](CompletableFutureComposeTest.java)
+
+| --                    |                                                              |
+| --------------------- | ------------------------------------------------------------ |
+| `thenCompose`串行执行 | thenCompose(ignore -> {<br/>    return CompletableFuture.*runAsync*(() -> {<br/>        //do something<br/>    });<br/>}); |
+| `thenCompose`并行执行 | future1 = CompletableFuture.*runAsync*<br />future2 = CompletableFuture.*runAsync*<br />future1.thenCompose(s -> future2)  只是说future1执行完成后会等future2执行完(但是其实2可能已经执行完了) |
+
+### - [CompletableFuture.thenCompose需要future1正常结束](CompletableFutureComposeTest2.java)
+
+--
 
 
-
-## 🏍️[用于**组合两个独立的 CompletableFuture** ，且两个阶段都成功才会执行](CompletableFutureBothTest.java)
+## ✈️3. [用于**组合两个独立的 CompletableFuture** ，且两个阶段都成功才会执行](CompletableFutureBothTest.java)
 
 ### > 两个阶段都成功才会执行
 | 方法             | 核心接口        | 适用场景                   |
@@ -55,7 +65,7 @@
 | *thenAcceptBoth* | ❌不会执行                                        | ✅会传递异常    |
 
 
-## 🚀进阶
+## 🚀4. 进阶
 ### [CompletableFuture的串行和并行执行](CompletableFutureTest2.java)
 
 |                 --            |         |
@@ -79,15 +89,5 @@
 | 报错时:completeExceptionally(E) |
 
 
-### CompletableFuture.thenCompose
-#### - [CompletableFuture.thenCompose的串行和并行](CompletableFutureComposeTest.java)
 
-| --                    |                                                              |
-| --------------------- | ------------------------------------------------------------ |
-| `thenCompose`串行执行 | thenCompose(ignore -> {<br/>    return CompletableFuture.*runAsync*(() -> {<br/>        //do something<br/>    });<br/>}); |
-| `thenCompose`并行执行 | future1 = CompletableFuture.*runAsync*<br />future2 = CompletableFuture.*runAsync*<br />future1.thenCompose(s -> future2)  只是说future1执行完成后会等future2执行完(但是其实2可能已经执行完了) |
-
-#### - [CompletableFuture.thenCompose需要future1正常结束](CompletableFutureComposeTest2.java)
-
-✈️✈️✈️
 
