@@ -12,7 +12,7 @@ import static org.mockito.Mockito.doNothing;
 /**
  * mockito可以模拟public方法，不支持模拟private方法
  */
-@ExtendWith(MockitoExtension.class)  //用于注解校验
+@ExtendWith(MockitoExtension.class)  //用于注解初始化
 public class NonStaticTest {
 
     @Mock
