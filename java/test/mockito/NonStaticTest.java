@@ -26,9 +26,7 @@ public class NonStaticTest {
         //void方法要使用do-when的方法
         doCallRealMethod().when(nonStatic).sayAge(-1);
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            nonStatic.sayAge(-1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> nonStatic.sayAge(-1));
     }
 
     /**
@@ -59,14 +57,12 @@ public class NonStaticTest {
      * <font color="red">mockito不支持模拟私有方法</>
      */
     @Test
-    public void sayAge222_mockPrivateMethod() throws Exception {
+    public void sayAge222_mockPrivateMethod() {
         //不支持模拟私有方法
         //doCallRealMethod().when(nonStatic, "returnAge", -4);
 
         doCallRealMethod().when(nonStatic).sayAge222(-4);
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            nonStatic.sayAge222(-4);
-        });
+        assertThrows(IllegalArgumentException.class, () -> nonStatic.sayAge222(-4));
     }
 }
