@@ -85,3 +85,67 @@ Unnecessary stubbings detected.
 @MockitoSettings(strictness = Strictness.LENIENT)  <-- //忽略没用到的模拟方法
 ```
 
+### 问题2：批量mockStatic处理
+```java
+//使用 @BeforeEach 和 @AfterEach
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import org.mockito.Mockito;
+
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class StaticMockWithBeforeEachTest {
+    
+    private MockedStatic<StaticUtils> mockedStatic;
+    
+    @BeforeEach
+    void setUp() {
+        mockedStatic = mockStatic(StaticUtils.class);
+        
+        // 设置公共的模拟行为
+        mockedStatic.when(() -> StaticUtils.getMessage(anyString()))
+                   .thenReturn("Default Response");
+        
+        mockedStatic.when(() -> StaticUtils.calculate(eq(10), anyInt()))
+                   .thenReturn(100);
+    }
+    
+    @AfterEach
+    void tearDown() {
+        if (mockedStatic != null) {
+            mockedStatic.close();
+        }
+    }
+    
+    @Test
+    void testMethod1() {
+        // 可以覆盖默认行为
+        mockedStatic.when(() -> StaticUtils.getMessage("admin"))
+                   .thenReturn("Welcome Admin");
+        
+        assertEquals("Welcome Admin", StaticUtils.getMessage("admin"));
+        assertEquals("Default Response", StaticUtils.getMessage("user"));
+    }
+    
+    @Test
+    void testMethod2() {
+        assertEquals(100, StaticUtils.calculate(10, 5));
+        assertEquals("Default Response", StaticUtils.getMessage("test"));
+    }
+}
+
+class StaticUtils {
+    public static String getMessage(String name) {
+        return "Hello, " + name;
+    }
+    
+    public static int calculate(int a, int b) {
+        return a + b;
+    }
+}
+```
+
