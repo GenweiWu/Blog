@@ -47,6 +47,13 @@
             </exclusions>
         </dependency>
 
+        <!--替换powermock中的Whitebox-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.3.15</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
