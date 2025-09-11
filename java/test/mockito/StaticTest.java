@@ -109,4 +109,48 @@ public class StaticTest {
         Static.helloWithParameter("ccc", "ddd");
         verify(outMock).printf("a:%s, b:%s", "ccc", "ddd");
     }
+
+    /**
+     * 只模拟特定静态方法，其他静态方法保持真实
+     */
+    @Test
+    public void mock_onlyOneStaticMethod() {
+
+        try (MockedStatic<Static> mockStatic = mockStatic(Static.class)) {
+            //模拟前都是doNothing
+            assertNull(Static.add("1", "2"));
+            assertDoesNotThrow(Static::hello);
+
+            //不模拟add方法了,此时hello不受影响
+            mockStatic.when(() -> Static.add("1", "2")).thenCallRealMethod();
+            assertEquals("3", Static.add("1", "2"));
+            assertDoesNotThrow(Static::hello);
+
+            //接着也不模拟hello方法了
+            mockStatic.when(Static::hello).thenCallRealMethod();
+            assertEquals("3", Static.add("1", "2"));
+            assertThrows(RuntimeException.class, Static::hello);
+        }
+    }
+
+    /**
+     * 只模拟静态方法，不影响非静态方法
+     */
+    @Test
+    public void mock_onlyStaticMethod() {
+        Static aStatic = new Static();
+        assertEquals(2025, aStatic.notStatic());
+        assertEquals("3", Static.add("1", "2"));
+
+        try (MockedStatic<Static> mockStatic = mockStatic(Static.class)) {
+            mockStatic.when(() -> Static.add("1", "2")).thenReturn("-1");
+
+            //非静态方法notStatic不受影响
+            assertEquals(2025, aStatic.notStatic());
+            assertEquals("-1", Static.add("1", "2"));
+        }
+
+        assertEquals(2025, aStatic.notStatic());
+        assertEquals("3", Static.add("1", "2"));
+    }
 }
