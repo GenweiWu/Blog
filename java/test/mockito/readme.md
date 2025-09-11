@@ -1,3 +1,8 @@
+## 注意
+❌ 不要用`mockStatic`去模拟jdk中的静态方法  
+❌ 不要用`mockConstruction`去模拟jdk中的类，比如File.class 
+
+
 ## pom.xml
 ```pom.xml
 <?xml version="1.0" encoding="UTF-8"?>
