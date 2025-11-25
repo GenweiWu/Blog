@@ -51,7 +51,7 @@ public class CosRetrofitProxyManager implements BeanDefinitionRegistryPostProces
 
             List<Class<?>> clazzList = new ArrayList<>();
             clazzList.add(clazz);
-            Object targetInterface = Proxy.newProxyInstance(clazz.getClassLoader(), clazzList.toArray(new Class[0]), new SampleInvocationHandler(cosHandlerContext));
+            Object targetInterface = Proxy.newProxyInstance(clazz.getClassLoader(), clazzList.toArray(new Class[0]), new CosInvocationHandler(cosHandlerContext));
             this.beanFactory.registerSingleton(clazz.getName(), targetInterface);
         }
     }
