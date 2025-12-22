@@ -61,7 +61,12 @@ aabb
 grep 'aaa' vs-test*.log
 ```
 
-
+#### 6. grep -l 只显示文件名
+```bash
+grep -l "pattern" file1 file2 file3
+grep -l "pattern" *.txt
+grep -l "pattern" /path/to/files/*
+```
 
 
 ## 参考
