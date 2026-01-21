@@ -66,6 +66,20 @@ $ find -name config -path '*/.git/config'
  - 即a表示访问access,c表示改变状态change,m表示修改文件modify
  - min表示以分钟计算,time表示以24小时计算(天计算)
 
+### 6. 排除指定文件夹
+```bash
+find -name *.sh
+find . -name "node_modules" -prune -o -name *.sh
+```
+
+```
+find .                     # 从当前目录开始查找
+-name "node_modules"       # 匹配名为 "node_modules" 的文件/目录
+-prune                     # 排除这个匹配项及其所有子内容
+-o                         # OR 运算符（逻辑或）
+-name *.sh                 # 匹配以 .sh 结尾的文件
+```
+
 ---
 ### 常用记录
 `find . -maxdepth 1 -type d -empty`    找到当前目录下所有空文件夹(也可以不限制文件层级，则包括空的子目录)  
