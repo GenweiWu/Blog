@@ -71,7 +71,7 @@ Anyone can list all files; /dev warnings disabled; kernel ID check disabled.
 
 ## 实例
 
-#### 1. 根据进程信息找到文件路径 `lsof -p <PID>`
+### 1. 根据进程信息找到文件路径 `lsof -p <PID>`
     不知道jenkins.war的路径，可以根据进程查找到
 
 ```console
@@ -83,7 +83,7 @@ java    118468 root  mem       REG              202,2 69874457     318888 /home/
 java    118468 root    4r      REG              202,2 69874457     318888 /home/jenkins/jenkins.war
 ```
 
-#### 2. 查找端口22的连接信息 `lsof -i:22`
+### 2. 查找端口22的连接信息 `lsof -i:22`
 ```console
 [root@SZX1000538990 ~]# lsof -i:22
 COMMAND   PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAME
@@ -105,7 +105,7 @@ sshd    55797 root    3u  IPv4 50722423      0t0  TCP 10.21.253.119:22->10.11.12
 sshd    57463 root    3u  IPv4 50727746      0t0  TCP 10.21.253.119:22->10.11.12.13:3330 (ESTABLISHED)
 ```
 
-#### 3. 根据command进行查询 `lsof -c java`
+### 3. 根据command进行查询 `lsof -c java`
 
 > 注意这里jenkins的command实际上是java而不是jenkins
 ```console
@@ -121,14 +121,41 @@ java    118468 root  mem       REG              202,2 69874457     318888 /home/
 java    118468 root    4r      REG              202,2 69874457     318888 /home/jenkins/jenkins.war
 ```
 
-#### 4. 查找文件/目录当前被哪个进程使用
+### 4. 查找文件/目录当前被哪个进程使用
+
+#### 4.1 `lsof /path/to/dir` 只显示目录本身被打开的情况，不显示目录内的文件
+```console
+# 查看 /tmp 目录本身是否被打开
+lsof /tmp
+
+# 输出示例：
+# COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+# bash     1234 root  cwd    DIR    8,1     4096 123456 /tmp
 ```
-root@SHA1000140068:/# lsof  /home/jenkins/
-COMMAND    PID USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
-java    118468 root  cwd    DIR  202,2     4096 318885 /home/jenkins
-root@SHA1000140068:/# ps -ef|grep 118468
-root      13455  12950  0 14:29 pts/1    00:00:00 grep --color=auto 118468
-root     118468      1  3  2018 ?        18-08:53:59 java -jar jenkins.war --requestHeaderSize=32768 --prefix=/jenkins/main-master
+
+#### 4.2 `+d 参数` 显示目录本身和目录下直接子文件/子目录（不递归子目录）
+```console
+# 查看 /tmp 目录及其直接子文件
+lsof +d /tmp
+
+# 输出示例：
+# COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+# bash     1234 root  cwd    DIR    8,1     4096 123456 /tmp
+# vim      2345 user  txt    REG    8,1    12288 123457 /tmp/test.txt
+# tail     3456 user  txt    REG    8,1     1024 123458 /tmp/access.log
+```
+
+#### 4.3 `+D 参数` 显示目录本身和目录下所有子目录递归的文件
+```console
+# 递归查看 /tmp 及其所有子目录下的文件
+lsof +D /tmp
+
+# 输出示例：
+# COMMAND   PID USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+# bash     1234 root  cwd    DIR    8,1     4096 123456 /tmp
+# vim      2345 user  txt    REG    8,1    12288 123457 /tmp/test.txt
+# mysqld   3456 mysql  REG    8,1  1048576 123459 /tmp/mysql/socket
+# httpd    4567 root  REG    8,1     4096 123460 /tmp/cache/session/abc123
 ```
 
 
