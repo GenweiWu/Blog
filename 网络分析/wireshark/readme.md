@@ -27,6 +27,10 @@ ip.dst == 1.2.3.4
 ip.addr == 1.2.3.4
 ```
 
+### 针对url过滤
+```bash
+http.request.uri contains "/images/"
+``` 
 
 
 ### 针对域名过滤
